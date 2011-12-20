@@ -28,5 +28,6 @@ class Map {
 		void createNoeud();
 		Terrain* getTerrain(int, int);
 		Arrete* getArrete(int, int, int, int);
+		Noeud* getNoeud(int, int, int, int, int, int);
 };
 #endif

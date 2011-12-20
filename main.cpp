@@ -8,7 +8,10 @@ int main () {
 	Jeux letsplay;
 	
 	letsplay.distribRes();
-	//Map map;
-	//map.afficher();
+	Map map;
+	map.afficher();
+	if(map.getArrete(4,3,4,4) == NULL) {
+		cout<<"NULL"<<endl;
+	}
 	return 0;
 }
