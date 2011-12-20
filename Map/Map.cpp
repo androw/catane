@@ -32,11 +32,10 @@ Map::Map() {
 	for (i = 0; i<12; i++) {
 		nbtint[i] = 2;
 	}
-		nbtint[0] = 0;
-		nbtint[1] = 1;
-		nbtint[6] = 0;
-		nbtint[11] = 1;
-
+	nbtint[0] = 0;
+	nbtint[1] = 1;
+	nbtint[6] = 0;
+	nbtint[11] = 1;
 	for (i = 1; i < 6; i++) {
 		if(t[3][i]->getName() != "Desert") {
 		t[3][i]->setValeur(randomInt());
@@ -941,3 +940,14 @@ Terrain* Map::getTerrain(int pi, int pj) {
 	return t[pi][pj];
 }
 		
+Arrete* Map::getArrete(int i, int j, int x, int y) {
+	int it;
+	for (it = 0; i< 6; i++) {
+		if (t[i][j]->getArrete(it)->getTerrain(0) == t[i][j]) {
+			if (t[i][j]->getArrete(it)->getTerrain(1) == t[x][y]) return t[i][j]->getArrete(it);
+		} else {
+			if (t[i][j]->getArrete(it)->getTerrain(0) == t[x][y]) return t[i][j]->getArrete(it);
+		}
+	}
+	return NULL;
+} 
