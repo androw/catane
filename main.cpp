@@ -10,7 +10,7 @@ int main () {
 	letsplay.distribRes();
 	Map map;
 	map.afficher();
-	if(map.getArrete(4,3,4,4) == NULL) {
+	if(map.getArrete(2,3,2,4) == NULL) {
 		cout<<"NULL"<<endl;
 	}
 	return 0;

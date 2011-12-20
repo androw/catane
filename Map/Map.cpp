@@ -942,10 +942,10 @@ Terrain* Map::getTerrain(int pi, int pj) {
 		
 Arrete* Map::getArrete(int i, int j, int x, int y) {
 	int it;
-	for (it = 0; i< 6; i++) {
+	for (it = 0; i< 6; it++) {
 		if (t[i][j]->getArrete(it)->getTerrain(0) == t[i][j]) {
 			if (t[i][j]->getArrete(it)->getTerrain(1) == t[x][y]) return t[i][j]->getArrete(it);
-		} else {
+		} else if (t[i][j]->getArrete(it)->getTerrain(1) == t[i][j]){
 			if (t[i][j]->getArrete(it)->getTerrain(0) == t[x][y]) return t[i][j]->getArrete(it);
 		}
 	}
@@ -954,7 +954,7 @@ Arrete* Map::getArrete(int i, int j, int x, int y) {
 
 Noeud* Map::getNoeud(int i, int j, int x, int y,int xx, int yy) {
 	int it;
-	for (it = 0; i< 6; i++) {
+	for (it = 0; i< 6; it++) {
 		if (t[i][j]->getNoeud(it)->getTerrain(0) == t[i][j]) {
 			if (t[i][j]->getNoeud(it)->getTerrain(1) == t[x][y]) {
 				if (t[i][j]->getNoeud(it)->getTerrain(2) == t[xx][yy]) {
