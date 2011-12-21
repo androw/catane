@@ -15,9 +15,8 @@ class Map {
 	protected:
 		Terrain * t[7][7];
 		int nbt[6];
-		int nbtint[11];
+		int nbint[18];
 		Terrain* random();
-		int randomInt();
 		
 	public:
 		Map();
@@ -29,5 +28,7 @@ class Map {
 		Terrain* getTerrain(int, int);
 		Arrete* getArrete(int, int, int, int);
 		Noeud* getNoeud(int, int, int, int, int, int);
+		void valeur();
+		void createnbint();
 };
 #endif

@@ -28,35 +28,32 @@ Map::Map() {
 	Map::addMers();
 	Map::createArrete();
 	Map::createNoeud();
+	createnbint();
+	valeur();
+	
+	
+	
+}
 
-	for (i = 0; i<12; i++) {
-		nbtint[i] = 2;
-	}
-	nbtint[0] = 0;
-	nbtint[1] = 1;
-	nbtint[6] = 0;
-	nbtint[11] = 1;
-	for (i = 1; i < 6; i++) {
-		if(t[3][i]->getName() != "Desert") {
-		t[3][i]->setValeur(randomInt());
-		}
-	}
-	for (i = 1; i < 5; i++) {
-		if(t[2][i]->getName() != "Desert" ) {
-		t[2][i]->setValeur(randomInt());
-		}
-		if(t[4][i]->getName() != "Desert") {
-		t[4][i]->setValeur(randomInt());
-		}
-	}
-	for (i = 2; i < 5; i++) {
-		if(t[1][i]->getName() != "Desert") {
-		t[1][i]->setValeur(randomInt());
-		}
-		if(t[5][i]->getName() != "Desert") {
-		t[5][i]->setValeur(randomInt());
-		}
-	}
+void Map::createnbint() {
+	nbint[0] = 5;
+	nbint[1] = 2;
+	nbint[2] = 6;
+	nbint[3] = 3;
+	nbint[4] = 8;
+	nbint[5] = 10;
+	nbint[6] = 9;
+	nbint[7] = 12;
+	nbint[8] = 11;
+	nbint[9] = 4;
+	nbint[10] = 8;
+	nbint[11] = 10;
+	nbint[12] = 9;
+	nbint[13] = 4;
+	nbint[14] = 5;
+	nbint[15] = 6;
+	nbint[16] = 3;
+	nbint[17] = 11;
 }
 
 Terrain* Map::random() {
@@ -102,88 +99,151 @@ Terrain* Map::random() {
 	return Map::random();	
 }
 
-int Map::randomInt() {
-	int random = rand()%13;
+
+void Map::valeur() {
+	int random = rand()%6;
+	int i = 0;
+	int x;
+	int y;
 	if(random == 0) {
-		if(nbtint[0] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl; //c'est juste pour tester si ça fonctionne bien pour chaques chiffres.
-			nbtint[0]--;
-			return random+1;
+		if( t[1][2]->getName() != "Desert" ) {
+			t[1][2]->setValeur(nbint[i]);
+			i++;
 		}
-	}else if(random == 1) {
-		if(nbtint[1] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[1]--;
-			return random+1;
+		
+		x = 1;
+		y = 2;
+	}else if (random == 1) {
+		if( t[1][4]->getName() != "Desert" ) {
+			t[1][4]->setValeur(nbint[i]);
+			i++;
 		}
-	}else if(random == 2) {
-		if(nbtint[2] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[2]--;
-			return random+1;
+		x = 1;
+		y = 4;
+	}else if (random == 2) {
+		if( t[3][1]->getName() != "Desert" ) {
+			t[3][1]->setValeur(nbint[i]);
+			i++;
 		}
-	}else if(random == 3) {
-		if(nbtint[3] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[3]--;
-			return random+1;
+		x = 3;
+		y = 1;
+	}else if (random == 3) {
+		if( t[3][5]->getName() != "Desert" ) {
+			t[3][5]->setValeur(nbint[i]);
+			i++;
 		}
-	}else if(random == 4) {
-		if(nbtint[4] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[4]--;
-			return random+1;
+		x = 3;
+		y = 5;
+	}else if (random == 4) {
+		if( t[5][2]->getName() != "Desert" ) {
+			t[5][2]->setValeur(nbint[i]);
+			i++;
 		}
-	}else if(random == 5) {
-		if(nbtint[5] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[5]--;
-			return random+1;
+		x = 5;
+		y = 2;
+	}else if (random == 5) {
+		if( t[5][4]->getName() != "Desert" ) {
+			t[5][4]->setValeur(nbint[i]);
+			i++;
 		}
+		x = 5;
+		y = 4;
 	}
-	 else if(random == 6) {
-		if(nbtint[6] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[6]--;
-			return random+1;
+	int xinit = x;
+	int yinit = y;
+	
+	while(x != 3 || y != 3) {
+
+
+		if( t[x][y-1]!= NULL && t[x][y-1]->getName() != "Port" && t[x][y-1]->getName() != "Mer" && t[x][y-1]->getValeur() == 0 && ((x == 1 && y == 4) || (x == 1 && y == 3 && (xinit !=1 || yinit != 2))  || (x == 2 && y == 3 && (xinit !=1 || yinit != 2)) || (x == 2 && y == 4 && xinit ==1 && yinit == 4) || (x == 3 && y == 4 && xinit ==1 && yinit == 4 ) )) {
+			y--;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+				cout<<"gauche"<<endl;
+			}
+			
+		}else if( t[x+1][y-1]!= NULL && x%2 == 1 && t[x+1][y-1]->getName() != "Port" && t[x+1][y-1]->getName() != "Mer" && t[x+1][y-1]->getValeur() == 0 && ((x == 1 && y == 2) || (x == 2 && y == 1 && (xinit !=3 || yinit != 1))  || (x == 2 && y == 2 && (xinit !=3 || yinit != 1)) || (x == 1 && y == 3 && xinit ==1 && yinit == 2) || (x == 2 && y == 3 && xinit ==1 && yinit == 2 ) )) {
+			x++;
+			y--;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"gauche bas"<<endl;
+			}
+			
+		}else if( t[x+1][y]!= NULL && x%2 == 0 && t[x+1][y]->getName() != "Port" && t[x+1][y]->getName() != "Mer" && t[x+1][y]->getValeur() == 0 && ((x == 1 && y == 2) || (x == 2 && y == 1 && (xinit !=3 || yinit != 1))  || (x == 2 && y == 2 && (xinit !=3 || yinit != 1)) || (x == 1 && y == 3 && xinit ==1 && yinit == 2) || (x == 2 && y == 3 && xinit ==1 && yinit == 2 ) ) ) {
+			x++;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"gauche bas"<<endl;
+			}
+			
+		}else if( t[x+1][y+1]!= NULL && x%2 == 0 && t[x+1][y+1]->getName() != "Port" && t[x+1][y+1]->getName() != "Mer" && t[x+1][y+1]->getValeur() == 0 && ((x == 3 && y == 1) || (x == 4 && y == 1 && (xinit !=5 || yinit != 2))  || (x == 3 && y == 2 && (xinit !=5 || yinit != 2)) || (x == 2 && y == 1 && xinit ==3 && yinit == 1) || (x == 2 && y == 2 && xinit ==3 && yinit == 1 ) )) {
+			x++;
+			y++;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"droit bas"<<endl;
+			}
+			
+		}else if( t[x+1][y]!= NULL && x%2 == 1 && t[x+1][y]->getName() != "Port" && t[x+1][y]->getName() != "Mer" && t[x+1][y]->getValeur() == 0 && ((x == 3 && y == 1) || (x == 4 && y == 1 && (xinit !=5 || yinit != 2))  || (x == 3 && y == 2 && (xinit !=5 || yinit != 2)) || (x == 2 && y == 1 && xinit ==3 && yinit == 1) || (x == 2 && y == 2 && xinit ==3 && yinit == 1 ) )) {
+			x++;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"droit bas"<<endl;
+			}
+			
+		}else if( t[x][y+1]->getName() != "Port" && t[x][y+1]->getName() != "Mer" && t[x][y+1]->getValeur() == 0 && ((x == 5 && y == 2) || (x == 5 && y == 3 && (xinit !=5 || yinit != 4))  || (x == 4 && y == 2 && (xinit !=5 || yinit != 4)) || (x == 4 && y == 1 && xinit ==5 && yinit == 2) || (x == 3 && y == 2 && xinit ==5 && yinit == 2 ) )) {
+			y++;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"droit"<<endl;
+			}
+			
+		}else if( t[x-1][y+1]!= NULL && x%2 == 0 && t[x-1][y+1]->getName() != "Port" && t[x-1][y+1]->getName() != "Mer" && t[x-1][y+1]->getValeur() == 0 && ((x == 5 && y == 4) || (x == 4 && y == 4 && (xinit !=3 || yinit != 5))  || (x == 4 && y == 3 && (xinit !=3 || yinit != 5)) || (x == 5 && y == 3 && xinit ==5 && yinit == 4) || (x == 4 && y == 2 && xinit ==5 && yinit == 4 ) )) {
+			x--;
+			y++;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"droit haut"<<endl;
+			}
+			
+		}else if( t[x-1][y]!= NULL && x%2 == 1 && t[x-1][y]->getName() != "Port" && t[x-1][y]->getName() != "Mer" && t[x-1][y]->getValeur() == 0 && ((x == 5 && y == 4) || (x == 4 && y == 4 && (xinit !=3 || yinit != 5))  || (x == 4 && y == 3 && (xinit !=3 || yinit != 5)) || (x == 5 && y == 3 && xinit ==5 && yinit == 4) || (x == 4 && y == 2 && xinit ==5 && yinit == 4 ) )) {
+			x--;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"droit haut"<<endl;
+			}
+			
+		}else if( t[x-1][y-1]!= NULL && x%2 == 1 && t[x-1][y-1]->getName() != "Port" && t[x-1][y-1]->getName() != "Mer" && t[x-1][y-1]->getValeur() == 0  && ((x == 3 && y == 5) || (x == 2 && y == 4 && (xinit !=1 || yinit != 4))  || (x == 3 && y == 4 && (xinit !=1 || yinit != 4)) || (x == 4 && y == 4 && xinit ==3 && yinit == 5) || (x == 4 && y == 3 && xinit ==3 && yinit == 5 ) ) ) {
+			x--;
+			y--;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"gauche haut"<<endl;
+			}
+			
+		}else if( t[x-1][y]!= NULL && x%2 == 0 && t[x-1][y]->getName() != "Port" && t[x-1][y]->getName() != "Mer" && t[x-1][y]->getValeur() == 0 && ((x == 3 && y == 5) || (x == 2 && y == 4 && (xinit !=1 || yinit != 4))  || (x == 3 && y == 4 && (xinit !=1 || yinit != 4)) || (x == 4 && y == 4 && xinit ==3 && yinit == 5) || (x == 4 && y == 3 && xinit ==3 && yinit == 5 ) ) ) {
+			x--;
+			if( t[x][y]->getName() != "Desert" ) {
+				t[x][y]->setValeur(nbint[i]);
+				i++;
+cout<<"gauche haut"<<endl;
+			}
+			
 		}
+
 	}
-	else if(random == 7) {
-		if(nbtint[7] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[7]--;
-			return random+1;
-		}
-	}
-	else if(random == 11) {
-		if(nbtint[11] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[11]--;
-			return random+1;
-		}
-	}
-	else if(random == 8) {
-		if(nbtint[8] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[8]--;
-			return random+1;
-		}
-	}
-	else if(random == 9) {
-		if(nbtint[9] != 0) {
-				//cout<<random+1<<":"<<nbtint[random]<<endl;
-			nbtint[9]--;
-			return random+1;
-		}
-	}
-	else if(random == 10) {
-		if(nbtint[10] != 0) {
-		//cout<<"11:"<<nbtint[10]<<endl;
-			nbtint[10]--;
-			return random+1;
-		}
-	}
-	return randomInt();	
+		
+		
 }
 
 void Map::addPorts() {
