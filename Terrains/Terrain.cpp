@@ -2,6 +2,11 @@
 
 Terrain::Terrain() {
 	valeur = 0;
+	int i;
+	for (i = 0; i<6; i++) {
+			arrete[i] = NULL;
+			noeud[i] = NULL;
+	}
 }
 
 int Terrain::getMax() {

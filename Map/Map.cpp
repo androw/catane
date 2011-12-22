@@ -306,7 +306,6 @@ void Map::afficher() {
 
 			}else if(t[0][j]->getName() == "Desert") {
 				cout<<" Desert  *";
-
 			}
 		}
 cout<<endl;
@@ -736,26 +735,109 @@ void Map::createNoeud() {
 	int j;
 	for (i = 0; i<7; i++) {
 		for (j = 0; j<7; j++) {
-			if (t[i][j] != NULL) { //Coin 0
+			if (t[i][j] != NULL) {
 				if (i%2 == 0) {
-				if( i-1 >= 0 && j+1 < 7 && t[i][j]->getNoeud(0) == NULL) {
+					if(i-1 >= 0 && j+1 < 7 && t[i][j]->getNoeud(0) == NULL) {
+						Noeud * a = new Noeud();
+						a->setTerrain(0, t[i][j]);
+						a->addArrete(t[i][j]->getArrete(0));
+						a->addArrete(t[i][j]->getArrete(3));
+						t[i][j]->setNoeud(0,a);
+						if (t[i-1][j+1] != NULL) {
+							a->setTerrain(1, t[i-1][j+1]);
+							a->addArrete(t[i-1][j+1]->getArrete(2));
+							t[i-1][j+1]->setNoeud(2,a);
+						}
+						if (t[i][j+1] != NULL) {
+							a->setTerrain(2, t[i][j+1]);
+							a->addArrete(t[i][j+1]->getArrete(3));
+							t[i][j+1]->setNoeud(4,a);
+						}	
+					}
+					if( i+1 < 7 && j+1 < 7 && t[i][j]->getNoeud(1) == NULL) {
+						Noeud * a = new Noeud();
+						a->setTerrain(0, t[i][j]);
+						a->addArrete(t[i][j]->getArrete(1));
+						a->addArrete(t[i][j]->getArrete(2));
+						t[i][j]->setNoeud(1,a);
+						if (t[i+1][j+1] != NULL) {
+							a->setTerrain(1, t[i+1][j+1]);
+							a->addArrete(t[i+1][j+1]->getArrete(0));
+							t[i+1][j+1]->setNoeud(3,a);
+						}
+						if (t[i][j+1] != NULL) {
+							a->setTerrain(2, t[i][j+1]);
+							a->addArrete(t[i][j+1]->getArrete(5));
+							t[i][j+1]->setNoeud(5,a);
+						}	
+					}
+					if( i+1 < 7 && j+1 < 7 && t[i][j]->getNoeud(2) == NULL) {
+						Noeud * a = new Noeud();
+						a->setTerrain(0, t[i][j]);
+						a->addArrete(t[i][j]->getArrete(2));
+						a->addArrete(t[i][j]->getArrete(5));
+						t[i][j]->setNoeud(2,a);
+						if (t[i+1][j] != NULL) {
+							a->setTerrain(1, t[i+1][j]);
+							a->addArrete(t[i+1][j]->getArrete(1));
+							t[i+1][j]->setNoeud(0,a);
+						}
+						if (t[i+1][j+1] != NULL) {
+							a->setTerrain(2, t[i+1][j+1]);
+							a->addArrete(t[i+1][j+1]->getArrete(4));
+							t[i+1][j+1]->setNoeud(4,a);
+						}
+					}
+					if( i-1 >= 0 && j+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(3) == NULL) {
+						Noeud * a = new Noeud();
+						a->setTerrain(0, t[i][j]);
+						a->addArrete(t[i][j]->getArrete(0));
+						a->addArrete(t[i][j]->getArrete(3));
+						t[i][j]->setNoeud(3,a);
+						if (t[i-1][j] != NULL) {
+							a->setTerrain(1, t[i-1][j]);
+							a->addArrete(t[i-1][j]->getArrete(1));
+							t[i-1][j]->setNoeud(1,a);
+						}
+						if (t[i-1][j+1] != NULL) {
+							a->setTerrain(2, t[i-1][j+1]);
+							a->addArrete(t[i-1][j+1]->getArrete(4));
+							t[i-1][j+1]->setNoeud(5,a);
+						}	
+					}
+					if( i-1 >= 0 && j-1 >= 0  && t[i][j]->getNoeud(4) == NULL) {
+						Noeud * a = new Noeud();
+						a->setTerrain(0, t[i][j]);
+						a->addArrete(t[i][j]->getArrete(3));
+						a->addArrete(t[i][j]->getArrete(4));
+						t[i][j]->setNoeud(4,a);
+						if (t[i-1][j] != NULL) {
+							a->setTerrain(1, t[i-1][j]);
+							a->addArrete(t[i-1][j]->getArrete(5));
+							t[i-1][j]->setNoeud(2,a);
+						}
+						if (t[i][j-1] != NULL) {
+							a->setTerrain(2, t[i][j-1]);
+							a->addArrete(t[i][j-1]->getArrete(0));
+							t[i][j-1]->setNoeud(0,a);
+						}	
+					}
+				if( i+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(5) == NULL) {
 					Noeud * a = new Noeud();
 					a->setTerrain(0, t[i][j]);
-					a->addArrete(t[i][j]->getArrete(0));
-					a->addArrete(t[i][j]->getArrete(3));
-					t[i][j]->setNoeud(0,a);
-					if (t[i-1][j+1] != NULL) {
-						a->setTerrain(1, t[i-1][j+1]);
-						a->addArrete(t[i-1][j+1]->getArrete(2));
-						t[i-1][j+1]->setNoeud(2,a);
+					a->addArrete(t[i][j]->getArrete(5));
+					a->addArrete(t[i][j]->getArrete(4));
+					t[i][j]->setNoeud(5,a);
+					if (t[i][j-1] != NULL) {
+						a->setTerrain(1, t[i][j-1]);
+						a->addArrete(t[i][j-1]->getArrete(2));
+						t[i][j-1]->setNoeud(1,a);
 					}
-					if (t[i][j+1] != NULL) {
-						a->setTerrain(2, t[i][j+1]);
-						a->addArrete(t[i][j+1]->getArrete(3));
-						t[i][j+1]->setNoeud(4,a);
+					if (t[i+1][j] != NULL) {
+						a->setTerrain(2, t[i+1][j]);
+						a->addArrete(t[i+1][j]->getArrete(3));
+						t[i+1][j]->setNoeud(3,a);
 					}	
-				}else {
-					t[i][j]->setNoeud(0,NULL);
 				}
 				} else {
 				if( i-1 >= 0 && j+1 < 7 && t[i][j]->getNoeud(0) == NULL) {
@@ -774,58 +856,30 @@ void Map::createNoeud() {
 						a->addArrete(t[i][j+1]->getArrete(3));
 						t[i][j+1]->setNoeud(4,a);
 					}	
-				}else {
-					t[i][j]->setNoeud(0,NULL);
 				}
-				}
-				if (i%2 == 1) {
 				if( i+1 < 7 && j+1 < 7 && t[i][j]->getNoeud(1) == NULL) {
 					Noeud * a = new Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(1));
 					a->addArrete(t[i][j]->getArrete(2));
-					t[i][j]->setNoeud(0,a);
+					t[i][j]->setNoeud(1,a);
 					if (t[i+1][j] != NULL) {
 						a->setTerrain(1, t[i+1][j]);
 						a->addArrete(t[i+1][j]->getArrete(0));
-						t[i+1][j]->setNoeud(2,a);
+						t[i+1][j]->setNoeud(3,a);
 					}
 					if (t[i][j+1] != NULL) {
 						a->setTerrain(2, t[i][j+1]);
 						a->addArrete(t[i][j+1]->getArrete(5));
-						t[i][j+1]->setNoeud(4,a);
+						t[i][j+1]->setNoeud(5,a);
 					}	
-				}else {
-					t[i][j]->setNoeud(1,NULL);
-				} 
-				} else {
-				if( i+1 < 7 && j+1 < 7 && t[i][j]->getNoeud(1) == NULL) {
-					Noeud * a = new Noeud();
-					a->setTerrain(1, t[i][j]);
-					a->addArrete(t[i][j]->getArrete(1));
-					a->addArrete(t[i][j]->getArrete(2));
-					t[i][j]->setNoeud(0,a);
-					if (t[i+1][j+1] != NULL) {
-						a->setTerrain(1, t[i+1][j+1]);
-						a->addArrete(t[i+1][j+1]->getArrete(0));
-						t[i+1][j+1]->setNoeud(2,a);
-					}
-					if (t[i][j+1] != NULL) {
-						a->setTerrain(2, t[i][j+1]);
-						a->addArrete(t[i][j+1]->getArrete(5));
-						t[i][j+1]->setNoeud(4,a);
-					}	
-				}else {
-					t[i][j]->setNoeud(1,NULL);
-				} 
 				}
-				if (i%2 == 1) {
 				if( i+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(2) == NULL) {
 					Noeud * a = new Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(2));
 					a->addArrete(t[i][j]->getArrete(5));
-					t[i][j]->setNoeud(0,a);
+					t[i][j]->setNoeud(2,a);
 					if (t[i+1][j-1] != NULL) {
 						a->setTerrain(1, t[i+1][j-1]);
 						a->addArrete(t[i+1][j-1]->getArrete(1));
@@ -836,57 +890,13 @@ void Map::createNoeud() {
 						a->addArrete(t[i+1][j]->getArrete(4));
 						t[i+1][j]->setNoeud(4,a);
 					}	
-				}else {
-					t[i][j]->setNoeud(2,NULL);
 				} 
-				} else {
-				if( i+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(2) == NULL) {
-					Noeud * a = new Noeud();
-					a->setTerrain(0, t[i][j]);
-					a->addArrete(t[i][j]->getArrete(2));
-					a->addArrete(t[i][j]->getArrete(5));
-					t[i][j]->setNoeud(0,a);
-					if (t[i+1][j] != NULL) {
-						a->setTerrain(1, t[i+1][j]);
-						a->addArrete(t[i+1][j]->getArrete(1));
-						t[i+1][j]->setNoeud(0,a);
-					}
-					if (t[i+1][j+1] != NULL) {
-						a->setTerrain(2, t[i+1][j+1]);
-						a->addArrete(t[i+1][j+1]->getArrete(4));
-						t[i+1][j+1]->setNoeud(4,a);
-					}	
-				}else {
-					t[i][j]->setNoeud(2,NULL);
-				} 
-				}
-				if (i%2 == 0) {
 				if( i-1 >= 0 && j+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(3) == NULL) {
 					Noeud * a = new Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(0));
 					a->addArrete(t[i][j]->getArrete(3));
-					t[i][j]->setNoeud(0,a);
-					if (t[i-1][j] != NULL) {
-						a->setTerrain(1, t[i-1][j]);
-						a->addArrete(t[i-1][j]->getArrete(1));
-						t[i-1][j]->setNoeud(1,a);
-					}
-					if (t[i][j+1] != NULL) {
-						a->setTerrain(2, t[i][j+1]);
-						a->addArrete(t[i][j+1]->getArrete(4));
-						t[i][j+1]->setNoeud(4,a);
-					}	
-				}else {
-					t[i][j]->setNoeud(3,NULL);
-				} 
-				} else {
-				if( i-1 >= 0 && j+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(3) == NULL) {
-					Noeud * a = new Noeud();
-					a->setTerrain(0, t[i][j]);
-					a->addArrete(t[i][j]->getArrete(0));
-					a->addArrete(t[i][j]->getArrete(3));
-					t[i][j]->setNoeud(0,a);
+					t[i][j]->setNoeud(3,a);
 					if (t[i-1][j-1] != NULL) {
 						a->setTerrain(1, t[i-1][j-1]);
 						a->addArrete(t[i-1][j-1]->getArrete(1));
@@ -895,39 +905,15 @@ void Map::createNoeud() {
 					if (t[i-1][j] != NULL) {
 						a->setTerrain(2, t[i-1][j]);
 						a->addArrete(t[i-1][j]->getArrete(4));
-						t[i-1][j]->setNoeud(4,a);
+						t[i-1][j]->setNoeud(5,a);
 					}	
-				}else {
-					t[i][j]->setNoeud(3,NULL);
 				}
-				}
-				if (i%2 == 0) {
 				if( i-1 >= 0 && j-1 >= 0  && t[i][j]->getNoeud(4) == NULL) {
 					Noeud * a = new Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(3));
 					a->addArrete(t[i][j]->getArrete(4));
-					t[i][j]->setNoeud(0,a);
-					if (t[i-1][j] != NULL) {
-						a->setTerrain(1, t[i-1][j]);
-						a->addArrete(t[i-1][j]->getArrete(5));
-						t[i-1][j]->setNoeud(2,a);
-					}
-					if (t[i][j-1] != NULL) {
-						a->setTerrain(2, t[i][j-1]);
-						a->addArrete(t[i][j-1]->getArrete(0));
-						t[i][j-1]->setNoeud(0,a);
-					}	
-				}else {
-					t[i][j]->setNoeud(4,NULL);
-				} 
-				} else {
-				if( i-1 >= 0 && j-1 >= 0  && t[i][j]->getNoeud(4) == NULL) {
-					Noeud * a = new Noeud();
-					a->setTerrain(0, t[i][j]);
-					a->addArrete(t[i][j]->getArrete(3));
-					a->addArrete(t[i][j]->getArrete(4));
-					t[i][j]->setNoeud(0,a);
+					t[i][j]->setNoeud(4,a);
 					if (t[i-1][j-1] != NULL) {
 						a->setTerrain(1, t[i-1][j-1]);
 						a->addArrete(t[i-1][j-1]->getArrete(5));
@@ -938,17 +924,13 @@ void Map::createNoeud() {
 						a->addArrete(t[i][j-1]->getArrete(0));
 						t[i][j-1]->setNoeud(0,a);
 					}	
-				}else {
-					t[i][j]->setNoeud(4,NULL);
 				}
-				}
-				if (i%2 == 1) {
 				if( i+1 < 7 && j-1 >= 0 && i-1 >= 0 && t[i][j]->getNoeud(5) == NULL) {
 					Noeud * a = new Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(5));
 					a->addArrete(t[i][j]->getArrete(4));
-					t[i][j]->setNoeud(0,a);
+					t[i][j]->setNoeud(5,a);
 					if (t[i][j-1] != NULL) {
 						a->setTerrain(1, t[i][j-1]);
 						a->addArrete(t[i][j-1]->getArrete(2));
@@ -959,34 +941,13 @@ void Map::createNoeud() {
 						a->addArrete(t[i+1][j-1]->getArrete(3));
 						t[i+1][j-1]->setNoeud(3,a);
 					}	
-				}else {
-					t[i][j]->setNoeud(5,NULL);
 				} 
-				} else {
-				if( i+1 < 7 && j-1 >= 0 && i-1 >= 0 && t[i][j]->getNoeud(5) == NULL) {
-					Noeud * a = new Noeud();
-					a->setTerrain(0, t[i][j]);
-					a->addArrete(t[i][j]->getArrete(5));
-					a->addArrete(t[i][j]->getArrete(4));
-					t[i][j]->setNoeud(0,a);
-					if (t[i][j-1] != NULL) {
-						a->setTerrain(1, t[i][j-1]);
-						a->addArrete(t[i][j-1]->getArrete(2));
-						t[i][j-1]->setNoeud(1,a);
-					}
-					if (t[i+1][j] != NULL) {
-						a->setTerrain(2, t[i+1][j]);
-						a->addArrete(t[i+1][j]->getArrete(3));
-						t[i+1][j]->setNoeud(3,a);
-					}	
-				}else {
-					t[i][j]->setNoeud(5,NULL);
-				}
 				}
 			}
 		}
 	}
 }	
+
 
 Terrain* Map::getTerrain(int pi, int pj) {
 	if(t[pi][pj] == NULL) {
@@ -1023,7 +984,7 @@ Noeud* Map::getNoeud(int i, int j, int x, int y,int xx, int yy) {
 			}
 		}else if (t[i][j]->getNoeud(it)->getTerrain(1) == t[i][j]) {
 			if (t[i][j]->getNoeud(it)->getTerrain(0) == t[x][y]) {
-                                if (t[i][j]->getNoeud(it)->getTerrain(2) == t[xx][yy]) {
+                        if (t[i][j]->getNoeud(it)->getTerrain(2) == t[xx][yy]) {
                                         return t[i][j]->getNoeud(it);
                                 }
                         }else if (t[i][j]->getNoeud(it)->getTerrain(2) == t[x][y]) {

@@ -5,13 +5,13 @@
 
 int main () {
 	srand(time(NULL));
-	Jeux letsplay;
+	//Jeux letsplay;
 	
-	letsplay.distribRes();
+	//letsplay.distribRes();
 	Map map;
-	//map.afficher();
+	map.afficher();
 	
-	if(map.getNoeud(1,2,1,3,2,2) == NULL) {
+	if(map.getNoeud(0,1,1,1,1,2) == NULL) {
 		cout<<" c'est NULL "<<endl;
 	}
 
