@@ -6,6 +6,7 @@ Arrete::Arrete() {
 		noeud[i] = NULL;
 		noeud[i] = NULL;
 	}
+	j = new Joueur(0);
 }
 
 void Arrete::setNoeud(int i , Noeud * pa) {

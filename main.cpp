@@ -10,7 +10,10 @@ int main () {
 	letsplay.distribRes();
 	Map map;
 	map.afficher();
-
+	
+	if(map.getNoeud(1,2,1,3,2,2) == NULL) {
+		cout<<" c'est NULL "<<endl;
+	}
 
 	return 0;
 }

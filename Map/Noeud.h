@@ -10,6 +10,7 @@ class Noeud {
 		Arrete * arrete[3];
 		Terrain * terrain[3];
 		Joueur * j;
+		bool ville;
 	public:
 		Noeud();
 		void setArrete(int, Arrete *);
@@ -20,5 +21,6 @@ class Noeud {
 		Joueur* getJoueur();
 		void setJoueur(Joueur* pj);
 		bool checkDist();
+		void setVille();
 };
 #endif

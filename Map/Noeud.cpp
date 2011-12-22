@@ -6,11 +6,18 @@ Noeud::Noeud() {
 		arrete[i] = NULL;
 		terrain[i] = NULL;
 	}
+	j = new Joueur(0);
+	ville = false;
 }
 
 void Noeud::setArrete(int i , Arrete * pa) {
 	arrete[i] = pa;
 }
+
+void Noeud::setVille() {
+	ville = true;
+}
+
 Arrete* Noeud::getArrete(int i) {
 	return arrete[i];
 }
