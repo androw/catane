@@ -778,7 +778,6 @@ void Map::createNoeud() {
 					t[i][j]->setNoeud(0,NULL);
 				}
 				}
-			}else if (t[i][j] != NULL) { //Coin 1
 				if (i%2 == 1) {
 				if( i+1 < 7 && j+1 < 7 && t[i][j]->getNoeud(1) == NULL) {
 					Noeud * a = new Noeud();
@@ -820,7 +819,6 @@ void Map::createNoeud() {
 					t[i][j]->setNoeud(1,NULL);
 				} 
 				}
-			}else if (t[i][j] != NULL) { //Coin 2
 				if (i%2 == 1) {
 				if( i+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(2) == NULL) {
 					Noeud * a = new Noeud();
@@ -862,7 +860,6 @@ void Map::createNoeud() {
 					t[i][j]->setNoeud(2,NULL);
 				} 
 				}
-			}else if (t[i][j] != NULL) { //Coin 3
 				if (i%2 == 0) {
 				if( i-1 >= 0 && j+1 < 7 && j-1 >= 0 && t[i][j]->getNoeud(3) == NULL) {
 					Noeud * a = new Noeud();
@@ -904,7 +901,6 @@ void Map::createNoeud() {
 					t[i][j]->setNoeud(3,NULL);
 				}
 				}
-			}else if (t[i][j] != NULL) { //Coin 4
 				if (i%2 == 0) {
 				if( i-1 >= 0 && j-1 >= 0  && t[i][j]->getNoeud(4) == NULL) {
 					Noeud * a = new Noeud();
@@ -946,7 +942,6 @@ void Map::createNoeud() {
 					t[i][j]->setNoeud(4,NULL);
 				}
 				}
-			}else if (t[i][j] != NULL) { //Coin 5
 				if (i%2 == 1) {
 				if( i+1 < 7 && j-1 >= 0 && i-1 >= 0 && t[i][j]->getNoeud(5) == NULL) {
 					Noeud * a = new Noeud();
