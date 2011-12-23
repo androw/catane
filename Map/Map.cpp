@@ -276,7 +276,7 @@ void Map::afficher() {
 
 	cout<<"                          *         *         *         *           "<<endl;
 	cout<<"                        *   *     *~~~*     *   *     *~~~*            "<<endl;
-	cout<<"                      *       * *~~~~~~~* *       * *~~~~~~~*       "<<endl;
+	//cout<<"                      *       * *~~~~~~~* *       * *~~~~~~~*       "<<endl;
 	cout<<"                     *         *~~~~~~~~~*         *~~~~~~~~~*         "<<endl;
 	cout<<"                     *";       
 
@@ -309,22 +309,23 @@ void Map::afficher() {
 			}
 		}
 cout<<endl;
-	cout<<"                     *         *~~~~~~~~~*         *~~~~~~~~~*         "<<endl; 
-	cout<<"                    *~*       * *~~~~~~~* *       * *~~~~~~~* *       "<<endl;
-	cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
+	cout<<"                     *         "<<getNoeud(0,2,0,1,1,2)->getJoueur()->getNb()<<"~~~~~~~~~"<<getNoeud(0,2,0,3,1,3)->getJoueur()->getNb()<<"         "<<getNoeud(0,3,0,4,1,4)->getJoueur()->getNb()<<"~~~~~~~~~*         "<<endl; 
+
+		cout<<"                   *~~~*     "<<getArrete(1,2,0,1)->getJoueur()->getNb()<<"   "<<getArrete(1,2,0,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(1,3,0,2)->getJoueur()->getNb()<<"   "<<getArrete(1,3,0,3)->getJoueur()->getNb()<<"     "<<getArrete(1,4,0,3)->getJoueur()->getNb()<<"   "<<getArrete(1,4,0,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
+
+	//cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
 	cout<<"                *~~~~~~~~~"<<getNoeud(1,2,1,1,0,1)->getJoueur()->getNb();
 
 		for(int j=2; j<5; j++) {
 			if(t[1][j]->getValeur() <10) {
-			cout<<"    "<<t[1][j]->getValeur()<<"    *";
+			cout<<"    "<<t[1][j]->getValeur()<<"    "<<getNoeud(1,j,1,j+1,0,j)->getJoueur()->getNb();
 			}else {
-			cout<<"    "<<t[1][j]->getValeur()<<"   *";
+			cout<<"    "<<t[1][j]->getValeur()<<"   "<<getNoeud(1,j,1,j+1,0,j)->getJoueur()->getNb();
 			}
 		}
 cout<<"         *";
 cout<<endl;
-
-	cout<<"                *";       
+cout<<"                *";       
 
 		for(int j=1; j<6; j++) {
 			if(t[1][j] == NULL) {
@@ -356,17 +357,38 @@ cout<<endl;
 			}
 		}
 cout<<endl;
-	cout<<"                *~~~~~~~~~*         *         *         *         *"<<endl; 
-	cout<<"               * *~~~~~~~* *       * *       * *       * *       *~*"<<endl;
-	cout<<"             *     *~~~*     *   *     *   *     *   *     *   *~~~~~*"<<endl;
-	cout<<"           *         *";
+
+	cout<<"                *~~~~~~~~~"<<getNoeud(1,1,1,1+1,0,1)->getJoueur()->getNb();
+
+		for(int j=2; j<5; j++) {
+			if(t[1][j]->getValeur() <10) {
+			cout<<"         "<<getNoeud(1,j,1,j+1,0,j)->getJoueur()->getNb();
+			}else {
+			cout<<"         "<<getNoeud(1,j,1,j+1,0,j)->getJoueur()->getNb();
+			}
+		}
+cout<<"         *"<<endl;
+ 
+	//cout<<"               * *~~~~~~~* *       * *       * *       * *       *~*"<<endl;
+
+	cout<<"             *     *~~~"<<getArrete(2,1,3,1)->getJoueur()->getNb();
+
+			for(int j=2; j<5; j++) {
+
+				cout<<"     "<<getArrete(2,j-1,3,j)->getJoueur()->getNb()<<"   "<<getArrete(2,j,3,j)->getJoueur()->getNb();
+
+			}
+	
+	cout<<"     "<<getArrete(2,4,3,5)->getJoueur()->getNb()<<"   *~~~~~*"<<endl;
+
+	cout<<"           *         "<<getNoeud(2,0,2,1,1,1)->getJoueur()->getNb();
 		
 
 		for(int j=1; j<5; j++) {
 			if(t[2][j]->getValeur() <10) {
-			cout<<"    "<<t[2][j]->getValeur()<<"    *";
+			cout<<"    "<<t[2][j]->getValeur()<<"    "<<getNoeud(2,j,2,j+1,1,j+1)->getJoueur()->getNb();
 			}else {
-			cout<<"    "<<t[2][j]->getValeur()<<"   *";
+			cout<<"    "<<t[2][j]->getValeur()<<"   "<<getNoeud(2,j,2,j+1,1,j+1)->getJoueur()->getNb();
 			}
 		}
 cout<<"~~~~~~~~~*";
@@ -406,16 +428,36 @@ cout<<endl;
 			}
 		}
 cout<<endl;
-	cout<<"           *         *         *         *         *         *~~~~~~~~~*"<<endl;
-	cout<<"         *~~~*     *   *     *   *     *   *     *   *     *   *~~~~~*   *"<<endl;
-	cout<<"       *~~~~~~~* *       * *       * *       * *       * *       *~*       *"<<endl;
-	cout<<"      *~~~~~~~~~*";
+
+	cout<<"           *         "<<getNoeud(2,0,2,0+1,1,0+1)->getJoueur()->getNb();
+			for(int j=1; j<5; j++) {
+				if(t[2][j]->getValeur() <10) {
+				cout<<"         "<<getNoeud(2,j,2,j+1,1,j+1)->getJoueur()->getNb();
+				}else {
+				cout<<"         "<<getNoeud(2,j,2,j+1,1,j+1)->getJoueur()->getNb();
+				}
+			}	
+
+	cout<<"~~~~~~~~~*"<<endl;
+
+	
+	cout<<"         *~~~*";
+
+			for(int j=1; j<6; j++) {
+
+				cout<<"     "<<getArrete(3,j,2,j-1)->getJoueur()->getNb()<<"   "<<getArrete(3,j,2,j)->getJoueur()->getNb();
+
+			}
+	cout<<"~~~~~*   *"<<endl;
+
+	//cout<<"       *~~~~~~~* *       * *       * *       * *       * *       *~*       *"<<endl;
+	cout<<"      *~~~~~~~~~"<<getNoeud(3,0,3,0+1,2,0)->getJoueur()->getNb();
 
 		for(int j=1; j<6; j++) {
 			if(t[3][j]->getValeur() <10) {
-			cout<<"    "<<t[3][j]->getValeur()<<"    *";
+			cout<<"    "<<t[3][j]->getValeur()<<"    "<<getNoeud(3,j,3,j+1,2,j)->getJoueur()->getNb();
 			}else {
-			cout<<"    "<<t[3][j]->getValeur()<<"   *";
+			cout<<"    "<<t[3][j]->getValeur()<<"   "<<getNoeud(3,j,3,j+1,2,j)->getJoueur()->getNb();
 			}
 		}
 cout<<"         *";
@@ -454,16 +496,39 @@ cout<<endl;
 		}
 
 cout<<endl;
-	cout<<"      *~~~~~~~~~*         *         *         *         *         *         *"<<endl;
-	cout<<"        *~~~~~*   *     *   *     *   *     *   *     *   *     *~~~*     *"<<endl;
-	cout<<"          *~*       * *       * *       * *       * *       * *~~~~~~~* *"<<endl;
-	cout<<"           *         *";
+	cout<<"      *~~~~~~~~~"<<getNoeud(3,0,3,0+1,2,0)->getJoueur()->getNb();
+			for(int j=1; j<6; j++) {
+				if(t[3][j]->getValeur() <10) {
+				cout<<"         "<<getNoeud(3,j,3,j+1,2,j)->getJoueur()->getNb();
+				}else {
+				cout<<"         "<<getNoeud(3,j,3,j+1,2,j)->getJoueur()->getNb();
+				}
+			}
+	
+
+	cout<<"         *"<<endl;
+
+
+	//cout<<"        *~~~~~*   *     *   *     *   *     *   *     *   *     *~~~*     *"<<endl;
+
+	cout<<"         *~~~*";
+
+			for(int j=1; j<6; j++) {
+
+				cout<<"     "<<getArrete(3,j,4,j-1)->getJoueur()->getNb()<<"   "<<getArrete(3,j,4,j)->getJoueur()->getNb();
+
+			}
+	cout<<"~~~~~*   *"<<endl;
+
+
+
+	cout<<"           *         "<<getNoeud(4,0,4,0+1,3,0+1)->getJoueur()->getNb();
 
 		for(int j=1; j<5; j++) {
 			if(t[4][j]->getValeur() <10) {
-			cout<<"    "<<t[4][j]->getValeur()<<"    *";
+			cout<<"    "<<t[4][j]->getValeur()<<"    "<<getNoeud(4,j,4,j+1,3,j+1)->getJoueur()->getNb();
 			}else {
-			cout<<"    "<<t[4][j]->getValeur()<<"   *";
+			cout<<"    "<<t[4][j]->getValeur()<<"   "<<getNoeud(4,j,4,j+1,3,j+1)->getJoueur()->getNb();
 			}
 		}
 cout<<"~~~~~~~~~*";
@@ -500,16 +565,40 @@ cout<<endl;
 			}
 		}
 cout<<endl;
-	cout<<"           *         *         *         *         *         *~~~~~~~~~*"<<endl;
-	cout<<"             *     *~~~*     *   *     *   *     *   *     *   *~~~~~*"<<endl;
-	cout<<"               * *~~~~~~~* *       * *       * *       * *       *~*"<<endl;
-	cout<<"                *~~~~~~~~~*";
+
+
+
+
+	cout<<"           *         "<<getNoeud(4,0,4,0+1,3,0+1)->getJoueur()->getNb();
+			for(int j=1; j<5; j++) {
+				if(t[4][j]->getValeur() <10) {
+				cout<<"         "<<getNoeud(4,j,4,j+1,3,j+1)->getJoueur()->getNb();
+				}else {
+				cout<<"         "<<getNoeud(4,j,4,j+1,3,j+1)->getJoueur()->getNb();
+				}
+			}	
+
+	cout<<"~~~~~~~~~*"<<endl;
+
+	cout<<"             *     *~~~"<<getArrete(4,1,5,1)->getJoueur()->getNb();
+
+			for(int j=2; j<5; j++) {
+
+				cout<<"     "<<getArrete(4,j-1,5,j)->getJoueur()->getNb()<<"   "<<getArrete(4,j,5,j)->getJoueur()->getNb();
+
+			}
+	
+	cout<<"     "<<getArrete(4,5-1,5,5)->getJoueur()->getNb()<<"   *~~~~~*"<<endl;
+
+	//cout<<"               * *~~~~~~~* *       * *       * *       * *       *~*"<<endl;
+
+	cout<<"                *~~~~~~~~~"<<getNoeud(5,1,5,1+1,4,1)->getJoueur()->getNb();
 
 		for(int j=2; j<5; j++) {
 			if(t[5][j]->getValeur() <10) {
-			cout<<"    "<<t[5][j]->getValeur()<<"    *";
+			cout<<"    "<<t[5][j]->getValeur()<<"    "<<getNoeud(5,j,5,j+1,4,j)->getJoueur()->getNb();
 			}else {
-			cout<<"    "<<t[5][j]->getValeur()<<"   *";
+			cout<<"    "<<t[5][j]->getValeur()<<"   "<<getNoeud(5,j,5,j+1,4,j)->getJoueur()->getNb();
 			}
 		}
 cout<<"         *";
@@ -547,10 +636,23 @@ cout<<endl;
 		}
 
 	cout<<endl;
-	cout<<"                *~~~~~~~~~*         *         *         *         *"<<endl;
-	cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
-	cout<<"                    *~*       * *~~~~~~~* *       * *~~~~~~~* *       "<<endl;
-	cout<<"                     *         *~~~~~~~~~*         *~~~~~~~~~*         "<<endl; 
+	cout<<"                *~~~~~~~~~"<<getNoeud(5,1,5,1+1,4,1)->getJoueur()->getNb();
+
+		for(int j=2; j<5; j++) {
+			if(t[5][j]->getValeur() <10) {
+			cout<<"         "<<getNoeud(5,j,5,j+1,4,j)->getJoueur()->getNb();
+			}else {
+			cout<<"         "<<getNoeud(5,j,5,j+1,4,j)->getJoueur()->getNb();
+			}
+		}
+cout<<"         *";
+cout<<endl; 
+
+	//cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
+	cout<<"                   *~~~*     "<<getArrete(5,2,6,1)->getJoueur()->getNb()<<"   "<<getArrete(5,2,6,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(5,3,6,2)->getJoueur()->getNb()<<"   "<<getArrete(5,3,6,3)->getJoueur()->getNb()<<"     "<<getArrete(5,4,6,3)->getJoueur()->getNb()<<"   "<<getArrete(5,4,6,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
+	
+
+	cout<<"                     *         "<<getNoeud(5,2,6,1,6,2)->getJoueur()->getNb()<<"~~~~~~~~~"<<getNoeud(5,3,6,2,6,3)->getJoueur()->getNb()<<"         "<<getNoeud(5,4,6,3,6,4)->getJoueur()->getNb()<<"~~~~~~~~~*         "<<endl; 
 	cout<<"                     *";
 
 
@@ -587,7 +689,7 @@ cout<<endl;
 
 cout<<endl;
 	cout<<"                     *         *~~~~~~~~~*         *~~~~~~~~~*         "<<endl;
-	cout<<"                      *       * *~~~~~~~* *       * *~~~~~~~*       "<<endl;
+	//cout<<"                      *       * *~~~~~~~* *       * *~~~~~~~*       "<<endl;
 	cout<<"                        *   *     *~~~*     *   *     *~~~*          "<<endl;
 	cout<<"                          *         *         *         *         "<<endl;
 
