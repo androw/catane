@@ -18,7 +18,9 @@ class Joueur {
 		Joueur(int);
 		int getNb();
 		void addRes(MPremiere*);
-
+        MPremiere* remRes(MPremiere*);
+        bool hasHe(MPremiere*, int);
+        
 		
 };
 #endif
