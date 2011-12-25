@@ -6,6 +6,7 @@
 class Argile : public MPremiere {
 	protected:
 	public:
-
+    Argile() : MPremiere("Argile") {
+    }
 };
 #endif

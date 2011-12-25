@@ -6,6 +6,8 @@
 class Minerai : public MPremiere {
 	protected:
 	public:
+    Minerai() : MPremiere("Minerai") {
+    }
 
 };
 #endif

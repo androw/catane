@@ -6,6 +6,8 @@
 class Bois : public MPremiere {
 	protected:
 	public:
+    Bois() : MPremiere("Bois") {
+    }
 
 };
 #endif

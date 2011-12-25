@@ -6,6 +6,8 @@
 class Ble : public MPremiere {
 	protected:
 	public:
+    Ble() : MPremiere("Ble") {
+    }
 
 };
 #endif
