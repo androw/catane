@@ -86,11 +86,18 @@ bool Jeux::distribRes(){
 	}
 }
 
-bool Jeux::initEchange(Joueur* j1, Joueur* j2) {
+bool Jeux::initEchange() {
     return false;
 }
 
-void Jeux::echange(Joueur* j1, Joueur* j2, MPremiere* m, int nb) {
+bool Jeux::echange(Joueur* j1, Joueur* j2, MPremiere* m1, MPremiere* m2, int nb1, int nb2) {
+    if (!(j1->hasHe(m1, nb1)) || !(j2->hasHe(m2, nb2))) return false;
+    partEchange(j1, j2, m1, nb1);
+    partEchange(j2, j1, m2, nb2);
+    return true;
+}
+
+void Jeux::partEchange(Joueur* j1, Joueur* j2, MPremiere* m, int nb) {
     int i;
     for (i = 0; i<nb; i++) {
         j2->addRes(j1->remRes(m));
