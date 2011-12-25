@@ -85,3 +85,14 @@ bool Jeux::distribRes(){
 		return true;
 	}
 }
+
+bool Jeux::initEchange(Joueur* j1, Joueur* j2) {
+    return false;
+}
+
+void Jeux::echange(Joueur* j1, Joueur* j2, MPremiere* m, int nb) {
+    int i;
+    for (i = 0; i<nb; i++) {
+        j2->addRes(j1->remRes(m));
+    }
+}

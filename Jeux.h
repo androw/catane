@@ -17,6 +17,8 @@ class Jeux {
 		Jeux(int);
 		bool distribRes();
 		void init();
+        bool initEchange(Joueur* j1, Joueur* j2);
+        void echange(Joueur*, Joueur*, MPremiere*, int);
 };
 
 
