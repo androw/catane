@@ -313,6 +313,7 @@ cout<<endl;
 
 		cout<<"                   *~~~*     "<<getArrete(1,2,0,1)->getJoueur()->getNb()<<"   "<<getArrete(1,2,0,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(1,3,0,2)->getJoueur()->getNb()<<"   "<<getArrete(1,3,0,3)->getJoueur()->getNb()<<"     "<<getArrete(1,4,0,3)->getJoueur()->getNb()<<"   "<<getArrete(1,4,0,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
 
+
 	//cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
 	cout<<"                *~~~~~~~~~"<<getNoeud(1,2,1,1,0,1)->getJoueur()->getNb();
 
@@ -358,24 +359,24 @@ cout<<"                *";
 		}
 cout<<endl;
 
-	cout<<"                *~~~~~~~~~"<<getNoeud(1,1,1,1+1,0,1)->getJoueur()->getNb();
+	cout<<"                *~~~~~~~~~"<<getNoeud(1,1,1,1+1,2,1)->getJoueur()->getNb();
 
 		for(int j=2; j<5; j++) {
 			if(t[1][j]->getValeur() <10) {
-			cout<<"         "<<getNoeud(1,j,1,j+1,0,j)->getJoueur()->getNb();
+			cout<<"         "<<getNoeud(1,j,1,j+1,2,j)->getJoueur()->getNb();
 			}else {
-			cout<<"         "<<getNoeud(1,j,1,j+1,0,j)->getJoueur()->getNb();
+			cout<<"         "<<getNoeud(1,j,1,j+1,2,j)->getJoueur()->getNb();
 			}
 		}
 cout<<"         *"<<endl;
  
 	//cout<<"               * *~~~~~~~* *       * *       * *       * *       *~*"<<endl;
 
-	cout<<"             *     *~~~"<<getArrete(2,1,3,1)->getJoueur()->getNb();
+	cout<<"             *     *~~~"<<getArrete(2,1,1,1)->getJoueur()->getNb();
 
 			for(int j=2; j<5; j++) {
 
-				cout<<"     "<<getArrete(2,j-1,3,j)->getJoueur()->getNb()<<"   "<<getArrete(2,j,3,j)->getJoueur()->getNb();
+				cout<<"     "<<getArrete(2,j-1,1,j)->getJoueur()->getNb()<<"   "<<getArrete(2,j,1,j)->getJoueur()->getNb();
 
 			}
 	
@@ -429,12 +430,12 @@ cout<<endl;
 		}
 cout<<endl;
 
-	cout<<"           *         "<<getNoeud(2,0,2,0+1,1,0+1)->getJoueur()->getNb();
+	cout<<"           *         "<<getNoeud(2,0,2,0+1,3,0+1)->getJoueur()->getNb();
 			for(int j=1; j<5; j++) {
 				if(t[2][j]->getValeur() <10) {
-				cout<<"         "<<getNoeud(2,j,2,j+1,1,j+1)->getJoueur()->getNb();
+				cout<<"         "<<getNoeud(2,j,2,j+1,3,j+1)->getJoueur()->getNb();
 				}else {
-				cout<<"         "<<getNoeud(2,j,2,j+1,1,j+1)->getJoueur()->getNb();
+				cout<<"         "<<getNoeud(2,j,2,j+1,3,j+1)->getJoueur()->getNb();
 				}
 			}	
 
@@ -496,12 +497,12 @@ cout<<endl;
 		}
 
 cout<<endl;
-	cout<<"      *~~~~~~~~~"<<getNoeud(3,0,3,0+1,2,0)->getJoueur()->getNb();
+	cout<<"      *~~~~~~~~~"<<getNoeud(3,0,3,0+1,4,0)->getJoueur()->getNb();
 			for(int j=1; j<6; j++) {
 				if(t[3][j]->getValeur() <10) {
-				cout<<"         "<<getNoeud(3,j,3,j+1,2,j)->getJoueur()->getNb();
+				cout<<"         "<<getNoeud(3,j,3,j+1,4,j)->getJoueur()->getNb();
 				}else {
-				cout<<"         "<<getNoeud(3,j,3,j+1,2,j)->getJoueur()->getNb();
+				cout<<"         "<<getNoeud(3,j,3,j+1,4,j)->getJoueur()->getNb();
 				}
 			}
 	
@@ -569,12 +570,12 @@ cout<<endl;
 
 
 
-	cout<<"           *         "<<getNoeud(4,0,4,0+1,3,0+1)->getJoueur()->getNb();
+	cout<<"           *         "<<getNoeud(4,0,4,0+1,5,0+1)->getJoueur()->getNb();
 			for(int j=1; j<5; j++) {
 				if(t[4][j]->getValeur() <10) {
-				cout<<"         "<<getNoeud(4,j,4,j+1,3,j+1)->getJoueur()->getNb();
+				cout<<"         "<<getNoeud(4,j,4,j+1,5,j+1)->getJoueur()->getNb();
 				}else {
-				cout<<"         "<<getNoeud(4,j,4,j+1,3,j+1)->getJoueur()->getNb();
+				cout<<"         "<<getNoeud(4,j,4,j+1,5,j+1)->getJoueur()->getNb();
 				}
 			}	
 
@@ -636,13 +637,13 @@ cout<<endl;
 		}
 
 	cout<<endl;
-	cout<<"                *~~~~~~~~~"<<getNoeud(5,1,5,1+1,4,1)->getJoueur()->getNb();
+	cout<<"                *~~~~~~~~~"<<getNoeud(5,1,5,1+1,6,1)->getJoueur()->getNb();
 
 		for(int j=2; j<5; j++) {
 			if(t[5][j]->getValeur() <10) {
-			cout<<"         "<<getNoeud(5,j,5,j+1,4,j)->getJoueur()->getNb();
+			cout<<"         "<<getNoeud(5,j,5,j+1,6,j)->getJoueur()->getNb();
 			}else {
-			cout<<"         "<<getNoeud(5,j,5,j+1,4,j)->getJoueur()->getNb();
+			cout<<"         "<<getNoeud(5,j,5,j+1,6,j)->getJoueur()->getNb();
 			}
 		}
 cout<<"         *";
@@ -1051,10 +1052,12 @@ Terrain* Map::getTerrain(int pi, int pj) {
 Arrete* Map::getArrete(int i, int j, int x, int y) {
 	int it;
 	for (it = 0; it< 6; it++) {
+		if (t[i][j]->getArrete(it) != NULL) {
 		if (t[i][j]->getArrete(it)->getTerrain(0) == t[i][j]) {
 			if (t[i][j]->getArrete(it)->getTerrain(1) == t[x][y]) return t[i][j]->getArrete(it);
 		} else if (t[i][j]->getArrete(it)->getTerrain(1) == t[i][j]){
 			if (t[i][j]->getArrete(it)->getTerrain(0) == t[x][y]) return t[i][j]->getArrete(it);
+		}
 		}
 	}
 	return NULL;
