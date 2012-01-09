@@ -41,6 +41,10 @@ void ML_Joueur::addScore() {
 	score++;
 }
 
+int ML_Joueur::getScore() {
+	return score;
+}
+
 void ML_Joueur::addArmee() {
 	armee++;
 }

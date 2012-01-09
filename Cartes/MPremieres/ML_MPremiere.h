@@ -13,5 +13,6 @@ class ML_MPremiere : public ML_Carte {
 	public:
     	ML_MPremiere();
 	ML_MPremiere(string name);
+	string getName();
 };
 #endif

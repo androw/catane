@@ -7,7 +7,9 @@ class ML_Port : public ML_Terrain {
 	protected:
 		ML_MPremiere spec;
 	public:
-		ML_Port();
+		ML_Port(string);
+		void setSpec(string);
+		ML_MPremiere getSpec();
 	
 };
 #endif

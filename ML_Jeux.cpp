@@ -16,6 +16,7 @@ ML_Jeux::ML_Jeux(int p) {
 void ML_Jeux::init() {
 	int i;
 	int x,y,xx,yy,xxx,yyy;
+	int choix = 0;
 	for (i = 1; i<= nbjoueur; i++) {
 		
 		do{
@@ -83,6 +84,23 @@ void ML_Jeux::init() {
 		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i)));
 		
 		cout<<""<<endl;
+	}
+
+	for (i = 1; i<= nbjoueur; i++) {
+
+		do{
+			do{
+				map.afficher();
+				cout<<"Au joueur "<<i<<" de jouer !"<<endl;
+				cout<<"1.placez une route ?"<<endl;
+				cout<<"2.placez une Colonie?"<<endl;
+				cout<<"3.placez une Ville?"<<endl;
+				cout<<"4.faire une échange entre joueurs?"<<endl;
+				cout<<"5.faire une échange avec un port?"<<endl;
+				cout<<"6.finir tour"<<endl;
+				cin>>choix;
+			}while(choix<0 || choix >7);
+		}while(!(joueur[i]->getScore() == 10));
 	}
 }
 

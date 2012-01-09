@@ -9,3 +9,7 @@ ML_MPremiere::ML_MPremiere() {
 	MAX = 19;
    	name = "";
 }
+
+string ML_MPremiere::getName(){
+	return name;
+}
