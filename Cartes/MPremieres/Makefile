@@ -1,2 +1,2 @@
-main: MPremiere.cpp Argile.h Ble.h Bois.h Laine.h Minerai.h MPremiere.h
-	g++ -c MPremiere.cpp
+main: ML_MPremiere.cpp ML_Argile.h ML_Ble.h ML_Bois.h ML_Laine.h ML_Minerai.h ML_MPremiere.h
+	g++ -c ML_MPremiere.cpp

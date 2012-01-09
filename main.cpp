@@ -1,11 +1,11 @@
-#include "./Map/Map.h"
-#include "Jeux.h"
+#include "./Map/ML_Map.h"
+#include "ML_Jeux.h"
 
 #include <ctime>
 
 int main () {
 	srand(time(NULL));
-	Jeux letsplay;
+	ML_Jeux letsplay;
 	letsplay.init();
 	letsplay.distribRes();
 
