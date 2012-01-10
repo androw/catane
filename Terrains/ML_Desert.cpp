@@ -2,5 +2,6 @@
 
 ML_Desert::ML_Desert() {
 	NAME = "Desert";
+	brigand = true;
 	MAX = 1;
 }

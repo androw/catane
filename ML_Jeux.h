@@ -14,6 +14,8 @@ class ML_Jeux {
 		int res[5];
 		int nbjoueur;
 		ML_Joueur* joueur[4];
+		int xBrigand;
+		int yBrigand;
 	public:
 		ML_Jeux();
 		ML_Jeux(int);
@@ -25,7 +27,8 @@ class ML_Jeux {
         	void partEchange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, int);
 		bool placerColonie(int,int,int,int,int,int,int);
 		bool placerVille(int,int,int,int,int,int,int);
-		bool placerRoute(int,int,int,int,int); 
+		bool placerRoute(int,int,int,int,int);
+		void setBrigand(int,int); 
 };
 
 
