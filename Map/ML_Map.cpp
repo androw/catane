@@ -247,15 +247,15 @@ void ML_Map::valeur() {
 }
 
 void ML_Map::addPorts() {
-	t[4][0] = new ML_Port();
-	t[2][0] = new ML_Port();
-	t[6][1] = new ML_Port();
-	t[0][1] = new ML_Port();
-	t[6][3] = new ML_Port();
-	t[0][3] = new ML_Port();
-	t[5][5] = new ML_Port();
-	t[1][5] = new ML_Port();
-	t[3][6] = new ML_Port();
+	t[4][0] = new ML_Port("Laine");
+	t[2][0] = new ML_Port("?");
+	t[6][1] = new ML_Port("Ble");
+	t[0][1] = new ML_Port("?");
+	t[6][3] = new ML_Port("Minerai");
+	t[0][3] = new ML_Port("Bois");
+	t[5][5] = new ML_Port("?");
+	t[1][5] = new ML_Port("?");
+	t[3][6] = new ML_Port("Argile");
 }
 
 void ML_Map::addMers() {
@@ -292,8 +292,20 @@ void ML_Map::afficher() {
 			}else if(t[0][j]->getName() == "TCultivable") {
 				cout<<" TCulti  *";
 
-			} else if(t[0][j]->getName() == "Port") {
-				cout<<" Port    *";
+			} else if(t[0][j]->getName() == "PortBle") {
+				cout<<" PortBle *";
+
+			} else if(t[0][j]->getName() == "Port?") {
+				cout<<" Port(?) *";
+
+			} else if(t[0][j]->getName() == "PortMinerai") {
+				cout<<" PortMin *";
+
+			} else if(t[0][j]->getName() == "PortBois") {
+				cout<<" PortBois*";
+
+			} else if(t[0][j]->getName() == "PortLaine") {
+				cout<<" PortLai *";
 
 			}else if(t[0][j]->getName() == "Foret") {
 				cout<<" Foret   *";
@@ -311,7 +323,7 @@ void ML_Map::afficher() {
 cout<<endl;
 	cout<<"                     *         "<<getNoeud(0,2,0,1,1,2)->getJoueur()->getNb()<<"~~~~~~~~~"<<getNoeud(0,2,0,3,1,3)->getJoueur()->getNb()<<"         "<<getNoeud(0,3,0,4,1,4)->getJoueur()->getNb()<<"~~~~~~~~~*         "<<endl; 
 
-		cout<<"                   *~~~*     "<<getArrete(1,2,0,1)->getJoueur()->getNb()<<"   "<<getArrete(1,2,0,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(1,3,0,2)->getJoueur()->getNb()<<"   "<<getArrete(1,3,0,3)->getJoueur()->getNb()<<"     "<<getArrete(1,4,0,3)->getJoueur()->getNb()<<"   "<<getArrete(1,4,0,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
+		cout<<"                   *~~~*     "<<getArrete(1,2,0,1)->getJoueur()->getNb()<<"   "<<getArrete(1,2,0,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(1,3,0,2)->getJoueur()->getNb()<<"   "<<getArrete(1,3,0,3)->getJoueur()->getNb()<<" <== "<<getArrete(1,4,0,3)->getJoueur()->getNb()<<"   "<<getArrete(1,4,0,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
 
 
 	//cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
@@ -340,8 +352,23 @@ cout<<"                *";
 			}else if(t[1][j]->getName() == "TCultivable") {
 				cout<<" TCulti  "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
 
-			} else if(t[1][j]->getName() == "Port") {
-				cout<<" <--Port *";
+			} else if(t[1][j]->getName() == "PortArgile") {
+				cout<<" PortArg *";
+
+			}else if(t[1][j]->getName() == "PortBle") {
+				cout<<" PortBle *";
+
+			} else if(t[1][j]->getName() == "Port?") {
+				cout<<"<=Port(?)*";
+
+			} else if(t[1][j]->getName() == "PortMinerai") {
+				cout<<" PortMin *";
+
+			} else if(t[1][j]->getName() == "PortBois") {
+				cout<<" PortBois*";
+
+			} else if(t[1][j]->getName() == "PortLaine") {
+				cout<<" PortLai *";
 
 			}else if(t[1][j]->getName() == "Foret") {
 				cout<<" Foret   "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
@@ -411,8 +438,23 @@ cout<<endl;
 			}else if(t[2][j]->getName() == "TCultivable") {
 				cout<<" TCulti  "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
 
-			} else if(t[2][j]->getName() == "Port") {
-				cout<<" Port    "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+			} else if(t[2][j]->getName() == "PortArgile") {
+				cout<<" PortArg *";
+
+			}else if(t[2][j]->getName() == "PortBle") {
+				cout<<" PortBle *";
+
+			} else if(t[2][j]->getName() == "Port?") {
+				cout<<" Port(?) "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+
+			} else if(t[2][j]->getName() == "PortMinerai") {
+				cout<<" PortMin *";
+
+			} else if(t[2][j]->getName() == "PortBois") {
+				cout<<" PortBois*";
+
+			} else if(t[2][j]->getName() == "PortLaine") {
+				cout<<" PortLai *";
 
 			}else if(t[2][j]->getName() == "Foret") {
 				cout<<" Foret   "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
@@ -430,7 +472,7 @@ cout<<endl;
 		}
 cout<<endl;
 
-	cout<<"           *         "<<getNoeud(2,0,2,0+1,3,0+1)->getJoueur()->getNb();
+	cout<<"           *     \\\\  "<<getNoeud(2,0,2,0+1,3,0+1)->getJoueur()->getNb();
 			for(int j=1; j<5; j++) {
 				if(t[2][j]->getValeur() <10) {
 				cout<<"  "<<"(2,"<<j<<")"<<"  "<<getNoeud(2,j,2,j+1,3,j+1)->getJoueur()->getNb();
@@ -478,8 +520,23 @@ cout<<endl;
 			}else if(t[3][j]->getName() == "TCultivable") {
 				cout<<" TCulti  "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
 
-			} else if(t[3][j]->getName() == "Port") {
-				cout<<" Port    *";
+			} else if(t[3][j]->getName() == "PortArgile") {
+				cout<<"<=PortArg*";
+
+			}else if(t[3][j]->getName() == "PortBle") {
+				cout<<" PortBle *";
+
+			} else if(t[3][j]->getName() == "Port?") {
+				cout<<" Port(?) *";
+
+			} else if(t[3][j]->getName() == "PortMinerai") {
+				cout<<" PortMin *";
+
+			} else if(t[3][j]->getName() == "PortBois") {
+				cout<<" PortBois*";
+
+			} else if(t[3][j]->getName() == "PortLaine") {
+				cout<<" PortLai *";
 
 			}else if(t[3][j]->getName() == "Foret") {
 				cout<<" Foret   "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
@@ -548,8 +605,23 @@ cout<<endl;
 			}else if(t[4][j]->getName() == "TCultivable") {
 				cout<<" TCulti  "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
 
-			} else if(t[4][j]->getName() == "Port") {
-				cout<<" Port    "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+			} else if(t[4][j]->getName() == "PortBle") {
+				cout<<" PortBle *";
+
+			} else if(t[4][j]->getName() == "PortArgile") {
+				cout<<" PortArg *";
+
+			}else if(t[4][j]->getName() == "Port?") {
+				cout<<" Port(?) *";
+
+			} else if(t[4][j]->getName() == "PortMinerai") {
+				cout<<" PortMin *";
+
+			} else if(t[4][j]->getName() == "PortBois") {
+				cout<<" PortBois*";
+
+			} else if(t[4][j]->getName() == "PortLaine") {
+				cout<<"PortLai=>"<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
 
 			}else if(t[4][j]->getName() == "Foret") {
 				cout<<" Foret   "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
@@ -618,8 +690,23 @@ cout<<endl;
 			}else if(t[5][j]->getName() == "TCultivable") {
 				cout<<" TCulti  "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
 
-			} else if(t[5][j]->getName() == "Port") {
-				cout<<" Port    *";
+			} else if(t[5][j]->getName() == "PortBle") {
+				cout<<" PortBle *";
+
+			}else if(t[5][j]->getName() == "PortArgile") {
+				cout<<" PortArg *";
+
+			}else if(t[5][j]->getName() == "Port?") {
+				cout<<"<=Port(?)*";
+
+			} else if(t[5][j]->getName() == "PortMinerai") {
+				cout<<" PortMin *";
+
+			} else if(t[5][j]->getName() == "PortBois") {
+				cout<<" PortBois*";
+
+			} else if(t[5][j]->getName() == "PortLaine") {
+				cout<<" PortLai *";
 
 			}else if(t[5][j]->getName() == "Foret") {
 				cout<<" Foret   "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
@@ -650,7 +737,7 @@ cout<<"         *";
 cout<<endl; 
 
 	//cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
-	cout<<"                   *~~~*     "<<getArrete(5,2,6,1)->getJoueur()->getNb()<<"   "<<getArrete(5,2,6,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(5,3,6,2)->getJoueur()->getNb()<<"   "<<getArrete(5,3,6,3)->getJoueur()->getNb()<<"     "<<getArrete(5,4,6,3)->getJoueur()->getNb()<<"   "<<getArrete(5,4,6,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
+	cout<<"                   *~~~*     "<<getArrete(5,2,6,1)->getJoueur()->getNb()<<"   "<<getArrete(5,2,6,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(5,3,6,2)->getJoueur()->getNb()<<"   "<<getArrete(5,3,6,3)->getJoueur()->getNb()<<" ==> "<<getArrete(5,4,6,3)->getJoueur()->getNb()<<"   "<<getArrete(5,4,6,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
 	
 
 	cout<<"                     *         "<<getNoeud(5,2,6,1,6,2)->getJoueur()->getNb()<<"~~~~~~~~~"<<getNoeud(5,3,6,2,6,3)->getJoueur()->getNb()<<"         "<<getNoeud(5,4,6,3,6,4)->getJoueur()->getNb()<<"~~~~~~~~~*         "<<endl; 
@@ -669,8 +756,23 @@ cout<<endl;
 			}else if(t[6][j]->getName() == "TCultivable") {
 				cout<<" TCulti  *";
 
-			} else if(t[6][j]->getName() == "Port") {
-				cout<<" Port    *";
+			} else if(t[6][j]->getName() == "PortBle") {
+				cout<<" PortBle *";
+
+			} else if(t[6][j]->getName() == "Port?") {
+				cout<<" Port(?) *";
+
+			} else if(t[6][j]->getName() == "PortMinerai") {
+				cout<<" PortMin *";
+
+			}else if(t[6][j]->getName() == "PortArgile") {
+				cout<<" PortArg *";
+
+			} else if(t[6][j]->getName() == "PortBois") {
+				cout<<" PortBois*";
+
+			} else if(t[6][j]->getName() == "PortLaine") {
+				cout<<" PortLai *";
 
 			}else if(t[6][j]->getName() == "Foret") {
 				cout<<" Foret   *";

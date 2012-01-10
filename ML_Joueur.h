@@ -26,6 +26,7 @@ class ML_Joueur {
         	bool hasHe(ML_MPremiere*, int);
         	void addScore();
 		void addArmee();
+		int getScore();
 };
 
 #include "./Cartes/Dev/ML_Dev.h"
