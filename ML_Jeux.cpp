@@ -207,28 +207,14 @@ bool ML_Jeux::placerColonie(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) 
 				delete lai;
 				delete ble;
 				return true;
-			}else {
-				delete arg;
-				delete boi;
-				delete lai;
-				delete ble;
-				return false;
 			}
-		}else {
-			delete arg;
-			delete boi;
-			delete lai;
-			delete ble;
-			return false;
 		}
-	
-	}else {
-		delete arg;
-		delete boi;
-		delete lai;
-		delete ble;
-		return false;
-	}	
+	}
+	delete arg;
+    delete boi;
+    delete lai;
+    delete ble;
+    return false;
 }
 
 
@@ -239,31 +225,32 @@ bool ML_Jeux::placerRoute(int x,int y,int xx ,int yy ,int j){
 	if( x<7 && xx<7 && y<7 && yy<7 && x>=0 && xx>=0 && y>=0 && yy>=0 ) {
 		if( map.getArrete(x,y,xx,yy) != NULL) {
 			if(map.getArrete(x,y,xx,yy)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1)) {
-				delete map.getArrete(x,y,xx,yy)->getJoueur();
-				map.getArrete(x,y,xx,yy)->setJoueur(joueur[j-1]);
-				delete joueur[j-1]->remRes(boi);
-				res[1]--;
-				delete joueur[j-1]->remRes(arg);
-				res[0]--;
-				delete arg;
-				delete boi;
-				return true;
-			}else {
-				delete arg;
-				delete boi;
-				return false;
+                cout<<"Help"<<endl;
+                cout<<map.getArrete(x,y,xx,yy)->getNoeud(0)<<"plop"<<map.getArrete(x,y,xx,yy)->getNoeud(1)<<endl;
+                if (map.getArrete(x,y,xx,yy)->getNoeud(0) != NULL && map.getArrete(x,y,xx,yy)->getNoeud(1) != NULL) {
+                    cout<<"Help"<<endl;
+                    if((map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() == j ||  map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() == j)) {
+                        cout<<"Help"<<endl;
+                        if ((map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != 0) || (map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != 0)) {
+                            delete map.getArrete(x,y,xx,yy)->getJoueur();
+                            map.getArrete(x,y,xx,yy)->setJoueur(joueur[j-1]);
+                            delete joueur[j-1]->remRes(boi);
+                            res[1]--;
+                            delete joueur[j-1]->remRes(arg);
+                            res[0]--;
+                            delete arg;
+                            delete boi;
+                            return true;
+                        }
+                    }
+                }
 			}
-		}else {
-			delete arg;
-			delete boi;
-			return false;
 		}
 	
-	}else {
-		delete arg;
-		delete boi;
-		return false;
 	}	
+    delete arg;
+    delete boi;
+    return false;
 }
 
 bool ML_Jeux::placerVille(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) {
@@ -288,21 +275,12 @@ bool ML_Jeux::placerVille(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) {
 				delete ble;
 				delete min;
 				return true;
-			}else {
-				delete ble;
-				delete min;
-				return false;
 			}
-		}else {
-			delete ble;
-			delete min;
-			return false;
 		}
 	
-	}else {
-		delete ble;
-		delete min;
-		return false;
-	}				
+	}
+    delete ble;
+    delete min;
+    return false;
 
 }

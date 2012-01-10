@@ -1054,9 +1054,13 @@ ML_Arrete* ML_Map::getArrete(int i, int j, int x, int y) {
 	for (it = 0; it< 6; it++) {
 		if (t[i][j]->getArrete(it) != NULL) {
 		if (t[i][j]->getArrete(it)->getTerrain(0) == t[i][j]) {
-			if (t[i][j]->getArrete(it)->getTerrain(1) == t[x][y]) return t[i][j]->getArrete(it);
+			if (t[i][j]->getArrete(it)->getTerrain(1) == t[x][y]) {
+                    return t[i][j]->getArrete(it);
+            }
 		} else if (t[i][j]->getArrete(it)->getTerrain(1) == t[i][j]){
-			if (t[i][j]->getArrete(it)->getTerrain(0) == t[x][y]) return t[i][j]->getArrete(it);
+			if (t[i][j]->getArrete(it)->getTerrain(0) == t[x][y]) {
+                    return t[i][j]->getArrete(it);
+            }
 		}
 		}
 	}
