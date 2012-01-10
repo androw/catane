@@ -17,6 +17,34 @@ void ML_Jeux::init() {
 	int i;
 	int x,y,xx,yy,xxx,yyy;
 	int choix = 0;
+
+	for (i = 1; i < 6; i++) {
+		if(map.getTerrain(3, i)->getName() == "Desert") {
+			xBrigand = 3;
+			yBrigand = i;
+		}
+	}
+	for (i = 1; i < 5; i++) {
+		if(map.getTerrain(2, i)->getName() == "Desert") {
+			xBrigand = 2;
+			yBrigand = i;
+		}
+		if(map.getTerrain(4, i)->getName() == "Desert") {
+			xBrigand = 4;
+			yBrigand = i;
+		}
+	}
+	for (i = 2; i < 5; i++) {
+		if(map.getTerrain(1, i)->getName() == "Desert") {
+			xBrigand = 1;
+			yBrigand = i;
+		}
+		if(map.getTerrain(5, i)->getName() == "Desert") {
+			xBrigand = 5;
+			yBrigand = i;
+		}
+	}
+
 	for (i = 1; i<= nbjoueur; i++) {
 		
 		do{
@@ -326,3 +354,13 @@ bool ML_Jeux::placerVille(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) {
 	}				
 
 }
+
+void ML_Jeux::setBrigand(int x, int y) {
+	map.getTerrain(xBrigand, yBrigand)->setBrigand();
+	map.getTerrain(x,y)->setBrigand();
+	xBrigand = x;
+	yBrigand = y;
+}
+	
+
+	

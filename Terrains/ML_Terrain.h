@@ -17,6 +17,7 @@ class ML_Terrain {
 		string NAME;
 		ML_Arrete * arrete[6];
 		ML_Noeud * noeud[6];
+		bool brigand;
 	public:
 		ML_Terrain();
 		int getMax();
@@ -27,6 +28,8 @@ class ML_Terrain {
 		ML_Noeud* getNoeud(int);
 		int getValeur();
 		int setValeur(int);
+		void setBrigand();
+		bool getBrigand();
 };
 
 #include "../Map/ML_Arrete.h"
