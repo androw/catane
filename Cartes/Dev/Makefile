@@ -1,2 +1,2 @@
 main: *.cpp *.h
-	g++ -c *.cpp
+	g++ -c -g -Wall *.cpp

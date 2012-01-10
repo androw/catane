@@ -243,13 +243,10 @@ bool ML_Jeux::placerRoute(int x,int y,int xx ,int yy ,int j){
 	if( x<7 && xx<7 && y<7 && yy<7 && x>=0 && xx>=0 && y>=0 && yy>=0 ) {
 		if( map.getArrete(x,y,xx,yy) != NULL) {
 			if(map.getArrete(x,y,xx,yy)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1)) {
-                cout<<"Help"<<endl;
-                cout<<map.getArrete(x,y,xx,yy)->getNoeud(0)<<"plop"<<map.getArrete(x,y,xx,yy)->getNoeud(1)<<endl;
                 if (map.getArrete(x,y,xx,yy)->getNoeud(0) != NULL && map.getArrete(x,y,xx,yy)->getNoeud(1) != NULL) {
-                    cout<<"Help"<<endl;
                     if((map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() == j ||  map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() == j)) {
                         cout<<"Help"<<endl;
-                        if ((map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != 0) || (map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != 0)) {
+                        if (!((map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != 0) || (map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != 0))) {
                             delete map.getArrete(x,y,xx,yy)->getJoueur();
                             map.getArrete(x,y,xx,yy)->setJoueur(joueur[j-1]);
                             delete joueur[j-1]->remRes(boi);

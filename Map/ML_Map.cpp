@@ -29,10 +29,6 @@ ML_Map::ML_Map() {
 	ML_Map::createArrete();
 	ML_Map::createNoeud();
 	createnbint();
-	valeur();
-	
-	
-	
 }
 
 void ML_Map::createnbint() {
@@ -936,16 +932,20 @@ void ML_Map::createNoeud() {
 						ML_Noeud * a = new ML_Noeud();
 						a->setTerrain(0, t[i][j]);
 						a->addArrete(t[i][j]->getArrete(0));
+                        if (t[i][j]->getArrete(0) != NULL) t[i][j]->getArrete(0)->addNoeud(a);
 						a->addArrete(t[i][j]->getArrete(3));
+                        if (t[i][j]->getArrete(3) != NULL) t[i][j]->getArrete(3)->addNoeud(a);
 						t[i][j]->setNoeud(0,a);
 						if (t[i-1][j+1] != NULL) {
 							a->setTerrain(1, t[i-1][j+1]);
 							a->addArrete(t[i-1][j+1]->getArrete(2));
+                            if (t[i-1][j+1]->getArrete(2) != NULL) t[i-1][j+1]->getArrete(2)->addNoeud(a);
 							t[i-1][j+1]->setNoeud(2,a);
 						}
 						if (t[i][j+1] != NULL) {
 							a->setTerrain(2, t[i][j+1]);
 							a->addArrete(t[i][j+1]->getArrete(3));
+                            if (t[i][j+1]->getArrete(3) != NULL) t[i][j+1]->getArrete(3)->addNoeud(a);
 							t[i][j+1]->setNoeud(4,a);
 						}	
 					}
@@ -953,16 +953,20 @@ void ML_Map::createNoeud() {
 						ML_Noeud * a = new ML_Noeud();
 						a->setTerrain(0, t[i][j]);
 						a->addArrete(t[i][j]->getArrete(1));
+                        if (t[i][j]->getArrete(1) != NULL) t[i][j]->getArrete(1)->addNoeud(a);
 						a->addArrete(t[i][j]->getArrete(2));
+                        if (t[i][j]->getArrete(2) != NULL) t[i][j]->getArrete(2)->addNoeud(a);
 						t[i][j]->setNoeud(1,a);
 						if (t[i+1][j+1] != NULL) {
 							a->setTerrain(1, t[i+1][j+1]);
 							a->addArrete(t[i+1][j+1]->getArrete(0));
+                            if (t[i+1][j+1]->getArrete(0) != NULL) t[i+1][j+1]->getArrete(0)->addNoeud(a);
 							t[i+1][j+1]->setNoeud(3,a);
 						}
 						if (t[i][j+1] != NULL) {
 							a->setTerrain(2, t[i][j+1]);
 							a->addArrete(t[i][j+1]->getArrete(5));
+                            if (t[i][j+1]->getArrete(5) != NULL) t[i][j+1]->getArrete(5)->addNoeud(a);
 							t[i][j+1]->setNoeud(5,a);
 						}	
 					}
@@ -970,16 +974,20 @@ void ML_Map::createNoeud() {
 						ML_Noeud * a = new ML_Noeud();
 						a->setTerrain(0, t[i][j]);
 						a->addArrete(t[i][j]->getArrete(2));
+                        if (t[i][j]->getArrete(2) != NULL) t[i][j]->getArrete(2)->addNoeud(a);
 						a->addArrete(t[i][j]->getArrete(5));
+                        if (t[i][j]->getArrete(5) != NULL) t[i][j]->getArrete(5)->addNoeud(a);
 						t[i][j]->setNoeud(2,a);
 						if (t[i+1][j] != NULL) {
 							a->setTerrain(1, t[i+1][j]);
 							a->addArrete(t[i+1][j]->getArrete(1));
+                            if (t[i+1][j]->getArrete(1) != NULL) t[i+1][j]->getArrete(1)->addNoeud(a);
 							t[i+1][j]->setNoeud(0,a);
 						}
 						if (t[i+1][j+1] != NULL) {
 							a->setTerrain(2, t[i+1][j+1]);
 							a->addArrete(t[i+1][j+1]->getArrete(4));
+                            if (t[i+1][j+1]->getArrete(4) != NULL) t[i+1][j+1]->getArrete(4)->addNoeud(a);
 							t[i+1][j+1]->setNoeud(4,a);
 						}
 					}
@@ -987,16 +995,20 @@ void ML_Map::createNoeud() {
 						ML_Noeud * a = new ML_Noeud();
 						a->setTerrain(0, t[i][j]);
 						a->addArrete(t[i][j]->getArrete(0));
+                        if (t[i][j]->getArrete(0) != NULL) t[i][j]->getArrete(0)->addNoeud(a);
 						a->addArrete(t[i][j]->getArrete(3));
+                        if (t[i][j]->getArrete(3) != NULL) t[i][j]->getArrete(3)->addNoeud(a);
 						t[i][j]->setNoeud(3,a);
 						if (t[i-1][j] != NULL) {
 							a->setTerrain(1, t[i-1][j]);
 							a->addArrete(t[i-1][j]->getArrete(1));
+                            if (t[i-1][j]->getArrete(1) != NULL) t[i-1][j]->getArrete(1)->addNoeud(a);
 							t[i-1][j]->setNoeud(1,a);
 						}
 						if (t[i-1][j+1] != NULL) {
 							a->setTerrain(2, t[i-1][j+1]);
 							a->addArrete(t[i-1][j+1]->getArrete(4));
+                            if (t[i-1][j+1]->getArrete(4) != NULL) t[i-1][j+1]->getArrete(4)->addNoeud(a);
 							t[i-1][j+1]->setNoeud(5,a);
 						}	
 					}
@@ -1004,16 +1016,20 @@ void ML_Map::createNoeud() {
 						ML_Noeud * a = new ML_Noeud();
 						a->setTerrain(0, t[i][j]);
 						a->addArrete(t[i][j]->getArrete(3));
+                        if (t[i][j]->getArrete(3) != NULL) t[i][j]->getArrete(3)->addNoeud(a);
 						a->addArrete(t[i][j]->getArrete(4));
+                        if (t[i][j]->getArrete(4) != NULL) t[i][j]->getArrete(4)->addNoeud(a);
 						t[i][j]->setNoeud(4,a);
 						if (t[i-1][j] != NULL) {
 							a->setTerrain(1, t[i-1][j]);
 							a->addArrete(t[i-1][j]->getArrete(5));
+                            if (t[i-1][j]->getArrete(5) != NULL) t[i-1][j]->getArrete(5)->addNoeud(a);
 							t[i-1][j]->setNoeud(2,a);
 						}
 						if (t[i][j-1] != NULL) {
 							a->setTerrain(2, t[i][j-1]);
 							a->addArrete(t[i][j-1]->getArrete(0));
+                            if (t[i][j-1]->getArrete(0) != NULL) t[i][j-1]->getArrete(0)->addNoeud(a);
 							t[i][j-1]->setNoeud(0,a);
 						}	
 					}
@@ -1021,16 +1037,21 @@ void ML_Map::createNoeud() {
 					ML_Noeud * a = new ML_Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(5));
+                    if (t[i][j]->getArrete(5) != NULL) t[i][j]->getArrete(5)->addNoeud(a);
 					a->addArrete(t[i][j]->getArrete(4));
+                    if (t[i][j]->getArrete(4) != NULL) t[i][j]->getArrete(4)->addNoeud(a);
+                    
 					t[i][j]->setNoeud(5,a);
 					if (t[i][j-1] != NULL) {
 						a->setTerrain(1, t[i][j-1]);
 						a->addArrete(t[i][j-1]->getArrete(2));
+                        if (t[i-1][j]->getArrete(2) != NULL) t[i][j-1]->getArrete(2)->addNoeud(a);
 						t[i][j-1]->setNoeud(1,a);
 					}
 					if (t[i+1][j] != NULL) {
 						a->setTerrain(2, t[i+1][j]);
 						a->addArrete(t[i+1][j]->getArrete(3));
+                        if (t[i+1][j]->getArrete(3) != NULL) t[i+1][j]->getArrete(3)->addNoeud(a);
 						t[i+1][j]->setNoeud(3,a);
 					}	
 				}
@@ -1039,16 +1060,20 @@ void ML_Map::createNoeud() {
 					ML_Noeud * a = new ML_Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(0));
+                    if (t[i][j]->getArrete(0) != NULL) t[i][j]->getArrete(0)->addNoeud(a);
 					a->addArrete(t[i][j]->getArrete(3));
+                    if (t[i][j]->getArrete(3) != NULL) t[i][j]->getArrete(3)->addNoeud(a);
 					t[i][j]->setNoeud(0,a);
 					if (t[i-1][j] != NULL) {
 						a->setTerrain(1, t[i-1][j]);
 						a->addArrete(t[i-1][j]->getArrete(2));
+                        if (t[i-1][j]->getArrete(2) != NULL) t[i-1][j]->getArrete(2)->addNoeud(a);
 						t[i-1][j]->setNoeud(2,a);
 					}
 					if (t[i][j+1] != NULL) {
 						a->setTerrain(2, t[i][j+1]);
 						a->addArrete(t[i][j+1]->getArrete(3));
+                        if (t[i][j+1]->getArrete(3) != NULL) t[i][j+1]->getArrete(3)->addNoeud(a);
 						t[i][j+1]->setNoeud(4,a);
 					}	
 				}
@@ -1056,16 +1081,20 @@ void ML_Map::createNoeud() {
 					ML_Noeud * a = new ML_Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(1));
+                    if (t[i][j]->getArrete(1) != NULL) t[i][j]->getArrete(1)->addNoeud(a);
 					a->addArrete(t[i][j]->getArrete(2));
+                    if (t[i][j]->getArrete(2) != NULL) t[i][j]->getArrete(2)->addNoeud(a);
 					t[i][j]->setNoeud(1,a);
 					if (t[i+1][j] != NULL) {
 						a->setTerrain(1, t[i+1][j]);
 						a->addArrete(t[i+1][j]->getArrete(0));
+                        if (t[i+1][j]->getArrete(0) != NULL) t[i+1][j]->getArrete(0)->addNoeud(a);
 						t[i+1][j]->setNoeud(3,a);
 					}
 					if (t[i][j+1] != NULL) {
 						a->setTerrain(2, t[i][j+1]);
 						a->addArrete(t[i][j+1]->getArrete(5));
+                        if (t[i][j+1]->getArrete(5) != NULL) t[i][j+1]->getArrete(5)->addNoeud(a);
 						t[i][j+1]->setNoeud(5,a);
 					}	
 				}
@@ -1073,16 +1102,20 @@ void ML_Map::createNoeud() {
 					ML_Noeud * a = new ML_Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(2));
+                    if (t[i][j]->getArrete(2) != NULL) t[i][j]->getArrete(2)->addNoeud(a);
 					a->addArrete(t[i][j]->getArrete(5));
+                    if (t[i][j]->getArrete(5) != NULL) t[i][j]->getArrete(5)->addNoeud(a);
 					t[i][j]->setNoeud(2,a);
 					if (t[i+1][j-1] != NULL) {
 						a->setTerrain(1, t[i+1][j-1]);
 						a->addArrete(t[i+1][j-1]->getArrete(1));
+                        if (t[i+1][j-1]->getArrete(1) != NULL) t[i+1][j-1]->getArrete(1)->addNoeud(a);
 						t[i+1][j-1]->setNoeud(0,a);
 					}
 					if (t[i+1][j] != NULL) {
 						a->setTerrain(2, t[i+1][j]);
 						a->addArrete(t[i+1][j]->getArrete(4));
+                        if (t[i+1][j]->getArrete(4) != NULL) t[i+1][j]->getArrete(4)->addNoeud(a);
 						t[i+1][j]->setNoeud(4,a);
 					}	
 				} 
@@ -1090,16 +1123,20 @@ void ML_Map::createNoeud() {
 					ML_Noeud * a = new ML_Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(0));
+                    if (t[i][j]->getArrete(0) != NULL) t[i][j]->getArrete(0)->addNoeud(a);
 					a->addArrete(t[i][j]->getArrete(3));
+                    if (t[i][j]->getArrete(3) != NULL) t[i][j]->getArrete(3)->addNoeud(a);
 					t[i][j]->setNoeud(3,a);
 					if (t[i-1][j-1] != NULL) {
 						a->setTerrain(1, t[i-1][j-1]);
 						a->addArrete(t[i-1][j-1]->getArrete(1));
+                        if (t[i-1][j-1]->getArrete(1) != NULL) t[i-1][j-1]->getArrete(1)->addNoeud(a);
 						t[i-1][j-1]->setNoeud(1,a);
 					}
 					if (t[i-1][j] != NULL) {
 						a->setTerrain(2, t[i-1][j]);
 						a->addArrete(t[i-1][j]->getArrete(4));
+                        if (t[i-1][j]->getArrete(4) != NULL) t[i-1][j]->getArrete(4)->addNoeud(a);
 						t[i-1][j]->setNoeud(5,a);
 					}	
 				}
@@ -1107,16 +1144,20 @@ void ML_Map::createNoeud() {
 					ML_Noeud * a = new ML_Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(3));
+                    if (t[i][j]->getArrete(3) != NULL) t[i][j]->getArrete(3)->addNoeud(a);
 					a->addArrete(t[i][j]->getArrete(4));
+                    if (t[i][j]->getArrete(4) != NULL) t[i][j]->getArrete(4)->addNoeud(a);
 					t[i][j]->setNoeud(4,a);
 					if (t[i-1][j-1] != NULL) {
 						a->setTerrain(1, t[i-1][j-1]);
 						a->addArrete(t[i-1][j-1]->getArrete(5));
+                        if (t[i-1][j-1]->getArrete(5) != NULL) t[i-1][j-1]->getArrete(5)->addNoeud(a);
 						t[i-1][j-1]->setNoeud(2,a);
 					}
 					if (t[i][j-1] != NULL) {
 						a->setTerrain(2, t[i][j-1]);
 						a->addArrete(t[i][j-1]->getArrete(0));
+                        if (t[i][j-1]->getArrete(0) != NULL) t[i][j-1]->getArrete(0)->addNoeud(a);
 						t[i][j-1]->setNoeud(0,a);
 					}	
 				}
@@ -1124,16 +1165,20 @@ void ML_Map::createNoeud() {
 					ML_Noeud * a = new ML_Noeud();
 					a->setTerrain(0, t[i][j]);
 					a->addArrete(t[i][j]->getArrete(5));
+                    if (t[i][j]->getArrete(5) != NULL) t[i][j]->getArrete(5)->addNoeud(a);
 					a->addArrete(t[i][j]->getArrete(4));
+                    if (t[i][j]->getArrete(4) != NULL) t[i][j]->getArrete(4)->addNoeud(a);
 					t[i][j]->setNoeud(5,a);
 					if (t[i][j-1] != NULL) {
 						a->setTerrain(1, t[i][j-1]);
 						a->addArrete(t[i][j-1]->getArrete(2));
+                        if (t[i][j-1]->getArrete(2) != NULL) t[i][j-1]->getArrete(2)->addNoeud(a);
 						t[i][j-1]->setNoeud(1,a);
 					}
 					if (t[i+1][j-1] != NULL) {
 						a->setTerrain(2, t[i+1][j-1]);
 						a->addArrete(t[i+1][j-1]->getArrete(3));
+                        if (t[i+1][j-1]->getArrete(3) != NULL) t[i+1][j-1]->getArrete(3)->addNoeud(a);
 						t[i+1][j-1]->setNoeud(3,a);
 					}	
 				} 

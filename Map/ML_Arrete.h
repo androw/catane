@@ -6,8 +6,8 @@
 #include "../ML_Joueur.h"
 
 class ML_Arrete {
-	protected:
-		ML_Noeud * noeud[2];
+	private:
+		ML_Noeud* noeud[2];
 		ML_Terrain * terrain[2];
 		ML_Joueur * j;
 	public:
