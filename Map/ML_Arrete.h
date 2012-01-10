@@ -13,7 +13,8 @@ class ML_Arrete {
 	public:
 		ML_Arrete();
 		void setNoeud(int, ML_Noeud *);
-		ML_Noeud* getNoeud(int);
+        ML_Noeud* getNoeud(int);
+        void addNoeud(ML_Noeud*);
 		ML_Terrain * getTerrain(int);
 		void setTerrain(int, ML_Terrain*);
 		ML_Joueur* getJoueur();

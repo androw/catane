@@ -4,7 +4,7 @@ ML_Arrete::ML_Arrete() {
 	int i;
 	for (i = 0; i<2; i++) {
 		noeud[i] = NULL;
-		noeud[i] = NULL;
+		terrain[i] = NULL;
 	}
 	j = new ML_Joueur(0);
 }
@@ -29,4 +29,11 @@ ML_Joueur* ML_Arrete::getJoueur() {
 
 void ML_Arrete::setJoueur(ML_Joueur* pj) {
 	j = pj;
+}
+void ML_Arrete::addNoeud(ML_Noeud* pa) {
+    if (noeud[0] == NULL || noeud[0] == pa) {
+        noeud[0] = pa;
+    } else if (noeud[0] == NULL || noeud[1] == pa) {
+        noeud[1] = pa;
+    }
 }
