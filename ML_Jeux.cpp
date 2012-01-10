@@ -100,6 +100,7 @@ bool ML_Jeux::distribRes(){
 				if (map.getTerrain(i, j)->getValeur() == de) {
 					int k;
 					ML_MPremiere* m = NULL;
+                    for (k = 0; k<6;k++) {
 					if (map.getTerrain(i, j)->getName() == "Colline"){
 						m = new ML_Argile();
 						if (res[0] >= m->getMax()) {
@@ -141,8 +142,7 @@ bool ML_Jeux::distribRes(){
 							res[4]++;
 						}
 					}
-					for (k = 0; k<6; k++) {
-						if (m != NULL && map.getTerrain(i, j)->getNoeud(k) != NULL) {
+                        if (m != NULL && map.getTerrain(i, j)->getNoeud(k) != NULL) {
 							if (map.getTerrain(i, j)->getNoeud(k)->getJoueur() != NULL) {
 								if (map.getTerrain(i, j)->getNoeud(k)->isVille()) {
 									map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
@@ -152,7 +152,7 @@ bool ML_Jeux::distribRes(){
 								}
 							}
 						}
-					}
+                    }
 				}
 				}
 			}
