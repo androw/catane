@@ -21,64 +21,64 @@ void ML_Jeux::init() {
 		do{
 			map.afficher();
 			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
-			cout<<"placez votre route . x?"<<endl;
+			cout<<"Placez votre route : x?"<<endl;
 			cin>>x;
-			cout<<"placez votre route . y?"<<endl;
+			cout<<"Placez votre route : y?"<<endl;
 			cin>>y;
-			cout<<"placez votre route . x'?"<<endl;
+			cout<<"Placez votre route : x'?"<<endl;
 			cin>>xx;
-			cout<<"placez votre route . y'?"<<endl;
+			cout<<"Placez votre route : y'?"<<endl;
 			cin>>yy;
 		}while(!(placerRoute(x,y,xx,yy,i)));
 
 		do{
 			map.afficher();
 			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
-			cout<<"placez votre route . x?"<<endl;
+			cout<<"Placez votre colonie : x?"<<endl;
 			cin>>x;
-			cout<<"placez votre route . y?"<<endl;
+			cout<<"Placez votre colonie : y?"<<endl;
 			cin>>y;
-			cout<<"placez votre route . x'?"<<endl;
+			cout<<"Placez votre colonie : x'?"<<endl;
 			cin>>xx;
-			cout<<"placez votre route . y'?"<<endl;
+			cout<<"Placez votre colonie : y'?"<<endl;
 			cin>>yy;
-			cout<<"placez votre route . x''?"<<endl;
+			cout<<"Placez votre colonie : x''?"<<endl;
 			cin>>xxx;
-			cout<<"placez votre route . y''?"<<endl;
+			cout<<"Placez votre colonie : y''?"<<endl;
 			cin>>yyy;
 		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i)));
 		
 		cout<<""<<endl;
 	}
-	for (i = 1; i<= nbjoueur; i++) {
+	for (i = nbjoueur; i>= 1; i--) {
 
 		do{
 			map.afficher();
 			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
-			cout<<"placez votre route . x?"<<endl;
+			cout<<"Placez votre route : x?"<<endl;
 			cin>>x;
-			cout<<"placez votre route . y?"<<endl;
+			cout<<"Placez votre route : y?"<<endl;
 			cin>>y;
-			cout<<"placez votre route . x'?"<<endl;
+			cout<<"Placez votre route : x'?"<<endl;
 			cin>>xx;
-			cout<<"placez votre route . y'?"<<endl;
+			cout<<"Placez votre route : y'?"<<endl;
 			cin>>yy;
 		}while(!(placerRoute(x,y,xx,yy,i)));
 
 		do{
 			map.afficher();
 			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
-			cout<<"placez votre route . x?"<<endl;
+			cout<<"Placez votre colonie : x?"<<endl;
 			cin>>x;
-			cout<<"placez votre route . y?"<<endl;
+			cout<<"Placez votre colonie : y?"<<endl;
 			cin>>y;
-			cout<<"placez votre route . x'?"<<endl;
+			cout<<"Placez votre colonie : x'?"<<endl;
 			cin>>xx;
-			cout<<"placez votre route . y'?"<<endl;
+			cout<<"Placez votre colonie : y'?"<<endl;
 			cin>>yy;
-			cout<<"placez votre route . x''?"<<endl;
+			cout<<"Placez votre colonie : x''?"<<endl;
 			cin>>xxx;
-			cout<<"placez votre route . y''?"<<endl;
+			cout<<"Placez votre colonie : y''?"<<endl;
 			cin>>yyy;
 		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i)));
 		
