@@ -17,21 +17,7 @@ void ML_Jeux::init() {
 	int i;
 	int x,y,xx,yy,xxx,yyy;
 	for (i = 1; i<= nbjoueur; i++) {
-		
-		do{
-			map.afficher();
-			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
-			cout<<"Placez votre route : x?"<<endl;
-			cin>>x;
-			cout<<"Placez votre route : y?"<<endl;
-			cin>>y;
-			cout<<"Placez votre route : x'?"<<endl;
-			cin>>xx;
-			cout<<"Placez votre route : y'?"<<endl;
-			cin>>yy;
-		}while(!(placerRoute(x,y,xx,yy,i)));
-
-		do{
+            do{
 			map.afficher();
 			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
 			cout<<"Placez votre colonie : x?"<<endl;
@@ -47,25 +33,24 @@ void ML_Jeux::init() {
 			cout<<"Placez votre colonie : y''?"<<endl;
 			cin>>yyy;
 		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i)));
+        
+		do{
+			map.afficher();
+			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
+			cout<<"Placez votre route : x?"<<endl;
+			cin>>x;
+			cout<<"Placez votre route : y?"<<endl;
+			cin>>y;
+			cout<<"Placez votre route : x'?"<<endl;
+			cin>>xx;
+			cout<<"Placez votre route : y'?"<<endl;
+			cin>>yy;
+		}while(!(placerRoute(x,y,xx,yy,i)));
 		
-		cout<<""<<endl;
+		cout<<endl;
 	}
 	for (i = nbjoueur; i>= 1; i--) {
-
-		do{
-			map.afficher();
-			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
-			cout<<"Placez votre route : x?"<<endl;
-			cin>>x;
-			cout<<"Placez votre route : y?"<<endl;
-			cin>>y;
-			cout<<"Placez votre route : x'?"<<endl;
-			cin>>xx;
-			cout<<"Placez votre route : y'?"<<endl;
-			cin>>yy;
-		}while(!(placerRoute(x,y,xx,yy,i)));
-
-		do{
+        do{
 			map.afficher();
 			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
 			cout<<"Placez votre colonie : x?"<<endl;
@@ -81,8 +66,21 @@ void ML_Jeux::init() {
 			cout<<"Placez votre colonie : y''?"<<endl;
 			cin>>yyy;
 		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i)));
-		
-		cout<<""<<endl;
+
+		do{
+			map.afficher();
+			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
+			cout<<"Placez votre route : x?"<<endl;
+			cin>>x;
+			cout<<"Placez votre route : y?"<<endl;
+			cin>>y;
+			cout<<"Placez votre route : x'?"<<endl;
+			cin>>xx;
+			cout<<"Placez votre route : y'?"<<endl;
+			cin>>yy;
+		}while(!(placerRoute(x,y,xx,yy,i)));
+
+		cout<<endl;
 	}
 }
 
