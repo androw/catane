@@ -3,6 +3,18 @@
 ML_Joueur::ML_Joueur(int pnb) {
 	nb = pnb;
 	score = 0;
+    addRes(new ML_Argile());
+    addRes(new ML_Argile());
+    addRes(new ML_Bois());
+    addRes(new ML_Bois());
+    addRes(new ML_Argile());
+    addRes(new ML_Argile());
+    addRes(new ML_Bois());
+    addRes(new ML_Bois());
+    addRes(new ML_Laine());
+    addRes(new ML_Laine());
+    addRes(new ML_Ble());
+    addRes(new ML_Ble());
 }
 
 int ML_Joueur::getNb() {
