@@ -3,16 +3,18 @@
 
 #include "../ML_Carte.h"
 #include "../../ML_Joueur.h"
-#include "../../ML_Jeux.h"
+
 
 
 class ML_Map;
+class ML_Jeux;
 
 class ML_Dev : public ML_Carte {
 	public:
 		virtual void use(ML_Joueur*, ML_Jeux*) = 0;
 };
 
+#include "../../ML_Jeux.h"
 #include "../../Map/ML_Map.h"
 
 #endif

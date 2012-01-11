@@ -7,15 +7,24 @@ ML_Chevalier::ML_Chevalier() {
 void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 	int x = 3;
 	int y = 3;
-	//IL FAUT DEMANDER CES VALEURS ICI PAS EN PARAM de la fonction
+	int i = 0;
+	do{	
+	cout<<" ou voulez vous mettre le brigand?"<<endl;
+	cout<<"x?"<<endl;
+	cin>>x;
+	cout<<"y?"<<endl;
+	cin>>y;
+	}while((x == 3 && (y<1 || y>5)) || ((x == 2 || x == 4) && (y<1 || y>4)) || ((x == 1 || x == 5) && (y<2 || y>4)) );
+
+	
 
 	j->addArmee();
 	m->setBrigand(x,y);
 
-	int tab1[4];
+	ML_Joueur * tab1[4];
 	int choix;
 	for(int i=0; i>4;i++) {
-		tab1[i] = 0;
+		tab1[i] = new ML_Joueur(0);
 	}
 
 	tab[0] = m->getMap().getTerrain(x, y)->getNoeud(0)->getJoueur();
@@ -25,61 +34,53 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 	tab[4] = m->getMap().getTerrain(x, y)->getNoeud(4)->getJoueur();
 	tab[5] = m->getMap().getTerrain(x, y)->getNoeud(5)->getJoueur();
 
-	if( nbOcc(tab,1) > 1) {
-		tab1[0] = 1;
-		j++;
-	}else if( nbOcc(tab,2) > 1) {
-		tab1[1] = 2;
-		j++;
-	}else if( nbOcc(tab,3) > 1) {
-		tab1[2]=3;
-		j++;
-	}else if( nbOcc(tab,4) > 1) {
-		tab1[3]=4;
-		j++;
-	}
 
-	if(nbOcc(tab1,1) != 0 || nbOcc(tab1,2) != 0 || nbOcc(tab1,3) != 0 || nbOcc(tab1,4) != 0 ) {
+		for( i=0;i>6;i++) {
+			if (tab[i]->getNb() == 1 && tab[i]->getNb() != j->getNb()) {
+				tab1[0] = tab[i];
+				i = 5;
+			}	
+		}
+		for( i=0;i>6;i++) {
+			if (tab[i]->getNb() == 2 && tab[i]->getNb() != j->getNb()) {
+				tab1[1] = tab[i];
+				i = 5;
+			}	
+		}
+		for( i=0;i>6;i++) {
+			if (tab[i]->getNb() == 3 && tab[i]->getNb() != j->getNb()) {
+				tab1[2] = tab[i];
+				i = 5;
+			}	
+		}
+		for( i=0;i>6;i++) {
+			if (tab[i]->getNb() == 4 && tab[i]->getNb() != j->getNb()) {
+				tab1[3] = tab[i];
+				i = 5;
+			}	
+		}	
+
+
+	if(tab1[0]->getNb() != 0 || tab1[1]->getNb() != 0 || tab1[2]->getNb() != 0 || tab1[3]->getNb() != 0 ) {
 		do {
 			cout<<"A quel joueur voulez vous prendre les cartes ?"<<endl;
 			cin>>choix;
-		}while(nbOcc(tab1,choix) = 1);
-		if(tab[choix-1]->getDev().size() > 1) {
-				j->addRes(tab[choix-1]->getMPrem().back());
-				tab[choix-1]->getMPrem().pop_back();
-				j->addRes(tab[choix-1]->getMPrem().back());
-				tab[choix-1]->getMPrem().pop_back();
+		}while(tab1[choix - 1]->getNb() != 0);
+		if(tab1[choix-1]->getDev().size() > 1) {
+				j->addRes(tab1[choix-1]->getMPrem().back());
+				tab1[choix-1]->getMPrem().pop_back();
+				j->addRes(tab1[choix-1]->getMPrem().back());
+				tab1[choix-1]->getMPrem().pop_back();
 		}
-		if(tab[choix-1]->getDev().size() == 1) {
-				j->addRes(tab[choix-1]->getMPrem().back());
-				tab[choix-1]->getMPrem().pop_back();
+		if(tab1[choix-1]->getDev().size() == 1) {
+				j->addRes(tab1[choix-1]->getMPrem().back());
+				tab1[choix-1]->getMPrem().pop_back();
 		}
-		if(tab[choix-1]->getDev().size() == 0) {
+		if(tab1[choix-1]->getDev().size() == 0) {
 				cout<<"Pas de carte"<<endl;
 		}
 	}
 }
 
-int ML_Chevalier::nbOccJ(ML_Joueur tab[],  int y) {
-	int acc = 0;
-	int i;
-	for (i = 0; i<4;i++) {
-		if (tab[i].getNb() == y) {
-			acc++;
-		}
-	}
-return acc;
-}
-
-int ML_Chevalier::nbOccN(ML_Joueur tab[],  int y) {
-	int acc = 0;
-	int i;
-	for (i = 0; i<6;i++) {
-		if (tab[i].getNb() == y) {
-			acc++;
-		}
-	}
-return acc;
-}	
 
 

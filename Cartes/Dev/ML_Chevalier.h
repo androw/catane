@@ -11,8 +11,7 @@ class ML_Chevalier : public ML_Dev {
 	public:
 		ML_Chevalier();
 		void use(ML_Joueur*, ML_Jeux*);
-		int nbOccJ(ML_Joueur *,  int y);
-		int nbOccN(ML_Joueur *,  int y);
+
 };
 
 #endif

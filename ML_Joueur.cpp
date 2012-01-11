@@ -60,7 +60,7 @@ vector<ML_Dev*> ML_Joueur::getDev() {
 	return dev;
 }
 
-vector<ML_MPrem*> ML_Joueur::getMPrem() {
+vector<ML_MPremiere*> ML_Joueur::getMPrem() {
 	return matPrem;
 }
 
