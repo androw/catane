@@ -28,6 +28,7 @@ class ML_Joueur {
 		void addArmee();
 		int getScore();
 		vector<ML_Dev*> getDev();
+		vector<ML_MPremiere*> getMPrem();
 };
 
 #include "./Cartes/Dev/ML_Dev.h"

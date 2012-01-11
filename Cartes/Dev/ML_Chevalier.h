@@ -10,11 +10,9 @@ class ML_Chevalier : public ML_Dev {
 		ML_Joueur * tab[6];
 	public:
 		ML_Chevalier();
-		void use(ML_Joueur*, ML_Map*,int,int);
+		void use(ML_Joueur*, ML_Jeux*);
 		int nbOccJ(ML_Joueur *,  int y);
 		int nbOccN(ML_Joueur *,  int y);
-		
-
 };
 
 #endif

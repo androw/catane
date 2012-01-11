@@ -7,7 +7,7 @@ class ML_Progres : public ML_Dev {
 	protected:
 	public:
 		ML_Progres();
-		void use(ML_Joueur*, ML_Map*);
+		void use(ML_Joueur*, ML_Jeux*);
 
 };
 #endif

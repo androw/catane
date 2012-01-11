@@ -10,7 +10,7 @@ class ML_Map;
 
 class ML_Dev : public ML_Carte {
 	public:
-		virtual void use(ML_Joueur*, ML_Map*) = 0;
+		virtual void use(ML_Joueur*, ML_Jeux*) = 0;
 };
 
 #include "../../Map/ML_Map.h"
