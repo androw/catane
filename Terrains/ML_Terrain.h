@@ -27,7 +27,7 @@ class ML_Terrain {
 		void setNoeud(int, ML_Noeud *);
 		ML_Noeud* getNoeud(int);
 		int getValeur();
-		int setValeur(int);
+		void setValeur(int);
 		void setBrigand();
 		bool getBrigand();
 };

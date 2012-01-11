@@ -36,15 +36,15 @@ int ML_Terrain::getValeur() {
 	return valeur;
 }
 
-int ML_Terrain::setValeur(int a) {
+void ML_Terrain::setValeur(int a) {
 	 valeur = a;
 }
 
 void ML_Terrain::setBrigand() {
 	if (brigand == true) {
-		brigand == false;
+		brigand = false;
 	}else {
-		brigand == true;
+		brigand = true;
 	}
 }
 bool ML_Terrain::getBrigand() {

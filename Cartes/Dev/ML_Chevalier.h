@@ -3,11 +3,18 @@
 
 #include "ML_Dev.h"
 
+
+
 class ML_Chevalier : public ML_Dev {
 	protected:
+		ML_Joueur * tab[6];
 	public:
 		ML_Chevalier();
-		void use(ML_Joueur*, ML_Map*);
+		void use(ML_Joueur*, ML_Map*,int,int);
+		int nbOccJ(ML_Joueur *,  int y);
+		int nbOccN(ML_Joueur *,  int y);
+		
 
 };
+
 #endif

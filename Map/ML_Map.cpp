@@ -1,4 +1,5 @@
 #include "ML_Map.h"
+
 using namespace std;
 
 ML_Map::ML_Map() {
@@ -29,6 +30,7 @@ ML_Map::ML_Map() {
 	ML_Map::createArrete();
 	ML_Map::createNoeud();
 	createnbint();
+	valeur();
 }
 
 void ML_Map::createnbint() {

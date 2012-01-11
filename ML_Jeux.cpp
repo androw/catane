@@ -25,11 +25,11 @@ void ML_Jeux::init() {
 		}
 	}
 	for (i = 1; i < 5; i++) {
-		if(map.getTerrain(2, i)->getName() == "Desert") {
+		if(map.getTerrain(2,i)->getName() == "Desert") {
 			xBrigand = 2;
 			yBrigand = i;
 		}
-		if(map.getTerrain(4, i)->getName() == "Desert") {
+		if(map.getTerrain(4,i)->getName() == "Desert") {
 			xBrigand = 4;
 			yBrigand = i;
 		}
