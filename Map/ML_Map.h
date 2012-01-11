@@ -5,11 +5,10 @@
 #include <iostream>
 #include <ctime>
 
-#include "../Terrains/ML_Terrain.h"
-#include "../Terrains/ML_Terrains.h"
 
-#include "ML_Arrete.h"
-#include "ML_Noeud.h"
+class ML_Terrain;
+class ML_Noeud;
+class ML_Arrete;
 
 class ML_Map {
 	protected:
@@ -31,4 +30,10 @@ class ML_Map {
 		void valeur();
 		void createnbint();
 };
+
+#include "ML_Arrete.h"
+#include "ML_Noeud.h"
+#include "../Terrains/ML_Terrain.h"
+#include "../Terrains/ML_Terrains.h"
+
 #endif

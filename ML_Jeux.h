@@ -5,8 +5,8 @@
 
 #include "ML_Utils.h"
 #include "ML_Joueur.h"
-#include "./Map/ML_Map.h"
 #include "./Cartes/MPremieres/ML_MPremieres.h"
+#include "./Map/ML_Map.h"
 
 class ML_Jeux {
 	private:
@@ -30,7 +30,5 @@ class ML_Jeux {
 		bool placerRoute(int,int,int,int,int);
 		void setBrigand(int,int); 
 };
-
-
 
 #endif
