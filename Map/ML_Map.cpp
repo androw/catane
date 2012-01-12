@@ -1229,7 +1229,8 @@ ML_Arrete* ML_Map::getArrete(int i, int j, int x, int y, bool b) {
 	int it;
 	if (t[i][j] != NULL && t[x][y] != NULL) {
 		if (b) {
-		if (((t[i][j]->getName().find("Mer")) || (t[i][j]->getName().find("Port"))) && ((t[x][y]->getName().find("Mer")) || (t[x][y]->getName().find("Port")))) {return NULL;}
+            if (((t[i][j]->getName().find("Mer") != string::npos) || (t[i][j]->getName().find("Port")) != string::npos) && ((t[x][y]->getName().find("Mer") != string::npos) || (t[x][y]->getName().find("Port")) != string::npos)) {
+            return NULL;}
 		}
 	for (it = 0; it< 6; it++) {
 		if (t[i][j]->getArrete(it) != NULL) {
