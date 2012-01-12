@@ -11,6 +11,9 @@ ML_Jeux::ML_Jeux() {
 
 ML_Jeux::ML_Jeux(int p) {
 	nbjoueur = p;
+	for (int i=0; i< p; i++) {
+		joueur[i] = new ML_Joueur(i+1);
+	} 
 }
 
 void ML_Jeux::init() {
@@ -236,7 +239,7 @@ bool ML_Jeux::placerColonie(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) 
 	ML_MPremiere* ble = new ML_Ble();
 	if( x<7 && xx<7 && xxx<7 && y<7 && yy<7 && yyy<7 && x>=0 && xx>=0 && xxx>=0 && y>=0 && yy>=0 && yyy>=0) {
 		if( map.getNoeud(x,y,xx,yy,xxx,yyy) != NULL) {
-			if(map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1) && joueur[j-1]->hasHe(lai, 1) && joueur[j-1]->hasHe(ble, 1) && map.getNoeud(x,y,xx,yy,xxx,yyy)->checkDist())  {
+			if(map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1) && joueur[j-1]->hasHe(lai, 1) && joueur[j-1]->hasHe(ble, 1) && (map.getNoeud(x,y,xx,yy,xxx,yyy)->checkDist()))  {
 				delete map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur();
 				map.getNoeud(x,y,xx,yy,xxx,yyy)->setJoueur(joueur[j-1]);
 				delete joueur[j-1]->remRes(boi);
@@ -269,14 +272,13 @@ bool ML_Jeux::placerRoute(int x,int y,int xx ,int yy ,int j){
 	ML_MPremiere* boi = new ML_Bois();
 
 	if( x<7 && xx<7 && y<7 && yy<7 && x>=0 && xx>=0 && y>=0 && yy>=0 ) {
-		if( map.getArrete(x,y,xx,yy) != NULL) {
-			if(map.getArrete(x,y,xx,yy)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1)) {
-                if (map.getArrete(x,y,xx,yy)->getNoeud(0) != NULL && map.getArrete(x,y,xx,yy)->getNoeud(1) != NULL) {
-                    if((map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() == j ||  map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() == j)) {
-                        cout<<"Help"<<endl;
-                        if (!((map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(0)->getJoueur()->getNb() != 0) || (map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy)->getNoeud(1)->getJoueur()->getNb() != 0))) {
-                            delete map.getArrete(x,y,xx,yy)->getJoueur();
-                            map.getArrete(x,y,xx,yy)->setJoueur(joueur[j-1]);
+		if( map.getArrete(x,y,xx,yy,true) != NULL) {
+			if(map.getArrete(x,y,xx,yy,true)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1)) {
+                if (map.getArrete(x,y,xx,yy,true)->getNoeud(0) != NULL && map.getArrete(x,y,xx,yy,true)->getNoeud(1) != NULL) {
+                    if((map.getArrete(x,y,xx,yy,true)->getNoeud(0)->getJoueur()->getNb() == j ||  map.getArrete(x,y,xx,yy,true)->getNoeud(1)->getJoueur()->getNb() == j)) {
+                        if (!((map.getArrete(x,y,xx,yy,true)->getNoeud(0)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy,true)->getNoeud(0)->getJoueur()->getNb() != 0) || (map.getArrete(x,y,xx,yy,true)->getNoeud(1)->getJoueur()->getNb() != j && map.getArrete(x,y,xx,yy,true)->getNoeud(1)->getJoueur()->getNb() != 0))) {
+                            delete map.getArrete(x,y,xx,yy,true)->getJoueur();
+                            map.getArrete(x,y,xx,yy,true)->setJoueur(joueur[j-1]);
                             delete joueur[j-1]->remRes(boi);
                             res[1]--;
                             delete joueur[j-1]->remRes(arg);

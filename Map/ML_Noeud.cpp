@@ -49,28 +49,35 @@ void ML_Noeud::setJoueur(ML_Joueur* pj) {
 }
 
 bool ML_Noeud::checkDist() {
+	bool acc = true;
 	if (arrete[0] != NULL) {
-        if ((arrete[0]->getNoeud(0) != NULL) && (arrete[0]->getNoeud(0) != NULL)) {
-            if ((arrete[0]->getNoeud(0)->getJoueur() == NULL && arrete[0]->getNoeud(0) != this) || (arrete[0]->getNoeud(1)->getJoueur() == NULL && arrete[0]->getNoeud(1) != this)) {
-                return false;
-            }
+        if ((arrete[0]->getNoeud(0) != NULL) && (arrete[0]->getNoeud(1) != NULL)) {
+            if ((arrete[0]->getNoeud(0)->getJoueur()->getNb() == 0 && arrete[0]->getNoeud(0) != this) || (arrete[0]->getNoeud(1)->getJoueur()->getNb() == 0  && arrete[0]->getNoeud(1) != this)) {
+                acc = true;
+            } else {
+		acc = false;
+	    }
         }
 	}
 	if (arrete[1] != NULL) {
-        if ((arrete[0]->getNoeud(0) != NULL) && (arrete[0]->getNoeud(0) != NULL)) {
-            if ((arrete[1]->getNoeud(0)->getJoueur() == NULL && arrete[1]->getNoeud(0) != this) || (arrete[1]->getNoeud(1)->getJoueur() == NULL && arrete[1]->getNoeud(1) != this)) {
-                return false;
-            }
+        if ((arrete[1]->getNoeud(0) != NULL) && (arrete[1]->getNoeud(1) != NULL)) {
+            if ((arrete[1]->getNoeud(0)->getJoueur()->getNb() == 0  && arrete[1]->getNoeud(0) != this) || (arrete[1]->getNoeud(1)->getJoueur()->getNb() == 0  && arrete[1]->getNoeud(1) != this)) {
+                acc = acc && true;
+            } else {
+		acc = acc && false;
+	    }
         }
 	}
 	if (arrete[2] != NULL) {
-        if ((arrete[0]->getNoeud(0) != NULL) && (arrete[0]->getNoeud(0) != NULL)) {
-            if ((arrete[2]->getNoeud(0)->getJoueur() == NULL && arrete[2]->getNoeud(0) != this) || (arrete[2]->getNoeud(1)->getJoueur() == NULL && arrete[2]->getNoeud(1) != this)) {
-                return false;
-            }
+        if ((arrete[2]->getNoeud(0) != NULL) && (arrete[2]->getNoeud(1) != NULL)) {
+            if ((arrete[2]->getNoeud(0)->getJoueur()->getNb() == 0  && arrete[2]->getNoeud(0) != this) || (arrete[2]->getNoeud(1)->getJoueur()->getNb() == 0  && arrete[2]->getNoeud(1) != this)) {
+                acc = acc && true;
+            } else {
+		acc = acc && false;
+	    }
         }
 	}
-	return true;
+	return acc;
 }
 
 bool ML_Noeud::isVille() {

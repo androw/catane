@@ -5,8 +5,8 @@ ML_Chevalier::ML_Chevalier() {
 }
 
 void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
-	int x = 3;
-	int y = 3;
+	int x = 0;
+	int y = 0;
 	int i = 0;
 	do{	
 	cout<<" ou voulez vous mettre le brigand?"<<endl;

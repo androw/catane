@@ -34,6 +34,6 @@ void ML_Arrete::setJoueur(ML_Joueur* pj) {
 }
 
 void ML_Arrete::addNoeud(ML_Noeud* p) {
-    if (noeud[0] == NULL || noeud[0] == p) noeud[0] = p;
+    if (noeud[0] == NULL || noeud[0] == p) {noeud[0] = p; return;}
     if (noeud[1] == NULL || noeud[1] == p) noeud[1] = p;
 }

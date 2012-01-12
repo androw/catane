@@ -13,3 +13,7 @@ ML_MPremiere::ML_MPremiere() {
 string ML_MPremiere::getName(){
 	return name;
 }
+
+bool ML_MPremiere::operator==(ML_MPremiere& p){
+	return (name == p.getName());
+}

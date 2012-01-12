@@ -25,7 +25,7 @@ class ML_Map {
 		void createArrete();
 		void createNoeud();
 		ML_Terrain* getTerrain(int, int);
-		ML_Arrete* getArrete(int, int, int, int);
+		ML_Arrete* getArrete(int, int, int, int,bool);
 		ML_Noeud* getNoeud(int, int, int, int, int, int);
 		void valeur();
 		void createnbint();

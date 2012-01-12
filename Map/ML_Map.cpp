@@ -321,7 +321,7 @@ void ML_Map::afficher() {
 cout<<endl;
 	cout<<"                     *         "<<getNoeud(0,2,0,1,1,2)->getJoueur()->getNb()<<"~~~~~~~~~"<<getNoeud(0,2,0,3,1,3)->getJoueur()->getNb()<<"         "<<getNoeud(0,3,0,4,1,4)->getJoueur()->getNb()<<"~~~~~~~~~*         "<<endl; 
 
-		cout<<"                   *~~~*     "<<getArrete(1,2,0,1)->getJoueur()->getNb()<<"   "<<getArrete(1,2,0,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(1,3,0,2)->getJoueur()->getNb()<<"   "<<getArrete(1,3,0,3)->getJoueur()->getNb()<<" <== "<<getArrete(1,4,0,3)->getJoueur()->getNb()<<"   "<<getArrete(1,4,0,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
+		cout<<"                   *~~~*     "<<getArrete(1,2,0,1,false)->getJoueur()->getNb()<<"   "<<getArrete(1,2,0,2,false)->getJoueur()->getNb()<<"~~~~~"<<getArrete(1,3,0,2,false)->getJoueur()->getNb()<<"   "<<getArrete(1,3,0,3,false)->getJoueur()->getNb()<<" <== "<<getArrete(1,4,0,3,false)->getJoueur()->getNb()<<"   "<<getArrete(1,4,0,4,false)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
 
 
 	//cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
@@ -347,12 +347,12 @@ cout<<"                *";
 				cout<<" Vide    *";
 
 			}else if(t[1][j]->getName() == "Mer") {
-				cout<<"~~~~~~~~~"<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
+				cout<<"~~~~~~~~~"<<getArrete(1,j,1,j+1,false)->getJoueur()->getNb();
 			}else if(t[1][j]->getName() == "Colline") {
-				cout<<" Colline "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
+				cout<<" Colline "<<getArrete(1,j,1,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[1][j]->getName() == "TCultivable") {
-				cout<<" TCulti  "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
+				cout<<" TCulti  "<<getArrete(1,j,1,j+1,false)->getJoueur()->getNb();
 
 			} else if(t[1][j]->getName() == "PortArgile") {
 				cout<<" PortArg *";
@@ -373,16 +373,16 @@ cout<<"                *";
 				cout<<" PortLai *";
 
 			}else if(t[1][j]->getName() == "Foret") {
-				cout<<" Foret   "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
+				cout<<" Foret   "<<getArrete(1,j,1,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[1][j]->getName() == "Montagne") {
-				cout<<"Montagne "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
+				cout<<"Montagne "<<getArrete(1,j,1,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[1][j]->getName() == "Paturage") {
-				cout<<"Paturage "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
+				cout<<"Paturage "<<getArrete(1,j,1,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[1][j]->getName() == "Desert") {
-				cout<<" Desert  "<<getArrete(1,j,1,j+1)->getJoueur()->getNb();
+				cout<<" Desert  "<<getArrete(1,j,1,j+1,false)->getJoueur()->getNb();
 
 			}
 		}
@@ -401,15 +401,15 @@ cout<<"         *"<<endl;
  
 	//cout<<"               * *~~~~~~~* *       * *       * *       * *       *~*"<<endl;
 
-	cout<<"             *     *~~~"<<getArrete(2,1,1,1)->getJoueur()->getNb();
+	cout<<"             *     *~~~"<<getArrete(2,1,1,1,false)->getJoueur()->getNb();
 
 			for(int j=2; j<5; j++) {
 
-				cout<<"     "<<getArrete(2,j-1,1,j)->getJoueur()->getNb()<<"   "<<getArrete(2,j,1,j)->getJoueur()->getNb();
+				cout<<"     "<<getArrete(2,j-1,1,j,false)->getJoueur()->getNb()<<"   "<<getArrete(2,j,1,j,false)->getJoueur()->getNb();
 
 			}
 	
-	cout<<"     "<<getArrete(2,4,3,5)->getJoueur()->getNb()<<"   *~~~~~*"<<endl;
+	cout<<"     "<<getArrete(2,4,3,5,false)->getJoueur()->getNb()<<"   *~~~~~*"<<endl;
 
 	cout<<"           *         "<<getNoeud(2,0,2,1,1,1)->getJoueur()->getNb();
 		
@@ -441,10 +441,10 @@ cout<<endl;
 			}else if(t[2][j]->getName() == "Mer") {
 				cout<<"~~~~~~~~~*";
 			}else if(t[2][j]->getName() == "Colline") {
-				cout<<" Colline "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+				cout<<" Colline "<<getArrete(2,j,2,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[2][j]->getName() == "TCultivable") {
-				cout<<" TCulti  "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+				cout<<" TCulti  "<<getArrete(2,j,2,j+1,false)->getJoueur()->getNb();
 
 			} else if(t[2][j]->getName() == "PortArgile") {
 				cout<<" PortArg *";
@@ -453,7 +453,7 @@ cout<<endl;
 				cout<<" PortBle *";
 
 			} else if(t[2][j]->getName() == "Port?") {
-				cout<<" Port(?) "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+				cout<<" Port(?) "<<getArrete(2,j,2,j+1,false)->getJoueur()->getNb();
 
 			} else if(t[2][j]->getName() == "PortMinerai") {
 				cout<<" PortMin *";
@@ -465,17 +465,16 @@ cout<<endl;
 				cout<<" PortLai *";
 
 			}else if(t[2][j]->getName() == "Foret") {
-				cout<<" Foret   "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+				cout<<" Foret   "<<getArrete(2,j,2,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[2][j]->getName() == "Montagne") {
-				cout<<"Montagne "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+				cout<<"Montagne "<<getArrete(2,j,2,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[2][j]->getName() == "Paturage") {
-				cout<<"Paturage "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
+				cout<<"Paturage "<<getArrete(2,j,2,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[2][j]->getName() == "Desert") {
-				cout<<" Desert  "<<getArrete(2,j,2,j+1)->getJoueur()->getNb();
-
+				cout<<" Desert  "<<getArrete(2,j,2,j+1,false)->getJoueur()->getNb();
 			}
 		}
 cout<<endl;
@@ -496,7 +495,7 @@ cout<<endl;
 
 			for(int j=1; j<6; j++) {
 
-				cout<<"     "<<getArrete(3,j,2,j-1)->getJoueur()->getNb()<<"   "<<getArrete(3,j,2,j)->getJoueur()->getNb();
+				cout<<"     "<<getArrete(3,j,2,j-1,false)->getJoueur()->getNb()<<"   "<<getArrete(3,j,2,j,false)->getJoueur()->getNb();
 
 			}
 	cout<<"~~~~~*   *"<<endl;
@@ -527,12 +526,12 @@ cout<<endl;
 				cout<<" Vide    *";
 
 			}else if(t[3][j]->getName() == "Mer") {
-				cout<<"~~~~~~~~~"<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
+				cout<<"~~~~~~~~~"<<getArrete(3,j,3,j+1,false)->getJoueur()->getNb();
 			}else if(t[3][j]->getName() == "Colline") {
-				cout<<" Colline "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
+				cout<<" Colline "<<getArrete(3,j,3,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[3][j]->getName() == "TCultivable") {
-				cout<<" TCulti  "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
+				cout<<" TCulti  "<<getArrete(3,j,3,j+1,false)->getJoueur()->getNb();
 
 			} else if(t[3][j]->getName() == "PortArgile") {
 				cout<<"<=PortArg*";
@@ -553,16 +552,16 @@ cout<<endl;
 				cout<<" PortLai *";
 
 			}else if(t[3][j]->getName() == "Foret") {
-				cout<<" Foret   "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
+				cout<<" Foret   "<<getArrete(3,j,3,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[3][j]->getName() == "Montagne") {
-				cout<<"Montagne "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
+				cout<<"Montagne "<<getArrete(3,j,3,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[3][j]->getName() == "Paturage") {
-				cout<<"Paturage "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
+				cout<<"Paturage "<<getArrete(3,j,3,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[3][j]->getName() == "Desert") {
-				cout<<" Desert  "<<getArrete(3,j,3,j+1)->getJoueur()->getNb();
+				cout<<" Desert  "<<getArrete(3,j,3,j+1,false)->getJoueur()->getNb();
 
 			}
 		}
@@ -587,7 +586,7 @@ cout<<endl;
 
 			for(int j=1; j<6; j++) {
 
-				cout<<"     "<<getArrete(3,j,4,j-1)->getJoueur()->getNb()<<"   "<<getArrete(3,j,4,j)->getJoueur()->getNb();
+				cout<<"     "<<getArrete(3,j,4,j-1,false)->getJoueur()->getNb()<<"   "<<getArrete(3,j,4,j,false)->getJoueur()->getNb();
 
 			}
 	cout<<"~~~~~*   *"<<endl;
@@ -620,10 +619,10 @@ cout<<endl;
 			}else if(t[4][j]->getName() == "Mer") {
 				cout<<"~~~~~~~~~*";
 			}else if(t[4][j]->getName() == "Colline") {
-				cout<<" Colline "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+				cout<<" Colline "<<getArrete(4,j,4,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[4][j]->getName() == "TCultivable") {
-				cout<<" TCulti  "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+				cout<<" TCulti  "<<getArrete(4,j,4,j+1,false)->getJoueur()->getNb();
 
 			} else if(t[4][j]->getName() == "PortBle") {
 				cout<<" PortBle *";
@@ -641,19 +640,19 @@ cout<<endl;
 				cout<<" PortBois*";
 
 			} else if(t[4][j]->getName() == "PortLaine") {
-				cout<<"PortLai=>"<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+				cout<<"PortLai=>"<<getArrete(4,j,4,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[4][j]->getName() == "Foret") {
-				cout<<" Foret   "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+				cout<<" Foret   "<<getArrete(4,j,4,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[4][j]->getName() == "Montagne") {
-				cout<<"Montagne "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+				cout<<"Montagne "<<getArrete(4,j,4,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[4][j]->getName() == "Paturage") {
-				cout<<"Paturage "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+				cout<<"Paturage "<<getArrete(4,j,4,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[4][j]->getName() == "Desert") {
-				cout<<" Desert  "<<getArrete(4,j,4,j+1)->getJoueur()->getNb();
+				cout<<" Desert  "<<getArrete(4,j,4,j+1,false)->getJoueur()->getNb();
 
 			}
 		}
@@ -673,15 +672,15 @@ cout<<endl;
 
 	cout<<"~~~~~~~~~*"<<endl;
 
-	cout<<"             *     *~~~"<<getArrete(4,1,5,1)->getJoueur()->getNb();
+	cout<<"             *     *~~~"<<getArrete(4,1,5,1,false)->getJoueur()->getNb();
 
 			for(int j=2; j<5; j++) {
 
-				cout<<"     "<<getArrete(4,j-1,5,j)->getJoueur()->getNb()<<"   "<<getArrete(4,j,5,j)->getJoueur()->getNb();
+				cout<<"     "<<getArrete(4,j-1,5,j,false)->getJoueur()->getNb()<<"   "<<getArrete(4,j,5,j,false)->getJoueur()->getNb();
 
 			}
 	
-	cout<<"     "<<getArrete(4,5-1,5,5)->getJoueur()->getNb()<<"   *~~~~~*"<<endl;
+	cout<<"     "<<getArrete(4,5-1,5,5,false)->getJoueur()->getNb()<<"   *~~~~~*"<<endl;
 
 	//cout<<"               * *~~~~~~~* *       * *       * *       * *       *~*"<<endl;
 
@@ -709,12 +708,12 @@ cout<<endl;
 				cout<<" Vide    *";
 
 			}else if(t[5][j]->getName() == "Mer") {
-				cout<<"~~~~~~~~~"<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
+				cout<<"~~~~~~~~~"<<getArrete(5,j,5,j+1,false)->getJoueur()->getNb();
 			}else if(t[5][j]->getName() == "Colline") {
-				cout<<" Colline "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
+				cout<<" Colline "<<getArrete(5,j,5,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[5][j]->getName() == "TCultivable") {
-				cout<<" TCulti  "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
+				cout<<" TCulti  "<<getArrete(5,j,5,j+1,false)->getJoueur()->getNb();
 
 			} else if(t[5][j]->getName() == "PortBle") {
 				cout<<" PortBle *";
@@ -735,16 +734,16 @@ cout<<endl;
 				cout<<" PortLai *";
 
 			}else if(t[5][j]->getName() == "Foret") {
-				cout<<" Foret   "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
+				cout<<" Foret   "<<getArrete(5,j,5,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[5][j]->getName() == "Montagne") {
-				cout<<"Montagne "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
+				cout<<"Montagne "<<getArrete(5,j,5,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[5][j]->getName() == "Paturage") {
-				cout<<"Paturage "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
+				cout<<"Paturage "<<getArrete(5,j,5,j+1,false)->getJoueur()->getNb();
 
 			}else if(t[5][j]->getName() == "Desert") {
-				cout<<" Desert  "<<getArrete(5,j,5,j+1)->getJoueur()->getNb();
+				cout<<" Desert  "<<getArrete(5,j,5,j+1,false)->getJoueur()->getNb();
 
 			}
 		}
@@ -763,7 +762,7 @@ cout<<"         *";
 cout<<endl; 
 
 	//cout<<"                  *~~~~~*   *     *~~~*     *   *     *~~~*     *   "<<endl;
-	cout<<"                   *~~~*     "<<getArrete(5,2,6,1)->getJoueur()->getNb()<<"   "<<getArrete(5,2,6,2)->getJoueur()->getNb()<<"~~~~~"<<getArrete(5,3,6,2)->getJoueur()->getNb()<<"   "<<getArrete(5,3,6,3)->getJoueur()->getNb()<<" ==> "<<getArrete(5,4,6,3)->getJoueur()->getNb()<<"   "<<getArrete(5,4,6,4)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
+	cout<<"                   *~~~*     "<<getArrete(5,2,6,1,false)->getJoueur()->getNb()<<"   "<<getArrete(5,2,6,2,false)->getJoueur()->getNb()<<"~~~~~"<<getArrete(5,3,6,2,false)->getJoueur()->getNb()<<"   "<<getArrete(5,3,6,3,false)->getJoueur()->getNb()<<" ==> "<<getArrete(5,4,6,3,false)->getJoueur()->getNb()<<"   "<<getArrete(5,4,6,4,false)->getJoueur()->getNb()<<"~~~~~*   *       "<<endl;
 	
 
 	cout<<"                     *         "<<getNoeud(5,2,6,1,6,2)->getJoueur()->getNb()<<"~~~~~~~~~"<<getNoeud(5,3,6,2,6,3)->getJoueur()->getNb()<<"         "<<getNoeud(5,4,6,3,6,4)->getJoueur()->getNb()<<"~~~~~~~~~*         "<<endl; 
@@ -1226,8 +1225,12 @@ ML_Terrain* ML_Map::getTerrain(int pi, int pj) {
 	return t[pi][pj];
 }
 		
-ML_Arrete* ML_Map::getArrete(int i, int j, int x, int y) {
+ML_Arrete* ML_Map::getArrete(int i, int j, int x, int y, bool b) {
 	int it;
+	if (t[i][j] != NULL && t[x][y] != NULL) {
+		if (b) {
+		if (((t[i][j]->getName().find("Mer")) || (t[i][j]->getName().find("Port"))) && ((t[x][y]->getName().find("Mer")) || (t[x][y]->getName().find("Port")))) {return NULL;}
+		}
 	for (it = 0; it< 6; it++) {
 		if (t[i][j]->getArrete(it) != NULL) {
 		if (t[i][j]->getArrete(it)->getTerrain(0) == t[i][j]) {
@@ -1241,11 +1244,13 @@ ML_Arrete* ML_Map::getArrete(int i, int j, int x, int y) {
 		}
 		}
 	}
+	}
 	return NULL;
 } 
 
 ML_Noeud* ML_Map::getNoeud(int i, int j, int x, int y,int xx, int yy) {
 	int it;
+	if (t[i][j] != NULL && t[x][y] != NULL && t[xx][yy] != NULL) {
 	for (it = 0; it< 6; it++) {
 		if (t[i][j]->getNoeud(it) != NULL) {
 		if (t[i][j]->getNoeud(it)->getTerrain(0) == t[i][j]) {
@@ -1280,6 +1285,7 @@ ML_Noeud* ML_Map::getNoeud(int i, int j, int x, int y,int xx, int yy) {
                         }
 		}
 		}
+	}
 	}
 	return NULL;
 } 

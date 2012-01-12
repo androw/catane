@@ -14,5 +14,6 @@ class ML_MPremiere : public ML_Carte {
     	ML_MPremiere();
 	ML_MPremiere(string name);
 	string getName();
+	bool operator==(ML_MPremiere&);
 };
 #endif

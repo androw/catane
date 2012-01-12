@@ -28,7 +28,8 @@ void ML_Joueur::addRes(ML_MPremiere* pm) {
 ML_MPremiere* ML_Joueur::remRes(ML_MPremiere* pm) {
     unsigned int i;
     for (i = 0; i<matPrem.size(); i++) {
-        if (pm == matPrem.at(i)) {
+        if (*pm == *(matPrem.at(i))) {
+            pm = matPrem.at(i);
             matPrem.erase(matPrem.begin()+i);
             return pm;
         }
@@ -40,7 +41,7 @@ bool ML_Joueur::hasHe(ML_MPremiere* pm, int nb){
     unsigned int i;
     int acc = 0;
     for (i = 0; i < matPrem.size(); i++) {
-        if (pm == matPrem.at(i)) {
+        if (*pm == *(matPrem.at(i))) {
             acc++;
         } 
     }
