@@ -64,7 +64,7 @@ void ML_Jeux::init() {
 			cin>>xxx;
 			cout<<"Placez votre colonie : y''?"<<endl;
 			cin>>yyy;
-		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i)));
+		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i,true)));
         
 		do{
 			map.afficher();
@@ -97,7 +97,7 @@ void ML_Jeux::init() {
 			cin>>xxx;
 			cout<<"Placez votre colonie : y''?"<<endl;
 			cin>>yyy;
-		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i)));
+		}while(!(placerColonie(x,y,xx,yy,xxx,yyy,i,true)));
 
 		do{
 			map.afficher();
@@ -232,7 +232,7 @@ void ML_Jeux::partEchange(ML_Joueur* j1, ML_Joueur* j2, ML_MPremiere* m, int nb)
     }
 }
 
-bool ML_Jeux::placerColonie(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) {
+bool ML_Jeux::placerColonie(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j, bool b) {
 	ML_MPremiere* arg = new ML_Argile();
 	ML_MPremiere* boi = new ML_Bois();
 	ML_MPremiere* lai = new ML_Laine();
