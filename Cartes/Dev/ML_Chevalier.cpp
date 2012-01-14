@@ -5,8 +5,8 @@ ML_Chevalier::ML_Chevalier() {
 }
 
 void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
-	int x = 0;
-	int y = 0;
+	int x = 3;
+	int y = 3;
 	int i = 0;
 	do{	
 	cout<<" ou voulez vous mettre le brigand?"<<endl;
@@ -14,7 +14,7 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 	cin>>x;
 	cout<<"y?"<<endl;
 	cin>>y;
-	}while((x == 3 && (y<1 || y>5)) || ((x == 2 || x == 4) && (y<1 || y>4)) || ((x == 1 || x == 5) && (y<2 || y>4)) );
+	}while((x == m->getXBrigand() && y == m->getYBrigand()) || ((x == 3 && (y<1 || y>5)) || ((x == 2 || x == 4) && (y<1 || y>4)) || ((x == 1 || x == 5) && (y<2 || y>4))) );
 
 	
 
