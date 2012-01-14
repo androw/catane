@@ -5,3 +5,4 @@ ML_Progres1::ML_Progres1() {
 }
 
 void ML_Progres1::use(ML_Joueur* j, ML_Jeux* m) {
+}

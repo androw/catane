@@ -29,6 +29,8 @@ class ML_Jeux {
 		bool placerVille(int,int,int,int,int,int,int);
 		bool placerRoute(int,int,int,int,int);
 		void setBrigand(int,int); 
+        int getXBrigand(); 
+        int getYBrigand(); 
 };
 
 #endif

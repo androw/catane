@@ -336,6 +336,14 @@ void ML_Jeux::setBrigand(int x, int y) {
 	xBrigand = x;
 	yBrigand = y;
 }
+
+int ML_Jeux::getXBrigand(){
+	return xBrigand;
+}
+
+int ML_Jeux::getYBrigand(){
+	return yBrigand;
+}
 	
 
 	
