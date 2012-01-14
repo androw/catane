@@ -83,3 +83,16 @@ bool ML_Noeud::checkDist() {
 bool ML_Noeud::isVille() {
 	return ville;
 }
+
+bool ML_Noeud::hasRoute(int j) {
+    if (arrete[0] != NULL) {
+        if (arrete[0]->getJoueur()->getNb() == j) return true;
+    }
+    if (arrete[1] != NULL) {
+        if (arrete[1]->getJoueur()->getNb() == j) return true;
+    }
+    if (arrete[2] != NULL) {
+        if (arrete[2]->getJoueur()->getNb() == j) return true;
+    }
+    return false;
+}

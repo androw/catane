@@ -239,7 +239,7 @@ bool ML_Jeux::placerColonie(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j, 
 	ML_MPremiere* ble = new ML_Ble();
 	if( x<7 && xx<7 && xxx<7 && y<7 && yy<7 && yyy<7 && x>=0 && xx>=0 && xxx>=0 && y>=0 && yy>=0 && yyy>=0) {
 		if( map.getNoeud(x,y,xx,yy,xxx,yyy) != NULL) {
-			if(map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1) && joueur[j-1]->hasHe(lai, 1) && joueur[j-1]->hasHe(ble, 1) && (map.getNoeud(x,y,xx,yy,xxx,yyy)->checkDist()))  {
+			if(map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur()->getNb() == 0 && joueur[j-1]->hasHe(arg, 1) && joueur[j-1]->hasHe(boi, 1) && joueur[j-1]->hasHe(lai, 1) && joueur[j-1]->hasHe(ble, 1) && (map.getNoeud(x,y,xx,yy,xxx,yyy)->checkDist()) && (b || map.getNoeud(x,y,xx,yy,xxx,yyy)->hasRoute(j)))  {
 				delete map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur();
 				map.getNoeud(x,y,xx,yy,xxx,yyy)->setJoueur(joueur[j-1]);
 				delete joueur[j-1]->remRes(boi);
