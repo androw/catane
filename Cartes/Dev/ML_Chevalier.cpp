@@ -2,6 +2,7 @@
 
 ML_Chevalier::ML_Chevalier() {
 	MAX = 14;
+    name = "Chevalier";
 }
 
 void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
@@ -23,7 +24,7 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 
 	ML_Joueur * tab1[4];
 	int choix;
-	for(int i=0; i>4;i++) {
+	for(int i=0; i<4;i++) {
 		tab1[i] = new ML_Joueur(0);
 	}
 
@@ -35,25 +36,25 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 	tab[5] = m->getMap().getTerrain(x, y)->getNoeud(5)->getJoueur();
 
 
-		for( i=0;i>6;i++) {
+		for( i=0;i<6;i++) {
 			if (tab[i]->getNb() == 1 && tab[i]->getNb() != j->getNb()) {
 				tab1[0] = tab[i];
 				i = 5;
 			}	
 		}
-		for( i=0;i>6;i++) {
+		for( i=0;i<6;i++) {
 			if (tab[i]->getNb() == 2 && tab[i]->getNb() != j->getNb()) {
 				tab1[1] = tab[i];
 				i = 5;
 			}	
 		}
-		for( i=0;i>6;i++) {
+		for( i=0;i<6;i++) {
 			if (tab[i]->getNb() == 3 && tab[i]->getNb() != j->getNb()) {
 				tab1[2] = tab[i];
 				i = 5;
 			}	
 		}
-		for( i=0;i>6;i++) {
+		for( i=0;i<6;i++) {
 			if (tab[i]->getNb() == 4 && tab[i]->getNb() != j->getNb()) {
 				tab1[3] = tab[i];
 				i = 5;

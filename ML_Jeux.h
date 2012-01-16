@@ -22,15 +22,17 @@ class ML_Jeux {
 		bool distribRes();
 		void init();
 		ML_Map getMap();
-        	bool initEchange();
-        	bool echange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, ML_MPremiere*, int, int);
-        	void partEchange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, int);
+        bool initEchange();
+        bool echange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, ML_MPremiere*, int, int);
+        void partEchange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, int);
 		bool placerColonie(int,int,int,int,int,int,int,bool);
 		bool placerVille(int,int,int,int,int,int,int);
 		bool placerRoute(int,int,int,int,int);
 		void setBrigand(int,int); 
         int getXBrigand(); 
-        int getYBrigand(); 
+        int getYBrigand();
+        int * getRes();
+        ML_Joueur ** getJoueur();
 };
 
 #endif

@@ -129,7 +129,7 @@ void ML_Jeux::init() {
 				cout<<"6.finir tour"<<endl;
 				cin>>choix;
 			}while(choix<0 || choix >7);
-		}while(!(joueur[i]->getScore() == 10));
+		}while(!(joueur[i-1]->getScore() == 10));
 	}
 }
 
@@ -343,6 +343,14 @@ int ML_Jeux::getXBrigand(){
 
 int ML_Jeux::getYBrigand(){
 	return yBrigand;
+}
+
+int* ML_Jeux::getRes(){
+	return res;
+}
+
+ML_Joueur** ML_Jeux::getJoueur(){
+	return joueur;
 }
 	
 

@@ -1,5 +1,5 @@
 test: Terrains Cartes Map ML_Joueur.o ML_Utils.o ML_Jeux.o main.cpp
-	g++ -g -Wall main.cpp ./Map/*.o ./Terrains/*.o ./Cartes/*.o ./Cartes/MPremieres/*.o ML_Joueur.o ML_Utils.o ML_Jeux.o -o test
+	g++ -g -Wall main.cpp ./Map/*.o ./Terrains/*.o ./Cartes/*.o ./Cartes/MPremieres/*.o ./Cartes/Dev/*.o ML_Joueur.o ML_Utils.o ML_Jeux.o -o test
 Terrains: ./Terrains/*
 	cd ./Terrains/; make
 Cartes: ./Cartes/*

@@ -5,6 +5,7 @@
 
 class ML_Progres1 : public ML_Dev {
 	protected:
+    
 	public:
 		ML_Progres1();
 		void use(ML_Joueur*, ML_Jeux*);

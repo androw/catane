@@ -49,6 +49,8 @@ bool ML_Joueur::hasHe(ML_MPremiere* pm, int nb){
     return false;
 }
 
+
+
 void ML_Joueur::addScore() {
 	score++;
 }
@@ -67,4 +69,32 @@ vector<ML_MPremiere*> ML_Joueur::getMPrem() {
 
 void ML_Joueur::addArmee() {
 	armee++;
+}
+
+void ML_Joueur::addDev(ML_Dev* pm) {
+	dev.push_back(pm);
+}
+
+ML_Dev* ML_Joueur::remDev(ML_Dev* pm) {
+    long unsigned int i;
+    for (i = 0; i<dev.size(); i++) {
+        if ((*pm).getName() == (*(dev.at(i))).getName()) {
+            pm = dev.at(i);
+            dev.erase(dev.begin()+i);
+            return pm;
+        }
+    }
+    return pm;
+}
+
+bool ML_Joueur::hasHeDev(ML_Dev* pm, int nb){
+    long unsigned int i;
+    int acc = 0;
+    for (i = 0; i < dev.size(); i++) {
+        if ((*pm).getName() == (*(dev.at(i))).getName()) {
+            acc++;
+        } 
+    }
+    if (acc >= nb) return true;
+    return false;
 }
