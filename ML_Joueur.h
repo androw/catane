@@ -36,6 +36,7 @@ class ML_Joueur {
 		int getArmee();
 		void afficherCarteMP();
 		void afficherCarteDev();
+        void suppLastMP();
 };
 
 #include "./Cartes/Dev/ML_Dev.h"

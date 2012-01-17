@@ -135,3 +135,8 @@ cout<<"Carte du joueur (Devellopement) :"<<endl;
 cout<<endl;
 }
 }
+
+void ML_Joueur::suppLastMP(){
+    matPrem.pop_back();
+    
+}
