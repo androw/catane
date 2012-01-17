@@ -106,3 +106,32 @@ bool ML_Joueur::hasHeDev(ML_Dev* pm, int nb){
     if (acc >= nb) return true;
     return false;
 }
+
+void ML_Joueur::afficherCarteMP(){
+
+unsigned int i;
+
+if(matPrem.size() != 0) {
+cout<<endl;
+cout<<"Carte du joueur (ressource) :"<<endl; 
+    for (i = 0; i<matPrem.size(); i++) {
+         cout<<"|"<<(*(matPrem.at(i))).getName()<<"|";
+
+    }
+cout<<endl;
+}
+}
+
+void ML_Joueur::afficherCarteDev(){
+
+unsigned int i;
+
+if(dev.size() != 0) {
+cout<<endl;
+cout<<"Carte du joueur (Devellopement) :"<<endl; 
+    for (i = 0; i<dev.size(); i++) {
+         cout<<"|"<<(*(dev.at(i))).getName()<<"|";
+    }
+cout<<endl;
+}
+}

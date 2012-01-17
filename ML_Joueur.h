@@ -34,6 +34,8 @@ class ML_Joueur {
         	bool hasHeDev(ML_Dev*, int);
 		void remScore();
 		int getArmee();
+		void afficherCarteMP();
+		void afficherCarteDev();
 };
 
 #include "./Cartes/Dev/ML_Dev.h"

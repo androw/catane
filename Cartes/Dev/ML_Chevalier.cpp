@@ -28,6 +28,8 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 	for(int i=0; i<4;i++) {
 		tab1[i] = new ML_Joueur(0);
 	}
+	
+
 
 	tab[0] = m->getMap().getTerrain(x, y)->getNoeud(0)->getJoueur();
 	tab[1] = m->getMap().getTerrain(x, y)->getNoeud(1)->getJoueur();

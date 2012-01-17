@@ -8,21 +8,42 @@ ML_Jeux::ML_Jeux() {
 	for (int i=0; i< 4; i++) {
 		joueur[i] = new ML_Joueur(i+1);
 	} 
+    int i;
+    for (i = 1; i < 6; i++) {
+		if(map.getTerrain(3, i)->getName() == "Desert") {
+			xBrigand = 3;
+			yBrigand = i;
+		}
+	}
+	for (i = 1; i < 5; i++) {
+		if(map.getTerrain(2,i)->getName() == "Desert") {
+			xBrigand = 2;
+			yBrigand = i;
+		}
+		if(map.getTerrain(4,i)->getName() == "Desert") {
+			xBrigand = 4;
+			yBrigand = i;
+		}
+	}
+	for (i = 2; i < 5; i++) {
+		if(map.getTerrain(1, i)->getName() == "Desert") {
+			xBrigand = 1;
+			yBrigand = i;
+		}
+		if(map.getTerrain(5, i)->getName() == "Desert") {
+			xBrigand = 5;
+			yBrigand = i;
+		}
+	}
 }
 
 ML_Jeux::ML_Jeux(int p) {
 	nbjoueur = p;
 	armee = 0;
+	int i;	
 	for (int i=0; i< p; i++) {
 		joueur[i] = new ML_Joueur(i+1);
 	} 
-}
-
-void ML_Jeux::init() {
-	int i;
-	int x,y,xx,yy,xxx,yyy;
-	int choix = 0;
-
 	for (i = 1; i < 6; i++) {
 		if(map.getTerrain(3, i)->getName() == "Desert") {
 			xBrigand = 3;
@@ -49,7 +70,15 @@ void ML_Jeux::init() {
 			yBrigand = i;
 		}
 	}
+}
+
+void ML_Jeux::init() {
+	int i;
+	int x,y,xx,yy,xxx,yyy;
+	int choix = 0;
+
 	cout<<"Initialisation de la Partie"<<endl;
+
 	for (i = 1; i<= nbjoueur; i++) {
             do{
 			map.afficher();
