@@ -12,8 +12,8 @@ class ML_Jeux;
 class ML_Dev : public ML_Carte {
     protected:
     string name;
-    
-	public:
+
+    public:
     virtual void use(ML_Joueur*, ML_Jeux*) = 0;
     string getName();
 };

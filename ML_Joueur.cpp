@@ -21,8 +21,16 @@ int ML_Joueur::getNb() {
 	return nb;
 }
 
+int ML_Joueur::getArmee() {
+	return armee;
+}
+
 void ML_Joueur::addRes(ML_MPremiere* pm) {
 	matPrem.push_back(pm);
+}
+
+void ML_Joueur::remScore() {
+	score--;
 }
 
 ML_MPremiere* ML_Joueur::remRes(ML_MPremiere* pm) {
