@@ -32,6 +32,8 @@ class ML_Joueur {
         void addDev(ML_Dev*);
         ML_Dev* remDev(ML_Dev*);
         bool hasHeDev(ML_Dev*, int);
+	void afficherCarteMP();
+	void afficherCarteDev();
 };
 
 #include "./Cartes/Dev/ML_Dev.h"

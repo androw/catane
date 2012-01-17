@@ -20,31 +20,37 @@ void ML_Progres3::use(ML_Joueur* j, ML_Jeux* m) {
     }while(choix<0 || choix >6);
     
     for (int i = 0;i<4;i++) {
+
+	if (i + 1 == j->getNb()) {
+		i++;
+	}
         
         if(choix == 1) {
-            do{
+
+
+            while (m->getJoueur()[i]->hasHe(new ML_Argile(),1)){
                 j->addRes(m->getJoueur()[i]->remRes(new ML_Argile()));
-            }while (m->getJoueur()[i]->hasHe(new ML_Argile(),1));
+            };
 
         }else if(choix == 2) {
-            do{
+            while (m->getJoueur()[i]->hasHe(new ML_Laine(),1)){
                 j->addRes(m->getJoueur()[i]->remRes(new ML_Laine()));
-            }while (m->getJoueur()[i]->hasHe(new ML_Laine(),1));
+            }
 
         }else if(choix == 3) {
-            do{
+            while (m->getJoueur()[i]->hasHe(new ML_Minerai(),1)){
                 j->addRes(m->getJoueur()[i]->remRes(new ML_Minerai()));
-            }while (m->getJoueur()[i]->hasHe(new ML_Minerai(),1));
+            }
 
         }else if(choix == 4) {
-            do{
+            while (m->getJoueur()[i]->hasHe(new ML_Bois(),1)){
                 j->addRes(m->getJoueur()[i]->remRes(new ML_Bois()));
-            }while (m->getJoueur()[i]->hasHe(new ML_Bois(),1));
+            }
 
         }else if(choix == 5) {
-            do{
+            while (m->getJoueur()[i]->hasHe(new ML_Ble(),1)){
                 j->addRes(m->getJoueur()[i]->remRes(new ML_Ble()));
-            }while (m->getJoueur()[i]->hasHe(new ML_Ble(),1));
+            }
 
         }
             

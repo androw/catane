@@ -6,6 +6,7 @@
 #include "ML_Utils.h"
 #include "ML_Joueur.h"
 #include "./Cartes/MPremieres/ML_MPremieres.h"
+#include "./Cartes/Dev/ML_Devs.h"
 #include "./Map/ML_Map.h"
 
 class ML_Jeux {
