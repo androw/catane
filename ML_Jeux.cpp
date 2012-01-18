@@ -5,10 +5,6 @@ using namespace std;
 ML_Jeux::ML_Jeux() {
 	nbjoueur = 4;
 	armee = 0;
-	for (int i=0; i< 5; i++) {
-		res[i] = 0;
-		dev[i] = 0;
-	}
 	for (int i=0; i< 4; i++) {
 		joueur[i] = new ML_Joueur(i+1);
 	} 
@@ -44,15 +40,10 @@ ML_Jeux::ML_Jeux() {
 ML_Jeux::ML_Jeux(int p) {
 	nbjoueur = p;
 	armee = 0;
-	
-	for (int i=0; i< 5; i++) {
-		res[i] = 0;
-		dev[i] = 0;
-	}
+	int i;	
 	for (int i=0; i< p; i++) {
 		joueur[i] = new ML_Joueur(i+1);
 	} 
-	int i;
 	for (i = 1; i < 6; i++) {
 		if(map.getTerrain(3, i)->getName() == "Desert") {
 			xBrigand = 3;
@@ -87,7 +78,8 @@ void ML_Jeux::init() {
 	int choix = 0;
 
 	cout<<"Initialisation de la Partie"<<endl;
-
+    
+    
 	for (i = 1; i<= nbjoueur; i++) {
             do{
 			map.afficher();
@@ -161,10 +153,8 @@ void ML_Jeux::init() {
 	for (i = 1; (i<= nbjoueur && !victory); i++) {
 		do {
 			do{
-				
-				map.afficher();
 				distribRes();
-				joueur[i-1]->afficherCarteMP();
+				map.afficher();
 				cout<<"Au joueur "<<i<<" de jouer !"<<endl;
 				cout<<"1. Placez une route ?"<<endl; //OK
 				cout<<"2. Placez une colonie ?"<<endl; //OK
@@ -261,7 +251,6 @@ void ML_Jeux::trade(int j){
 
 bool ML_Jeux::distribRes(){
 	int de = lancerDe()+lancerDe();
-	cout<<"Les dés ont fait "<<de<<"."<<endl;
 	int i,j;
 	if (de != 7) {
 		for (i = 0; i<7 ; i++) {
@@ -269,11 +258,8 @@ bool ML_Jeux::distribRes(){
 				if (map.getTerrain(i, j) != NULL) {
 				if (map.getTerrain(i, j)->getValeur() == de && !(map.getTerrain(i, j)->getBrigand())) {
 					int k;
-                    			for (k = 0; k<6;k++) {
 					ML_MPremiere* m = NULL;
-					if (map.getTerrain(i, j)->getNoeud(k) != NULL) {
-					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur() != NULL) {
-					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur()->getNb() != 0) {
+                    for (k = 0; k<6;k++) {
 					if (map.getTerrain(i, j)->getName() == "Colline"){
 						m = new ML_Argile();
 						if (res[0] >= m->getMax()) {
@@ -315,18 +301,17 @@ bool ML_Jeux::distribRes(){
 							res[4]++;
 						}
 					}
-                        		if (m != NULL) {
-						if (map.getTerrain(i, j)->getNoeud(k)->isVille()) {
-							map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
-							map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
-						} else {
-							map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+                        if (m != NULL && map.getTerrain(i, j)->getNoeud(k) != NULL) {
+							if (map.getTerrain(i, j)->getNoeud(k)->getJoueur() != NULL) {
+								if (map.getTerrain(i, j)->getNoeud(k)->isVille()) {
+									map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+									map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+								} else {
+									map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+								}
+							}
 						}
-					}
-					}
-					}
-                    			}
-					}
+                    	}
 				}
 				}
 			}
@@ -341,14 +326,104 @@ bool ML_Jeux::initEchange() {
     return false;
 }
 
-bool ML_Jeux::echange(ML_Joueur* j1, ML_Joueur* j2, ML_MPremiere* m1, ML_MPremiere* m2, int nb1, int nb2) {
-    	if (!(j1->hasHe(m1, nb1)) || !(j2->hasHe(m2, nb2))) return false;
-    	partEchange(j1, j2, m1, nb1);
-    	partEchange(j2, j1, m2, nb2);
-	delete m1;
-	delete m2;
+bool ML_Jeux::echange(ML_Joueur* j1) {
+    
+    unsigned int i;
+	int j;
+	int choix1,choix2;
+	choix2 = 0;
+
+	do{
+		cout<<"A Quel joueur proposez vous un échange ?"<<endl;
+		cin>>j;
+	}while( j<1 || j>4);
+
+	vector<ML_MPremiere*> matPrem1;
+	vector<ML_MPremiere*> matPrem2;
+
+	do{
+		cout<<"Quelles Ressources voulez vous donner ?"<<endl;
+		do{
+			cout<<"0. Argile 1. Bois 2. Minerai 3. Laine 4. Ble"<<endl;
+			cin>>choix1;
+		} while (0 > choix1 || choix1 > 4 );
+
+		ML_MPremiere* m = NULL;
+
+		if (choix1 == 0) {
+			m = new ML_Argile();
+		} else if (choix1 == 1) {
+			m = new ML_Bois();
+		} else if (choix1 == 2) {
+			m = new ML_Minerai();
+		} else if (choix1 == 3) {
+			m = new ML_Laine();
+		} else if (choix1 == 4) {
+			m = new ML_Ble();
+		}
+
+		if((j1->hasHe(m,1))) {
+			matPrem1.push_back(m);
+			cout<<"ajouter une autre ressource : 0.Oui 1.Non 2.annuller?"<<endl;
+			cin>>choix2;
+            if(choix2 == 2) {
+                return false;
+            }
+		}else {cout<<"Vous n'avez pas cette ressource"<<endl;}
+
+	}while(choix2 !=1 );
+
+	choix2 = 0;
+
+	do{
+		cout<<"Quelles Ressources voulez vous prendre ?"<<endl;
+		do{
+			cout<<"0. Argile 1. Bois 2. Minerai 3. Laine 4. Ble"<<endl;
+			cin>>choix1;
+		} while (0 > choix1 || choix1 > 4 );
+
+		ML_MPremiere* m = NULL;
+
+		if (choix1 == 0) {
+			m = new ML_Argile();
+		} else if (choix1 == 1) {
+			m = new ML_Bois();
+		} else if (choix1 == 2) {
+			m = new ML_Minerai();
+		} else if (choix1 == 3) {
+			m = new ML_Laine();
+		} else if (choix1 == 4) {
+			m = new ML_Ble();
+		}
+
+		if((joueur[j-1]->hasHe(m,1))) {
+			matPrem2.push_back(m);
+			cout<<"ajouter une autre ressource : 0.Oui 1.Non 2.annuller?"<<endl;
+			cin>>choix2;
+            if(choix2 == 2) {
+                return false;
+            }
+		}else {cout<<"Vous n'avez pas cette ressource"<<endl;}
+
+	}while(choix2 !=1);
+
+	
+	for (i = 0; i < matPrem2.size(); i++) {
+        	j1->addRes(matPrem2.at(i));
+            joueur[j-1]->remRes(matPrem2.at(i));
+        
+    	}
+    
+    for (i = 0; i < matPrem1.size(); i++) {
+        joueur[j-1]->addRes(matPrem1.at(i));
+        j1->remRes(matPrem1.at(i));
+        
+    }
+
+
     	return true;
 }
+
 
 void ML_Jeux::partEchange(ML_Joueur* j1, ML_Joueur* j2, ML_MPremiere* m, int nb) {
     int i;

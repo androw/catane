@@ -26,7 +26,7 @@ class ML_Jeux {
 		void init();
 		ML_Map getMap();
         	bool initEchange();
-        	bool echange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, ML_MPremiere*, int, int);
+        	bool echange(ML_Joueur*);
         	void partEchange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, int);
 		bool placerColonie(int,int,int,int,int,int,int,bool);
 		bool placerVille(int,int,int,int,int,int,int);
