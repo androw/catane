@@ -5,7 +5,12 @@
 
 int main () {
 	srand(time(NULL));
-	ML_Jeux letsplay;
+	int j;
+	do {
+	cout<<"Combien de joueurs etes vous ?"<<endl;
+	cin>>j;
+	} while (j<=1 && j>4);
+	ML_Jeux letsplay(j);
 	letsplay.init();
 	letsplay.distribRes();
 

@@ -5,6 +5,10 @@ using namespace std;
 ML_Jeux::ML_Jeux() {
 	nbjoueur = 4;
 	armee = 0;
+	for (int i=0; i< 5; i++) {
+		res[i] = 0;
+		dev[i] = 0;
+	}
 	for (int i=0; i< 4; i++) {
 		joueur[i] = new ML_Joueur(i+1);
 	} 
@@ -40,10 +44,15 @@ ML_Jeux::ML_Jeux() {
 ML_Jeux::ML_Jeux(int p) {
 	nbjoueur = p;
 	armee = 0;
-	int i;	
+	
+	for (int i=0; i< 5; i++) {
+		res[i] = 0;
+		dev[i] = 0;
+	}
 	for (int i=0; i< p; i++) {
 		joueur[i] = new ML_Joueur(i+1);
 	} 
+	int i;
 	for (i = 1; i < 6; i++) {
 		if(map.getTerrain(3, i)->getName() == "Desert") {
 			xBrigand = 3;
@@ -152,8 +161,10 @@ void ML_Jeux::init() {
 	for (i = 1; (i<= nbjoueur && !victory); i++) {
 		do {
 			do{
-				distribRes();
+				
 				map.afficher();
+				distribRes();
+				joueur[i-1]->afficherCarteMP();
 				cout<<"Au joueur "<<i<<" de jouer !"<<endl;
 				cout<<"1. Placez une route ?"<<endl; //OK
 				cout<<"2. Placez une colonie ?"<<endl; //OK
@@ -250,6 +261,7 @@ void ML_Jeux::trade(int j){
 
 bool ML_Jeux::distribRes(){
 	int de = lancerDe()+lancerDe();
+	cout<<"Les dés ont fait "<<de<<"."<<endl;
 	int i,j;
 	if (de != 7) {
 		for (i = 0; i<7 ; i++) {
@@ -258,7 +270,11 @@ bool ML_Jeux::distribRes(){
 				if (map.getTerrain(i, j)->getValeur() == de && !(map.getTerrain(i, j)->getBrigand())) {
 					int k;
 					ML_MPremiere* m = NULL;
-                    for (k = 0; k<6;k++) {
+					cout<<"Distrib de "<<map.getTerrain(i, j)->getName()<<endl;
+                    			for (k = 0; k<6;k++) {
+					if (map.getTerrain(i, j)->getNoeud(k) != NULL) {
+					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur() != NULL) {
+					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur()->getNb() != 0) {
 					if (map.getTerrain(i, j)->getName() == "Colline"){
 						m = new ML_Argile();
 						if (res[0] >= m->getMax()) {
@@ -269,10 +285,13 @@ bool ML_Jeux::distribRes(){
 						}
 					} else if (map.getTerrain(i, j)->getName() == "Foret"){
 						m = new ML_Bois();
+						cout<<"DISTRIB BOIS"<<endl;
 						if (res[1] >= m->getMax()) {
+							cout<<"PLUS DE BOIS"<<endl;
 							delete m;
 							m = NULL;	
 						} else {
+							cout<<"ENCORE DE BOIS"<<endl;
 							res[1]++;
 						}
 					} else if (map.getTerrain(i, j)->getName() == "Montagne"){
@@ -300,17 +319,18 @@ bool ML_Jeux::distribRes(){
 							res[4]++;
 						}
 					}
-                        if (m != NULL && map.getTerrain(i, j)->getNoeud(k) != NULL) {
-							if (map.getTerrain(i, j)->getNoeud(k)->getJoueur() != NULL) {
-								if (map.getTerrain(i, j)->getNoeud(k)->isVille()) {
-									map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
-									map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
-								} else {
-									map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
-								}
-							}
+                        		if (m != NULL) {
+						if (map.getTerrain(i, j)->getNoeud(k)->isVille()) {
+							map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+							map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+						} else {
+							map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
 						}
-                    	}
+					}
+					}
+					}
+                    			}
+					}
 				}
 				}
 			}
