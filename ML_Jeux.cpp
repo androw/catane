@@ -269,9 +269,8 @@ bool ML_Jeux::distribRes(){
 				if (map.getTerrain(i, j) != NULL) {
 				if (map.getTerrain(i, j)->getValeur() == de && !(map.getTerrain(i, j)->getBrigand())) {
 					int k;
-					ML_MPremiere* m = NULL;
-					cout<<"Distrib de "<<map.getTerrain(i, j)->getName()<<endl;
                     			for (k = 0; k<6;k++) {
+					ML_MPremiere* m = NULL;
 					if (map.getTerrain(i, j)->getNoeud(k) != NULL) {
 					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur() != NULL) {
 					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur()->getNb() != 0) {
@@ -285,13 +284,10 @@ bool ML_Jeux::distribRes(){
 						}
 					} else if (map.getTerrain(i, j)->getName() == "Foret"){
 						m = new ML_Bois();
-						cout<<"DISTRIB BOIS"<<endl;
 						if (res[1] >= m->getMax()) {
-							cout<<"PLUS DE BOIS"<<endl;
 							delete m;
 							m = NULL;	
 						} else {
-							cout<<"ENCORE DE BOIS"<<endl;
 							res[1]++;
 						}
 					} else if (map.getTerrain(i, j)->getName() == "Montagne"){
