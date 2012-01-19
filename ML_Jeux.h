@@ -42,6 +42,8 @@ class ML_Jeux {
 		void addVille(int);
 		void trade(int);
 		void tradeDev(int);
+		void tradePort(ML_Joueur*);
+		void tradePortGen(ML_Joueur*);
 };
 
 #endif

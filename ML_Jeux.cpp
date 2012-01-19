@@ -178,16 +178,18 @@ void ML_Jeux::init() {
 				cout<<"5. Faire un échange avec un port ?"<<endl;
 				cout<<"6. Faire un échange avec la banque ?"<<endl; //OK
 				cout<<"7. Achat d'une carte développement ?"<<endl;
-				cout<<"8. Finir tour"<<endl; //OK
+				cout<<"8. Utiliser une carte développement ?"<<endl;
+				cout<<"9. Finir tour"<<endl; //OK
 				cin>>choix;
-			}while(choix < 0 || choix > 8);
+			}while(choix < 0 || choix > 9);
 			if (choix == 1) {addRoute(i);}
 			else if (choix == 2) {addColonie(i);}
 			else if (choix == 3) {addVille(i);}
 			else if (choix == 4) {echange(joueur[i-1]);}
+			else if (choix == 5) {tradePort(joueur[i-1]);}
 			else if (choix == 6) {trade(i);}
 			else if (choix == 7) {tradeDev(i);}
-		}while (choix != 8);
+		}while (choix != 9);
 		if (joueur[i-1]->getScore() == 10) {victory = true;}
 	}
 	} while (!victory);
@@ -218,9 +220,9 @@ void ML_Jeux::trade(int j){
 		cout<<"0. Argile 1. Bois 2. Minerai 3. Laine 4. Ble"<<endl;
 		cout<<"De quelle ressource (x4) voulez vous vous débarassez ?"<<endl;
 		cin>>insell;
-		cout<<"Quelle ressource (x4) souhaitez vous acquérir ?"<<endl;
+		cout<<"Quelle ressource (x1) souhaitez vous acquérir ?"<<endl;
 		cin>>inbuy;
-	} while (0 > insell && insell > 4 && 0 > inbuy && inbuy > 4);
+	} while (0 > insell || insell > 4 || 0 > inbuy || inbuy > 4);
 	ML_MPremiere* m = NULL;
 	if (insell == 0) {
 		m = new ML_Argile();
@@ -707,5 +709,95 @@ ML_Joueur** ML_Jeux::getJoueur(){
 	return joueur;
 }
 	
-
+void ML_Jeux::tradePort(ML_Joueur* j){
+	int x;
+	int y;
+	do {
+		cout<<"Avec quel port voulez vous �changer ?"<<endl;
+		cout<<"x ?"<<endl;
+		cin>>x;
+		cout<<"y ?"<<endl;
+                cin>>y;
+	} while (x<0 || x >= 7 || y<0 || y >= 7);
 	
+	ML_Terrain* t = map.getTerrain(x, y);
+	if (t != NULL) {
+		if (t->getName().find("Port") != string::npos) {
+			cout<<"Ceci n'est pas un port"<<endl;
+			return;
+		}
+		
+		bool isHere = false;
+		for (int i; i<6; i++) {
+			if (t->getArrete(i) != NULL) {
+				if (t->getArrete(i)->getJoueur()->getNb() == j->getNb()) isHere = true;
+			}
+		}
+		if (!isHere) {cout<<"Vous n'avez pas de colonie sur ce port"<<endl; return;}
+		
+		if (t->getName().find("?") != string::npos) {
+                        cout<<"Port g�n�rique, 3 ressources contre une"<<endl;
+                        tradePortGen(j);
+			return;
+                } else {
+			return;
+		}
+	} else {
+		cout<<"Ceci n'est pas un port"<<endl;
+		return;
+	}
+}
+
+void ML_Jeux::tradePortGen(ML_Joueur* j) {
+	int insell;
+	int inbuy;
+	do {
+		cout<<"0. Argile 1. Bois 2. Minerai 3. Laine 4. Ble"<<endl;
+		cout<<"De quelle ressource (x3) voulez vous vous débarassez ?"<<endl;
+		cin>>insell;
+		cout<<"Quelle ressource (x1) souhaitez vous acquérir ?"<<endl;
+		cin>>inbuy;
+	} while (0 > insell || insell > 4 || 0 > inbuy || inbuy > 4);
+	ML_MPremiere* m = NULL;
+	if (insell == 0) {
+		m = new ML_Argile();
+	} else if (insell == 1) {
+		m = new ML_Bois();
+	} else if (insell == 2) {
+		m = new ML_Minerai();
+	} else if (insell == 3) {
+		m = new ML_Laine();
+	} else if (insell == 4) {
+		m = new ML_Ble();
+	}
+	if (!(j->hasHe(m, 3))) {
+		cout<<"Vous n'avez pas les ressources nécessaires"<<endl;
+		delete m;
+		return;}
+
+	ML_MPremiere* mn = NULL;
+	if (inbuy == 0) {
+		mn = new ML_Argile();
+	} else if (inbuy == 1) {
+		mn = new ML_Bois();
+	} else if (inbuy == 2) {
+		mn = new ML_Minerai();
+	} else if (inbuy == 3) {
+		mn = new ML_Laine();
+	} else if (inbuy == 4) {
+		mn = new ML_Ble();
+	}
+	if (res[inbuy] >= mn->getMax()) {
+		cout<<"Plus de carte disponible, échange annulé"<<endl;
+		delete m;
+		delete mn;
+	} else {
+		res[inbuy]++;
+		res[insell] = res[insell] - 3;
+		delete j->remRes(m);
+		delete j->remRes(m);
+		delete j->remRes(m);
+		j->addRes(mn);
+	}
+	delete m;	
+}
