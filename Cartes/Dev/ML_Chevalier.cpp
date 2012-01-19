@@ -10,7 +10,7 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 	int y = 3;
 	int i = 0;
 	do{	
-        cout<<" ou voulez vous mettre le brigand?"<<endl;
+        cout<<"Ou voulez vous mettre le brigand ?"<<endl;
         cout<<"x?"<<endl;
         cin>>x;
         cout<<"y?"<<endl;
