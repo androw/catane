@@ -45,6 +45,7 @@ class ML_Jeux {
 		void tradePort(ML_Joueur*);
 		void tradePortGen(ML_Joueur*);
 		void tradePortOther(ML_Joueur*, ML_Terrain*);
+		void distribResInit();
 };
 
 #endif

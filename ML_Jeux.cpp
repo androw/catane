@@ -154,7 +154,7 @@ void ML_Jeux::init() {
 
 		cout<<endl;
 	}
-	//AJOUTER LES RESSOURCE EN FONCTION DES COLONIES PLACZE
+	distribResInit();
 	cout<<"Initialisation finie. Debut de la partie."<<endl;
 	bool victory = false;
 	do {
@@ -174,10 +174,10 @@ void ML_Jeux::init() {
 				cout<<"1. Placez une route ?"<<endl; //OK
 				cout<<"2. Placez une colonie ?"<<endl; //OK
 				cout<<"3. Placez une ville ?"<<endl; //OK
-				cout<<"4. Faire un échange entre joueurs ?"<<endl;
-				cout<<"5. Faire un échange avec un port ?"<<endl;
+				cout<<"4. Faire un échange entre joueurs ?"<<endl; //OK
+				cout<<"5. Faire un échange avec un port ?"<<endl; //OK
 				cout<<"6. Faire un échange avec la banque ?"<<endl; //OK
-				cout<<"7. Achat d'une carte développement ?"<<endl;
+				cout<<"7. Achat d'une carte développement ?"<<endl; //OK
 				cout<<"8. Utiliser une carte développement ?"<<endl;
 				cout<<"9. Finir tour"<<endl; //OK
 				cin>>choix;
@@ -865,3 +865,71 @@ void ML_Jeux::tradePortOther(ML_Joueur* j, ML_Terrain* t) {
 	delete m;	
 }
 
+void ML_Jeux::distribResInit(){
+	int i,j;
+	for (i = 0; i<7 ; i++) {
+			for (j = 0; j<7 ; j++) {
+				if (map.getTerrain(i, j) != NULL) {
+					int k;
+                    for (k = 0; k<6;k++) {
+					ML_MPremiere* m = NULL;
+					if (map.getTerrain(i, j)->getNoeud(k) != NULL) {
+					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur() != NULL) {
+					if (map.getTerrain(i, j)->getNoeud(k)->getJoueur()->getNb() != 0) {
+					if (map.getTerrain(i, j)->getName() == "Colline"){
+						m = new ML_Argile();
+						if (res[0] >= m->getMax()) {
+							delete m;
+							m = NULL;	
+						} else {
+							res[0]++;
+						}
+					} else if (map.getTerrain(i, j)->getName() == "Foret"){
+						m = new ML_Bois();
+						if (res[1] >= m->getMax()) {
+							delete m;
+							m = NULL;	
+						} else {
+							res[1]++;
+						}
+					} else if (map.getTerrain(i, j)->getName() == "Montagne"){
+						m = new ML_Minerai();
+						if (res[2] >= m->getMax()) {
+							delete m;
+							m = NULL;	
+						} else {
+							res[2]++;
+						}
+					} else if (map.getTerrain(i, j)->getName() == "Paturages"){
+						m = new ML_Laine();
+						if (res[3] >= m->getMax()) {
+							delete m;
+							m = NULL;	
+						} else {
+							res[3]++;
+						}
+					} else if (map.getTerrain(i, j)->getName() == "TCultivable"){
+						m = new ML_Ble();
+						if (res[4] >= m->getMax()) {
+							delete m;
+							m = NULL;	
+						} else {
+							res[4]++;
+						}
+					}
+                    if (m != NULL) {
+                        if (map.getTerrain(i, j)->getNoeud(k)->isVille()) {
+                            map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+                            map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+                        } else {
+                            map.getTerrain(i, j)->getNoeud(k)->getJoueur()->addRes(m);
+                        }
+                    }
+                    }
+                    }
+                    }
+                    }
+				}
+			}
+		}
+}
