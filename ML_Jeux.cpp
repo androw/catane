@@ -736,10 +736,12 @@ void ML_Jeux::tradePort(ML_Joueur* j){
 		if (!isHere) {cout<<"Vous n'avez pas de colonie sur ce port"<<endl; return;}
 		
 		if (t->getName().find("?") != string::npos) {
-                        cout<<"Port générique, 3 ressources contre une"<<endl;
-                        tradePortGen(j);
+            cout<<"Port générique, 3 ressources contre une"<<endl;
+            tradePortGen(j);
 			return;
-                } else {
+         } else {
+			cout<<"Port spécifique, 2 ressources contre une"<<endl;
+            tradePortOther(j,t);
 			return;
 		}
 	} else {
@@ -791,6 +793,7 @@ void ML_Jeux::tradePortGen(ML_Joueur* j) {
 		cout<<"Plus de carte disponible, Ã©change annulÃ©"<<endl;
 		delete m;
 		delete mn;
+		return;
 	} else {
 		res[inbuy]++;
 		res[insell] = res[insell] - 3;
@@ -801,3 +804,64 @@ void ML_Jeux::tradePortGen(ML_Joueur* j) {
 	}
 	delete m;	
 }
+
+void ML_Jeux::tradePortOther(ML_Joueur* j, ML_Terrain* t) {
+	int inbuy;
+	int insell;
+	do {
+		cout<<"0. Argile 1. Bois 2. Minerai 3. Laine 4. Ble"<<endl;
+		cout<<"Quelle ressource (x1) souhaitez vous acquÃ©rir ?"<<endl;
+		cin>>inbuy;
+	} while (0 > inbuy || inbuy > 4);
+	
+	ML_MPremiere* m = NULL;
+	
+	if (t->getName().find("Arg") != string::npos) {
+		m = new ML_Argile();
+		insell = 0;
+	} else if (t->getName().find("Bois") != string::npos) {
+		m = new ML_Bois();
+		insell = 1;
+	} else if (t->getName().find("Min") != string::npos) {
+		m = new ML_Minerai();
+		insell = 2;
+	} else if (t->getName().find("Lai") != string::npos) {
+		m = new ML_Laine();
+		insell = 3;
+	} else if (t->getName().find("Ble") != string::npos) {
+		m = new ML_Ble();
+		insell = 4;
+	}
+	if (!(j->hasHe(m, 2))) {
+		cout<<"Vous n'avez pas les ressources nÃ©cessaires"<<endl;
+		delete m;
+		return;}
+
+	ML_MPremiere* mn = NULL;
+	
+	if (inbuy == 0) {
+		mn = new ML_Argile();
+	} else if (inbuy == 1) {
+		mn = new ML_Bois();
+	} else if (inbuy == 2) {
+		mn = new ML_Minerai();
+	} else if (inbuy == 3) {
+		mn = new ML_Laine();
+	} else if (inbuy == 4) {
+		mn = new ML_Ble();
+	}
+	if (res[inbuy] >= mn->getMax()) {
+		cout<<"Plus de carte disponible, Ã©change annulÃ©"<<endl;
+		delete m;
+		delete mn;
+		return;
+	} else {
+		res[inbuy]++;
+		res[insell] = res[insell] - 2;
+		delete j->remRes(m);
+		delete j->remRes(m);
+		j->addRes(mn);
+	}
+	delete m;	
+}
+

@@ -25,17 +25,17 @@ class ML_Jeux {
 		bool distribRes();
 		void init();
 		ML_Map getMap();
-        	bool initEchange();
-        	bool echange(ML_Joueur*);
-        	void partEchange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, int);
+        bool initEchange();
+        bool echange(ML_Joueur*);
+        void partEchange(ML_Joueur*, ML_Joueur*, ML_MPremiere*, int);
 		bool placerColonie(int,int,int,int,int,int,int,bool);
 		bool placerVille(int,int,int,int,int,int,int);
 		bool placerRoute(int,int,int,int,int);
 		void setBrigand(int,int); 
-        	int getXBrigand(); 
-        	int getYBrigand();
-        	int* getRes();
-        	ML_Joueur** getJoueur();
+        int getXBrigand(); 
+        int getYBrigand();
+        int* getRes();
+        ML_Joueur** getJoueur();
 		void refreshArmee();
 		void addRoute(int);
 		void addColonie(int);
@@ -44,6 +44,7 @@ class ML_Jeux {
 		void tradeDev(int);
 		void tradePort(ML_Joueur*);
 		void tradePortGen(ML_Joueur*);
+		void tradePortOther(ML_Joueur*, ML_Terrain*);
 };
 
 #endif
