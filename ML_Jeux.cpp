@@ -659,7 +659,7 @@ bool ML_Jeux::placerVille(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) {
 	ML_MPremiere* ble = new ML_Ble();
 	if( x<7 && xx<7 && xxx<7 && y<7 && yy<7 && yyy<7 && x>=0 && xx>=0 && xxx>=0 && y>=0 && yy>=0 && yyy>=0) {
 		if( map.getNoeud(x,y,xx,yy,xxx,yyy) != NULL) {
-			if(map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur()->getNb() == j && joueur[j-1]->hasHe(min, 3) && joueur[j-1]->hasHe(ble, 2)) {
+			if(map.getNoeud(x,y,xx,yy,xxx,yyy)->getJoueur()->getNb() == j && joueur[j-1]->hasHe(min, 3) && joueur[j-1]->hasHe(ble, 2) && (!map.getNoeud(x,y,xx,yy,xxx,yyy)->isVille())) {
 				map.getNoeud(x,y,xx,yy,xxx,yyy)->setVille();
 				delete joueur[j-1]->remRes(ble);
 				delete joueur[j-1]->remRes(ble);
