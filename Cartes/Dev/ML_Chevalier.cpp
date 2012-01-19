@@ -15,7 +15,7 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
         cin>>x;
         cout<<"y?"<<endl;
         cin>>y;
-	}while((x == m->getXBrigand() && y == m->getYBrigand()) || ((x == 3 && (y<1 || y>5)) || ((x == 2 || x == 4) && (y<1 || y>4)) || ((x == 1 || x == 5) && (y<2 || y>4))) );
+	}while((x == m->getXBrigand() && y == m->getYBrigand()) || ((x == 3 && (y<1 || y>5)) || ((x == 2 || x == 4) && (y<1 || y>4)) || ((x == 1 || x == 5) && (y<2 || y>4))) || x<1 || x>5);
     
 	
     
@@ -76,11 +76,11 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
             j->addRes(tab1[choix-1]->getMPrem().back());
             tab1[choix-1]->suppLastMP();
 		}
-		if(tab1[choix-1]->getMPrem().size() == 1) {
+		else if(tab1[choix-1]->getMPrem().size() == 1) {
             j->addRes(tab1[choix-1]->getMPrem().back());
             tab1[choix-1]->suppLastMP();
 		}
-		if(tab1[choix-1]->getMPrem().size() == 0) {
+		else if(tab1[choix-1]->getMPrem().size() == 0) {
             cout<<"Pas de carte"<<endl;
 		}
 	}

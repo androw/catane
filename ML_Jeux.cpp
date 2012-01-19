@@ -159,11 +159,17 @@ void ML_Jeux::init() {
 	bool victory = false;
 	do {
 	for (i = 1; (i<= nbjoueur && !victory); i++) {
+		if (distribRes()){map.afficher();
+				cout<<"Au joueur "<<i<<" de placer le Brigand !"<<endl;
+					ML_Dev * m = new ML_Chevalier();
+					m->use(joueur[i-1],this);
+					delete m; 
+		}
 		do {
 			do{
 				map.afficher();
-				distribRes();
 				joueur[i-1]->afficherCarteMP();
+				joueur[i-1]->afficherCarteDev();
 				cout<<"Au joueur "<<i<<" de jouer !"<<endl;
 				cout<<"1. Placez une route ?"<<endl; //OK
 				cout<<"2. Placez une colonie ?"<<endl; //OK
@@ -178,7 +184,9 @@ void ML_Jeux::init() {
 			if (choix == 1) {addRoute(i);}
 			else if (choix == 2) {addColonie(i);}
 			else if (choix == 3) {addVille(i);}
+			else if (choix == 4) {echange(joueur[i-1]);}
 			else if (choix == 6) {trade(i);}
+			else if (choix == 7) {tradeDev(i);}
 		}while (choix != 8);
 		if (joueur[i-1]->getScore() == 10) {victory = true;}
 	}
@@ -212,7 +220,7 @@ void ML_Jeux::trade(int j){
 		cin>>insell;
 		cout<<"Quelle ressource (x4) souhaitez vous acquérir ?"<<endl;
 		cin>>inbuy;
-	} while (0 <= insell && insell <= 4 && 0 <= inbuy && inbuy <= 4);
+	} while (0 > insell && insell > 4 && 0 > inbuy && inbuy > 4);
 	ML_MPremiere* m = NULL;
 	if (insell == 0) {
 		m = new ML_Argile();
@@ -256,6 +264,71 @@ void ML_Jeux::trade(int j){
 		joueur[j-1]->addRes(mn);
 	}
 	delete m;	
+}
+
+
+
+
+
+void ML_Jeux::tradeDev(int j){
+
+		ML_MPremiere* m1 = NULL;
+
+		ML_MPremiere* m2 = NULL;
+
+		ML_MPremiere* m3 = NULL;
+
+		m1 = new ML_Minerai();
+
+		m2 = new ML_Laine();
+
+		m3 = new ML_Ble();
+
+	if (!(joueur[j-1]->hasHe(m1, 1))) {
+		cout<<"Vous n'avez pas les ressources nécessaires"<<endl;
+		delete m1;
+		return;}
+	if (!(joueur[j-1]->hasHe(m2, 1))) {
+		cout<<"Vous n'avez pas les ressources nécessaires"<<endl;
+		delete m2;
+		return;}
+	if (!(joueur[j-1]->hasHe(m3, 1))) {
+		cout<<"Vous n'avez pas les ressources nécessaires"<<endl;
+		delete m3;
+		return;}
+
+	ML_Dev* mn = NULL;
+
+	int inbuy = rand()%5;
+
+	if (inbuy == 0) {
+		mn = new ML_Chevalier();
+	} else if (inbuy == 1) {
+		mn = new ML_PVictoire();
+	} else if (inbuy == 2) {
+		mn = new ML_Progres1();
+	} else if (inbuy == 3) {
+		mn = new ML_Progres2();
+	} else if (inbuy == 4) {
+		mn = new ML_Progres3();
+	}
+	if (dev[inbuy] >= mn->getMax()) {
+		cout<<"Plus de carte disponible, échange annulé"<<endl;
+		delete m1;
+		delete m2;
+		delete m3;
+		delete mn;
+	} else {
+		dev[inbuy]++;
+		res[2] = res[2] - 1;
+		res[3] = res[3] - 1;
+		res[4] = res[4] - 1;
+		delete joueur[j-1]->remRes(m1);
+		delete joueur[j-1]->remRes(m2);
+		delete joueur[j-1]->remRes(m3);
+		joueur[j-1]->addDev(mn);
+	}
+	
 }
 
 bool ML_Jeux::distribRes(){

@@ -41,6 +41,7 @@ class ML_Jeux {
 		void addColonie(int);
 		void addVille(int);
 		void trade(int);
+		void tradeDev(int);
 };
 
 #endif
