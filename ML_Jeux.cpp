@@ -159,11 +159,13 @@ void ML_Jeux::init() {
 	bool victory = false;
 	do {
 	for (i = 1; (i<= nbjoueur && !victory); i++) {
-		if (distribRes()){map.afficher();
-				cout<<"Au joueur "<<i<<" de placer le Brigand !"<<endl;
+		if (distribRes()){
+                    map.afficher();
+                    cout<<"Au joueur "<<i<<" de placer le Brigand !"<<endl;
 					ML_Dev * m = new ML_Chevalier();
 					m->use(joueur[i-1],this);
 					delete m; 
+                    BrigandActive();
 		}
 		do {
 			do{
@@ -189,6 +191,7 @@ void ML_Jeux::init() {
 			else if (choix == 5) {tradePort(joueur[i-1]);}
 			else if (choix == 6) {trade(i);}
 			else if (choix == 7) {tradeDev(i);}
+			else if (choix == 8) {useCard(joueur[i-1]);}
 		}while (choix != 9);
 		if (joueur[i-1]->getScore() == 10) {victory = true;}
 	}
@@ -425,7 +428,7 @@ bool ML_Jeux::echange(ML_Joueur* j1) {
 	do{
 		cout<<"A Quel joueur proposez vous un Ã©change ?"<<endl;
 		cin>>j;
-	}while( j<1 || j>4);
+	}while( j<1 || j>nbjoueur);
 
 	vector<ML_MPremiere*> matPrem1;
 	vector<ML_MPremiere*> matPrem2;
@@ -933,3 +936,96 @@ void ML_Jeux::distribResInit(){
 			}
 		}
 }
+
+void ML_Jeux::useCard(ML_Joueur * jj){
+    
+    int choix;
+    ML_Dev* m = NULL;
+    
+    if(jj->getDev().size() > 0) {
+        
+        do{
+            cout<<"Quelle Carte voulez vous utiliser ?"<<endl;
+            cout<<"0. Chevalier 1. Point Victoire 2. Progres 1: Placer 2 routes 3. Progres 2 : 2 ressources  4. Progres 3 : prendre resource de tout les joueur 5.annuler"<<endl;
+            cin>>choix;
+            
+                
+                if (choix == 0) {
+                    m = new ML_Chevalier();
+                } else if (choix == 1) {
+                    m = new ML_PVictoire();
+                } else if (choix == 2) {
+                    m = new ML_Progres1();
+                } else if (choix == 3) {
+                    m = new ML_Progres2();
+                } else if (choix == 4) {
+                    m = new ML_Progres3();
+                }
+            
+            if(choix != 5 && (jj->hasHeDev(m, 1))) {
+                m->use(jj,this);
+                jj->remDev(m);
+                delete m;
+            }
+            
+        } while ( !(jj->hasHeDev(m, 1)) && choix != 5);
+        
+        
+        
+        
+        
+    }else { cout<<"Vous n'avez pas cette Carte"<<endl;}
+    
+}
+
+void ML_Jeux::BrigandActive() {
+    
+    int i;
+    int j;
+    
+    for (i=1; i<nbjoueur+1;i++) {
+        int choix;
+        ML_MPremiere* m = NULL;
+        if(joueur[i-1]->getMPrem().size() > 7) {
+            
+            int nbCartes = joueur[i-1]->getMPrem().size();
+            nbCartes = nbCartes / 2;
+            
+            for (j = 0; j< nbCartes;j++) {
+                do {
+            
+                    do{
+                        cout<<"0. Argile 1. Bois 2. Minerai 3. Laine 4. Ble"<<endl;
+                        cout<<"joueur"<<joueur[i-1]->getNb()<<" : Quelle ressource (x1) souhaitez vous enlever (la moitiŽ de vos cartes)?"<<endl;
+                        cin>>choix;
+                    } while (choix < 0 || choix >4);
+
+                    if (choix == 0) {
+                        m = new ML_Argile();
+                    } else if (choix == 1) {
+                        m = new ML_Bois();
+                    } else if (choix == 2) {
+                        m = new ML_Minerai();
+                    } else if (choix == 3) {
+                        m = new ML_Laine();
+                    } else if (choix == 4) {
+                        m = new ML_Ble();
+                    }
+                        
+                } while(!(joueur[i-1]->hasHe(m,1)));
+                
+
+                
+                joueur[i-1]->remRes(m);
+                dev[0]--;
+            }
+            
+            
+        }
+    }
+}
+
+int ML_Jeux::getNbJ() {
+    return nbjoueur;
+}
+

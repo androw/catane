@@ -2,6 +2,7 @@
 #define ML_PROGRES3_H
 
 #include "ML_Dev.h"
+#include "../../ML_Jeux.h"
 
 class ML_Progres3 : public ML_Dev {
 	protected:

@@ -46,6 +46,9 @@ class ML_Jeux {
 		void tradePortGen(ML_Joueur*);
 		void tradePortOther(ML_Joueur*, ML_Terrain*);
 		void distribResInit();
+        void useCard(ML_Joueur *);
+        void BrigandActive();
+        int getNbJ();
 };
 
 #endif

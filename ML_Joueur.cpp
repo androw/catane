@@ -47,6 +47,10 @@ ML_MPremiere* ML_Joueur::remRes(ML_MPremiere* pm) {
 
 bool ML_Joueur::hasHe(ML_MPremiere* pm, int nb){
     unsigned int i;
+    
+    if (pm == NULL) {
+        return false;
+    }
     int acc = 0;
     for (i = 0; i < matPrem.size(); i++) {
         if (*pm == *(matPrem.at(i))) {
@@ -96,6 +100,9 @@ ML_Dev* ML_Joueur::remDev(ML_Dev* pm) {
 }
 
 bool ML_Joueur::hasHeDev(ML_Dev* pm, int nb){
+    
+    if (pm == NULL) return false;
+    
     long unsigned int i;
     int acc = 0;
     for (i = 0; i < dev.size(); i++) {
@@ -140,3 +147,4 @@ void ML_Joueur::suppLastMP(){
     matPrem.pop_back();
     
 }
+

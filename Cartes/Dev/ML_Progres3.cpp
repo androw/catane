@@ -19,7 +19,7 @@ void ML_Progres3::use(ML_Joueur* j, ML_Jeux* m) {
         cin>>choix;
     }while(choix<0 || choix >6);
     
-    for (int i = 0;i<4;i++) {
+    for (int i = 0;i<m->getNbJ();i++) {
 
 	if (i + 1 == j->getNb()) {
 		i++;

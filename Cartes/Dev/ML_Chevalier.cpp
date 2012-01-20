@@ -73,12 +73,6 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 		if(tab1[choix-1]->getMPrem().size() > 1) {
             j->addRes(tab1[choix-1]->getMPrem().back());
             tab1[choix-1]->suppLastMP();
-            j->addRes(tab1[choix-1]->getMPrem().back());
-            tab1[choix-1]->suppLastMP();
-		}
-		else if(tab1[choix-1]->getMPrem().size() == 1) {
-            j->addRes(tab1[choix-1]->getMPrem().back());
-            tab1[choix-1]->suppLastMP();
 		}
 		else if(tab1[choix-1]->getMPrem().size() == 0) {
             cout<<"Pas de carte"<<endl;

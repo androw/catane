@@ -7,6 +7,7 @@
 #include "./Cartes/MPremieres/ML_MPremiere.h"
 #include "./Cartes/MPremieres/ML_MPremieres.h"
 
+
 using namespace std;
 
 class ML_Dev;
@@ -37,8 +38,10 @@ class ML_Joueur {
 		void afficherCarteMP();
 		void afficherCarteDev();
         void suppLastMP();
+
 };
 
 #include "./Cartes/Dev/ML_Dev.h"
+
 
 #endif
