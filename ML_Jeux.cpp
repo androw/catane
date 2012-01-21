@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #include "ML_Jeux.h"
 
 using namespace std;
@@ -5,6 +7,7 @@ using namespace std;
 ML_Jeux::ML_Jeux() {
 	nbjoueur = 4;
 	armee = 0;
+	route =0;
 	for (int i=0; i<5; i++) {
 		res[i] = 0;
 		dev[i]=0;
@@ -44,6 +47,7 @@ ML_Jeux::ML_Jeux() {
 ML_Jeux::ML_Jeux(int p) {
 	nbjoueur = p;
 	armee = 0;
+	route =0;
         for (int i=0; i<5; i++) {
                 res[i] = 0;
                 dev[i]=0;
@@ -159,6 +163,7 @@ void ML_Jeux::init() {
 	bool victory = false;
 	do {
 	for (i = 1; (i<= nbjoueur && !victory); i++) {
+		maxL();
 		if (distribRes()){
                     map.afficher();
                     cout<<"Au joueur "<<i<<" de placer le Brigand !"<<endl;
@@ -170,17 +175,19 @@ void ML_Jeux::init() {
 		do {
 			do{
 				map.afficher();
+				cout<<"L'armee la plus grande est détenue par "<<armee<<"."<<endl;
+				cout<<"La route la plus grande est détenue par "<<route<<"."<<endl;
 				joueur[i-1]->afficherCarteMP();
 				joueur[i-1]->afficherCarteDev();
 				cout<<"Au joueur "<<i<<" de jouer !"<<endl;
 				cout<<"1. Placez une route ?"<<endl; //OK
 				cout<<"2. Placez une colonie ?"<<endl; //OK
 				cout<<"3. Placez une ville ?"<<endl; //OK
-				cout<<"4. Faire un Ã©change entre joueurs ?"<<endl; //OK
-				cout<<"5. Faire un Ã©change avec un port ?"<<endl; //OK
-				cout<<"6. Faire un Ã©change avec la banque ?"<<endl; //OK
-				cout<<"7. Achat d'une carte dÃ©veloppement ?"<<endl; //OK
-				cout<<"8. Utiliser une carte dÃ©veloppement ?"<<endl;
+				cout<<"4. Faire un echange entre joueurs ?"<<endl; //OK
+				cout<<"5. Faire un echange avec un port ?"<<endl; //OK
+				cout<<"6. Faire un echange avec la banque ?"<<endl; //OK
+				cout<<"7. Achat d'une carte developpement ?"<<endl; //OK
+				cout<<"8. Utiliser une carte developpement ?"<<endl;
 				cout<<"9. Finir tour"<<endl; //OK
 				cin>>choix;
 			}while(choix < 0 || choix > 9);
@@ -974,27 +981,21 @@ void ML_Jeux::useCard(ML_Joueur * jj){
 }
 
 void ML_Jeux::BrigandActive() {
-    
     int i;
     int j;
-    
     for (i=1; i<nbjoueur+1;i++) {
         int choix;
         ML_MPremiere* m = NULL;
         if(joueur[i-1]->getMPrem().size() > 7) {
-            
             int nbCartes = joueur[i-1]->getMPrem().size();
             nbCartes = nbCartes / 2;
-            
             for (j = 0; j< nbCartes;j++) {
                 do {
-            
                     do{
                         cout<<"0. Argile 1. Bois 2. Minerai 3. Laine 4. Ble"<<endl;
                         cout<<"joueur"<<joueur[i-1]->getNb()<<" : Quelle ressource (x1) souhaitez vous enlever (la moitiŽ de vos cartes)?"<<endl;
                         cin>>choix;
                     } while (choix < 0 || choix >4);
-
                     if (choix == 0) {
                         m = new ML_Argile();
                     } else if (choix == 1) {
@@ -1006,21 +1007,83 @@ void ML_Jeux::BrigandActive() {
                     } else if (choix == 4) {
                         m = new ML_Ble();
                     }
-                        
                 } while(!(joueur[i-1]->hasHe(m,1)));
-                
-
-                
                 joueur[i-1]->remRes(m);
                 dev[0]--;
             }
-            
-            
         }
     }
 }
 
 int ML_Jeux::getNbJ() {
     return nbjoueur;
+}
+
+int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
+	if (!seek(v, a)) {
+		v->push_back(a);
+		acc++;
+		int tab[6];
+		for (int i = 0; i<6; i++) {
+			tab[i] = 0;
+		}
+		int j = a->getJoueur()->getNb();
+		if (a->getNoeud(0) != NULL) {
+			if (a->getNoeud(0)->getArrete(0) != NULL) {
+				if (a->getNoeud(0)->getArrete(0)->getJoueur()->getNb() == j) tab[0] = maxLrec(acc, a->getNoeud(0)->getArrete(0), v);
+			}
+			if (a->getNoeud(0)->getArrete(1) != NULL) {
+				if (a->getNoeud(0)->getArrete(1)->getJoueur()->getNb() == j) tab[1] = maxLrec(acc, a->getNoeud(0)->getArrete(1), v);
+			}
+			if (a->getNoeud(0)->getArrete(2) != NULL) {
+				if (a->getNoeud(0)->getArrete(2)->getJoueur()->getNb() == j) tab[2] = maxLrec(acc, a->getNoeud(0)->getArrete(2), v);
+			}
+		}
+		if (a->getNoeud(1) != NULL) {
+			if (a->getNoeud(1)->getArrete(0) != NULL) {
+				if (a->getNoeud(1)->getArrete(0)->getJoueur()->getNb() == j) tab[3] = maxLrec(acc, a->getNoeud(1)->getArrete(0), v);
+			}
+			if (a->getNoeud(1)->getArrete(1) != NULL) {
+				if (a->getNoeud(1)->getArrete(1)->getJoueur()->getNb() == j) tab[4] = maxLrec(acc, a->getNoeud(1)->getArrete(1), v);
+			}
+			if (a->getNoeud(1)->getArrete(2) != NULL) {
+				if (a->getNoeud(1)->getArrete(2)->getJoueur()->getNb() == j) tab[5] = maxLrec(acc, a->getNoeud(1)->getArrete(2), v);
+			}
+		}
+		int max = acc;
+		for (int i = 0; i<6; i++) {
+			if (tab[i] > max) max = tab[i];
+		}
+		return max;
+	} else {
+		return acc;
+	}
+}
+
+void ML_Jeux::maxL() {
+	vector<ML_Arrete*>* v = new vector<ML_Arrete*>;
+	int i,j,k;
+	int max = 0;
+	int jo = 0;
+	for (i = 0; i<7 ; i++) {
+		for (j = 0; j<7 ; j++) {
+			if (map.getTerrain(i, j) != NULL) {
+				for (k = 0; k<6; k++) {
+					if (map.getTerrain(i, j)->getArrete(k) != NULL) {
+						if (map.getTerrain(i, j)->getArrete(k)->getJoueur()->getNb() != 0) {
+							int inter = maxLrec(1, map.getTerrain(i, j)->getArrete(k), v);
+							if (inter > max) {
+								max = inter;
+								jo = map.getTerrain(i, j)->getArrete(k)->getJoueur()->getNb();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (route != 0) joueur[route-1]->remScore();
+	joueur[jo-1]->addScore();
+	route = jo;
 }
 

@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #include "ML_Joueur.h"
 
 ML_Joueur::ML_Joueur(int pnb) {

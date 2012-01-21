@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #include "ML_Chevalier.h"
 
 ML_Chevalier::ML_Chevalier() {
@@ -11,9 +13,9 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
 	int i = 0;
 	do{	
         cout<<"Ou voulez vous mettre le brigand ?"<<endl;
-        cout<<"x?"<<endl;
+        cout<<"x ?"<<endl;
         cin>>x;
-        cout<<"y?"<<endl;
+        cout<<"y ?"<<endl;
         cin>>y;
 	}while((x == m->getXBrigand() && y == m->getYBrigand()) || ((x == 3 && (y<1 || y>5)) || ((x == 2 || x == 4) && (y<1 || y>4)) || ((x == 1 || x == 5) && (y<2 || y>4))) || x<1 || x>5);
     

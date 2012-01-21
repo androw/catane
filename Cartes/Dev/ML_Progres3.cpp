@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #include "ML_Progres3.h"
 
 ML_Progres3::ML_Progres3() {
@@ -10,12 +12,12 @@ void ML_Progres3::use(ML_Joueur* j, ML_Jeux* m) {
     int choix;
     
     do{
-        cout<<"Au joueur "<<j->getNb()<<" de dŽcider quelle ressource veut il que tout le monde lui donne!"<<endl;
-        cout<<"1.Argile?"<<endl;
-        cout<<"2.laine?"<<endl;
-        cout<<"3.Minerai?"<<endl;
-        cout<<"4.Bois?"<<endl;
-        cout<<"5.Ble?"<<endl;
+        cout<<"Au joueur "<<j->getNb()<<" de demander la ressource qu'il souhaite"<<endl;
+        cout<<"1. Argile?"<<endl;
+        cout<<"2. Laine?"<<endl;
+        cout<<"3. Minerai?"<<endl;
+        cout<<"4. Bois?"<<endl;
+        cout<<"5. Ble?"<<endl;
         cin>>choix;
     }while(choix<0 || choix >6);
     

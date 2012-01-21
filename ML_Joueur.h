@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #ifndef ML_JOUEUR_H
 #define ML_JOUEUR_H
 
@@ -23,16 +25,16 @@ class ML_Joueur {
 		ML_Joueur(int);
 		int getNb();
 		void addRes(ML_MPremiere*);
-        	ML_MPremiere* remRes(ML_MPremiere*);
-        	bool hasHe(ML_MPremiere*, int);
-        	void addScore();
+        ML_MPremiere* remRes(ML_MPremiere*);
+       	bool hasHe(ML_MPremiere*, int);
+       	void addScore();
 		void addArmee();
 		int getScore();
 		vector<ML_Dev*> getDev();
 		vector<ML_MPremiere*> getMPrem();
-        	void addDev(ML_Dev*);
-        	ML_Dev* remDev(ML_Dev*);
-        	bool hasHeDev(ML_Dev*, int);
+       	void addDev(ML_Dev*);
+       	ML_Dev* remDev(ML_Dev*);
+       	bool hasHeDev(ML_Dev*, int);
 		void remScore();
 		int getArmee();
 		void afficherCarteMP();

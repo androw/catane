@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #ifndef ML_JEUX_H
 #define ML_JEUX_H
 
@@ -16,6 +18,7 @@ class ML_Jeux {
 		int dev[5];
 		int nbjoueur;
 		int armee;
+		int route;
 		ML_Joueur* joueur[4];
 		int xBrigand;
 		int yBrigand;
@@ -46,9 +49,11 @@ class ML_Jeux {
 		void tradePortGen(ML_Joueur*);
 		void tradePortOther(ML_Joueur*, ML_Terrain*);
 		void distribResInit();
-        void useCard(ML_Joueur *);
+        void useCard(ML_Joueur*);
         void BrigandActive();
         int getNbJ();
+		int maxLrec(int, ML_Arrete*, vector<ML_Arrete*>*);
+		void maxL();
 };
 
 #endif
