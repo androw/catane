@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #include "ML_PVictoire.h"
 
 ML_PVictoire::ML_PVictoire() {

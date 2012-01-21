@@ -1,3 +1,5 @@
+//MANSOURATI ET LORIN
+
 #ifndef ML_PVICTOIRE_H
 #define ML_PVICTOIRE_H
 
