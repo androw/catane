@@ -1029,6 +1029,7 @@ int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 		}
 		int j = a->getJoueur()->getNb();
 		if (a->getNoeud(0) != NULL) {
+			if (a->getNoeud(0)->getJoueur()->getNb() == 0 || a->getNoeud(0)->getJoueur()->getNb() == j) {
 			if (a->getNoeud(0)->getArrete(0) != NULL) {
 				if (a->getNoeud(0)->getArrete(0)->getJoueur()->getNb() == j) tab[0] = maxLrec(acc, a->getNoeud(0)->getArrete(0), v);
 			}
@@ -1038,8 +1039,10 @@ int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 			if (a->getNoeud(0)->getArrete(2) != NULL) {
 				if (a->getNoeud(0)->getArrete(2)->getJoueur()->getNb() == j) tab[2] = maxLrec(acc, a->getNoeud(0)->getArrete(2), v);
 			}
+			}
 		}
 		if (a->getNoeud(1) != NULL) {
+			if (a->getNoeud(1)->getJoueur()->getNb() == 0 || a->getNoeud(1)->getJoueur()->getNb() == j) {
 			if (a->getNoeud(1)->getArrete(0) != NULL) {
 				if (a->getNoeud(1)->getArrete(0)->getJoueur()->getNb() == j) tab[3] = maxLrec(acc, a->getNoeud(1)->getArrete(0), v);
 			}
@@ -1048,6 +1051,7 @@ int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 			}
 			if (a->getNoeud(1)->getArrete(2) != NULL) {
 				if (a->getNoeud(1)->getArrete(2)->getJoueur()->getNb() == j) tab[5] = maxLrec(acc, a->getNoeud(1)->getArrete(2), v);
+			}
 			}
 		}
 		int max = acc;
