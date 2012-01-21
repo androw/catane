@@ -375,7 +375,7 @@ bool ML_Jeux::distribRes(){
 						} else {
 							res[2]++;
 						}
-					} else if (map.getTerrain(i, j)->getName() == "Paturages"){
+					} else if (map.getTerrain(i, j)->getName() == "Paturage"){
 						m = new ML_Laine();
 						if (res[3] >= m->getMax()) {
 							delete m;
@@ -725,8 +725,8 @@ void ML_Jeux::tradePort(ML_Joueur* j){
 	
 	ML_Terrain* t = map.getTerrain(x, y);
 	if (t != NULL) {
-		if (t->getName().find("Port") != string::npos) {
-			cout<<"Ceci n'est pas un port"<<endl;
+		if (t->getName().find("Port") == string::npos) {
+			cout<<"Ceci n'est pas un port."<<endl;
 			return;
 		}
 		
@@ -736,19 +736,19 @@ void ML_Jeux::tradePort(ML_Joueur* j){
 				if (t->getArrete(i)->getJoueur()->getNb() == j->getNb()) isHere = true;
 			}
 		}
-		if (!isHere) {cout<<"Vous n'avez pas de colonie sur ce port"<<endl; return;}
+		if (!isHere) {cout<<"Vous n'avez pas de colonie sur ce port."<<endl; return;}
 		
 		if (t->getName().find("?") != string::npos) {
-            cout<<"Port générique, 3 ressources contre une"<<endl;
+            cout<<"Port générique, 3 ressources contre une."<<endl;
             tradePortGen(j);
 			return;
          } else {
-			cout<<"Port spécifique, 2 ressources contre une"<<endl;
+			cout<<"Port spécifique, 2 ressources contre une."<<endl;
             tradePortOther(j,t);
 			return;
 		}
 	} else {
-		cout<<"Ceci n'est pas un port"<<endl;
+		cout<<"Ceci n'est pas un port."<<endl;
 		return;
 	}
 }
@@ -903,7 +903,7 @@ void ML_Jeux::distribResInit(){
 						} else {
 							res[2]++;
 						}
-					} else if (map.getTerrain(i, j)->getName() == "Paturages"){
+					} else if (map.getTerrain(i, j)->getName() == "Paturage"){
 						m = new ML_Laine();
 						if (res[3] >= m->getMax()) {
 							delete m;
@@ -946,7 +946,7 @@ void ML_Jeux::useCard(ML_Joueur * jj){
         
         do{
             cout<<"Quelle Carte voulez vous utiliser ?"<<endl;
-            cout<<"0. Chevalier 1. Point Victoire 2. Progres 1: Placer 2 routes 3. Progres 2 : 2 ressources  4. Progres 3 : prendre resource de tout les joueur 5.annuler"<<endl;
+            cout<<"0. Chevalier 1. Point Victoire 2. Progres 1: Placer 2 routes 3. Progres 2 : 2 ressources  4. Progres 3 : prendre resource de tout les joueur 5. Annuler"<<endl;
             cin>>choix;
             
                 
@@ -969,11 +969,6 @@ void ML_Jeux::useCard(ML_Joueur * jj){
             }
             
         } while ( !(jj->hasHeDev(m, 1)) && choix != 5);
-        
-        
-        
-        
-        
     }else { cout<<"Vous n'avez pas cette Carte"<<endl;}
     
 }
