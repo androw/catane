@@ -14,10 +14,5 @@ int main () {
 	} while (j<=1 && j>4);
 	ML_Jeux letsplay(j);
 	letsplay.init();
-	letsplay.distribRes();
-
-	letsplay.getMap().afficher();
-
-
 	return 0;
 }

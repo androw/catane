@@ -207,7 +207,10 @@ void ML_Jeux::init() {
 			else if (choix == 7) {tradeDev(i);}
 			else if (choix == 8) {useCard(joueur[i-1]);}
 		}while (choix != 9);
-		if (joueur[i-1]->getScore() == 10) {victory = true;}
+		if (joueur[i-1]->getScore() == 10) {
+			victory = true;
+			cout<<"Le joueur "<<i<<" a gagné !"<<endl;
+		}
 	}
 	} while (!victory);
 }
