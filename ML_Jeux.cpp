@@ -1081,10 +1081,16 @@ int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 			}
 			}
 		}
-		int max = acc;
+		int max;
+		int max1 = acc;
+		int max2 = acc;
 		for (int i = 0; i<6; i++) {
-			if (tab[i] > max) max = tab[i];
+			if (tab[i] > max2) max2 = tab[i];	
 		}
+		for (int i = 3; i<6; i++) {
+			if (tab[i] > max1) max1 = tab[i];
+		}
+		max = max2;
 		return max;
 	} else {
 		return acc;
@@ -1093,7 +1099,6 @@ int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 
 //Attribue le point route la plus longue
 void ML_Jeux::maxL() {
-	vector<ML_Arrete*>* v = new vector<ML_Arrete*>;
 	int i,j,k;
 	int max = 1;
 	int jo = 0;
@@ -1101,6 +1106,7 @@ void ML_Jeux::maxL() {
 		for (j = 0; j<7 ; j++) {
 			if (map.getTerrain(i, j) != NULL) {
 				for (k = 0; k<6; k++) {
+					vector<ML_Arrete*>* v = new vector<ML_Arrete*>;
 					if (map.getTerrain(i, j)->getArrete(k) != NULL) {
 						if (map.getTerrain(i, j)->getArrete(k)->getJoueur()->getNb() != 0) {
 							int inter = maxLrec(0, map.getTerrain(i, j)->getArrete(k), v);
@@ -1110,6 +1116,7 @@ void ML_Jeux::maxL() {
 							}
 						}
 					}
+					delete v;
 				}
 			}
 		}
@@ -1119,7 +1126,7 @@ void ML_Jeux::maxL() {
 		joueur[jo-1]->addScore();
 		route = jo;
 		routemax = max;
+		cout<<max<<endl;
 	}
-	delete v;
 }
 
