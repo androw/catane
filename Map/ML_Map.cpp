@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Initialise la carte en appelant les diverses fonction d'init
 ML_Map::ML_Map() {
 	int i,j;
 	for (i = 0; i<6; i++) {
@@ -35,6 +36,7 @@ ML_Map::ML_Map() {
 	valeur();
 }
 
+//Rempli le tableau de jetons lettre/nombre
 void ML_Map::createnbint() {
 	nbint[0] = 5;
 	nbint[1] = 2;
@@ -56,6 +58,7 @@ void ML_Map::createnbint() {
 	nbint[17] = 11;
 }
 
+//Retourne un terrain aléatoire parmi les terrains encore disponible
 ML_Terrain* ML_Map::random() {
 	ML_Terrain * t;
 	int random = rand()%6;
@@ -99,7 +102,7 @@ ML_Terrain* ML_Map::random() {
 	return ML_Map::random();	
 }
 
-
+//Positionne les jetons sur les terrains
 void ML_Map::valeur() {
 	int random = rand()%6;
 	int i = 0;
@@ -246,6 +249,7 @@ void ML_Map::valeur() {
 		
 }
 
+//Ajoute les ports fixés
 void ML_Map::addPorts() {
 	t[4][0] = new ML_Port("Laine");
 	t[2][0] = new ML_Port("?");
@@ -258,6 +262,8 @@ void ML_Map::addPorts() {
 	t[3][6] = new ML_Port("Argile");
 }
 
+
+//Ajoute les mers
 void ML_Map::addMers() {
 	t[3][0] = new ML_Mer();
 	t[1][1] = new ML_Mer();
@@ -270,10 +276,8 @@ void ML_Map::addMers() {
 	t[5][1] = new ML_Mer();
 }
 
+//Affiche la carte
 void ML_Map::afficher() {
-
-
-
 	cout<<"                          *         *         *         *           "<<endl;
 	cout<<"                        *   *     *~~~*     *   *     *~~~*            "<<endl;
 	//cout<<"                      *       * *~~~~~~~* *       * *~~~~~~~*       "<<endl;
@@ -815,19 +819,14 @@ cout<<endl;
 
 			}
 		}
-
-
-cout<<endl;
+	cout<<endl;
 	cout<<"                     *  (6,1)  *~~(6,2)~~*  (6,3)  *~~(6,4)~~*         "<<endl;
 	//cout<<"                      *       * *~~~~~~~* *       * *~~~~~~~*       "<<endl;
 	cout<<"                        *   *     *~~~*     *   *     *~~~*          "<<endl;
 	cout<<"                          *         *         *         *         "<<endl;
-
-
-	
 }
 
-					
+//AJoute les arretes, et les connecte aux terrains			
 void ML_Map::createArrete() {
 	int i;
 	int j;
@@ -952,6 +951,7 @@ void ML_Map::createArrete() {
 	}
 }	
 
+//Ajoute les noeuds, les connecte aux terrains et aux arretes
 void ML_Map::createNoeud() {
 	int i;
 	int j;
@@ -1219,7 +1219,7 @@ void ML_Map::createNoeud() {
 	}
 }	
 
-
+//Retourne le terraisn de la case i,j
 ML_Terrain* ML_Map::getTerrain(int pi, int pj) {
 	if(t[pi][pj] == NULL) {
 		return NULL;
@@ -1227,6 +1227,7 @@ ML_Terrain* ML_Map::getTerrain(int pi, int pj) {
 	return t[pi][pj];
 }
 		
+//Retourne l'arrete situé entre deux terrains
 ML_Arrete* ML_Map::getArrete(int i, int j, int x, int y, bool b) {
 	int it;
 	if (t[i][j] != NULL && t[x][y] != NULL) {
@@ -1251,6 +1252,7 @@ ML_Arrete* ML_Map::getArrete(int i, int j, int x, int y, bool b) {
 	return NULL;
 } 
 
+//Retourne le noeud situé entre trois terrains
 ML_Noeud* ML_Map::getNoeud(int i, int j, int x, int y,int xx, int yy) {
 	int it;
 	if (t[i][j] != NULL && t[x][y] != NULL && t[xx][yy] != NULL) {
