@@ -21,6 +21,7 @@ class ML_Joueur {
 		int nb;
 		int armee;
 		int score;
+        bool utilDev;
 	public:
 		ML_Joueur(int);
 		int getNb();
@@ -41,6 +42,8 @@ class ML_Joueur {
 		void afficherCarteMP();
 		void afficherCarteDev();
         void suppLastMP();
+        void setUtilDev(bool);
+        bool getUtilDev();
 
 };
 

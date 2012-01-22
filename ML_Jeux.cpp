@@ -168,6 +168,7 @@ void ML_Jeux::init() {
 	for (i = 1; (i<= nbjoueur && !victory); i++) {
 		maxL();
         refreshArmee();
+        joueur[i-1]->setUtilDev(false);
 		if (distribRes()){
                     map.afficher();
                     cout<<"Au joueur "<<i<<" de placer le Brigand !"<<endl;
@@ -352,6 +353,8 @@ void ML_Jeux::tradeDev(int j){
 		delete joueur[j-1]->remRes(m2);
 		delete joueur[j-1]->remRes(m3);
 		joueur[j-1]->addDev(mn);
+        joueur[j-1]->setUtilDev(true);
+        
 	}
 	
 }
@@ -988,9 +991,14 @@ void ML_Jeux::useCard(ML_Joueur * jj){
             }
             
         } while ( !(jj->hasHeDev(m, 1)) && choix != 5);
-        jj->remDev(m);
+        
+        if(choix != 5 && (jj->hasHeDev(m, 1))) {
+            jj->remDev(m);
+            
+        }
+
         delete m;
-    }else { cout<<"Vous n'avez pas cette Carte"<<endl;}
+    }else { cout<<"Vous n'avez pas cette Carte ou vous ne pouvez pas l'utiliser"<<endl;}
     
 }
 

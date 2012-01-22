@@ -18,6 +18,7 @@ ML_Joueur::ML_Joueur(int pnb) {
     addRes(new ML_Ble());
     addRes(new ML_Ble());
 	armee = 0;
+    utilDev = false;
 }
 
 int ML_Joueur::getNb() {
@@ -112,10 +113,19 @@ bool ML_Joueur::hasHeDev(ML_Dev* pm, int nb){
     if (pm == NULL) return false;
     long unsigned int i;
     int acc = 0;
-    for (i = 0; i < dev.size(); i++) {
-        if ((*pm).getName() == (*(dev.at(i))).getName()) {
-            acc++;
-        } 
+    if(utilDev == false) {
+        for (i = 0; i < dev.size(); i++) {
+            if ((*pm).getName() == (*(dev.at(i))).getName()) {
+                acc++;
+            } 
+        }
+    }
+    if(utilDev == true) {
+        for (i = 0; i < dev.size()-1; i++) {
+            if ((*pm).getName() == (*(dev.at(i))).getName()) {
+                acc++;
+            } 
+        }
     }
     if (acc >= nb) return true;
     return false;
@@ -150,4 +160,12 @@ void ML_Joueur::afficherCarteDev(){
 void ML_Joueur::suppLastMP(){
     matPrem.pop_back();
     
+}
+
+void ML_Joueur::setUtilDev(bool util) {
+    utilDev = util;
+}
+
+bool ML_Joueur::getUtilDev() {
+    return utilDev;
 }
