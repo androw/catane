@@ -7,7 +7,9 @@ using namespace std;
 ML_Jeux::ML_Jeux() {
 	nbjoueur = 4;
 	armee = 0;
+	armeemax = 0;
 	route =0;
+	routemax = 0;
 	for (int i=0; i<5; i++) {
 		res[i] = 0;
 		dev[i]=0;
@@ -47,7 +49,9 @@ ML_Jeux::ML_Jeux() {
 ML_Jeux::ML_Jeux(int p) {
 	nbjoueur = p;
 	armee = 0;
+	armeemax = 0;
 	route =0;
+	routemax = 0;
         for (int i=0; i<5; i++) {
                 res[i] = 0;
                 dev[i]=0;
@@ -210,17 +214,19 @@ ML_Map ML_Jeux::getMap() {
 }
 
 void ML_Jeux::refreshArmee() {
-	if (armee != 0) joueur[armee-1]->remScore();
-	int max = 0;
-	int j;
-	int i;
-	for (i = 0; i<nbjoueur; i++) {
-		if (joueur[i]->getArmee() > max) {
-			j = i;
-		}
+	int i,j;
+	for (i = 0; i < nbjoueur; i++) {
+                if (joueur[i]->getArmee() > max) {
+                        max = joueur[i]->getArmee();
+                        j = i;
+                }
+        }
+	if (max != armeemax) {
+		if (armee != 0) joueur[armee-1]->remScore();
+		int max = 0;
+		joueur[j]->addScore();
+		armee = j+1;
 	}
-	joueur[j]->addScore();
-	armee = j+1;
 }	
 
 void ML_Jeux::trade(int j){

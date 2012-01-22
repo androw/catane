@@ -18,7 +18,9 @@ class ML_Jeux {
 		int dev[5];
 		int nbjoueur;
 		int armee;
+		int armeemax;
 		int route;
+		int routemax;
 		ML_Joueur* joueur[4];
 		int xBrigand;
 		int yBrigand;
