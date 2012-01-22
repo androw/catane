@@ -88,16 +88,14 @@ ML_Jeux::ML_Jeux(int p) {
 	}
 }
 
+//Demarre et gere une partie
 void ML_Jeux::init() {
 	int i;
 	int x,y,xx,yy,xxx,yyy;
 	int choix = 0;
 
 	cout<<"Initialisation de la Partie"<<endl;
-    
-    
-    
-	for (i = 1; i<= nbjoueur; i++) {
+    	for (i = 1; i<= nbjoueur; i++) {
             do{
 			map.afficher();
 			cout<<"Au joueur "<<i<<" de placer ses premiers jetons !"<<endl;
@@ -217,6 +215,7 @@ ML_Map ML_Jeux::getMap() {
 	return map;
 }
 
+//Redistribue le point Armee la plus grande
 void ML_Jeux::refreshArmee() {
 	int i;
 	int j;
@@ -239,6 +238,7 @@ void ML_Jeux::refreshArmee() {
 	}
 }	
 
+//Permet une échange avec la banque
 void ML_Jeux::trade(int j){
 	int insell;
 	int inbuy;
@@ -294,6 +294,7 @@ void ML_Jeux::trade(int j){
 	delete m;	
 }
 
+//Permet un achat de carte dev
 void ML_Jeux::tradeDev(int j){
 
 		ML_MPremiere* m1 = NULL;
@@ -355,6 +356,7 @@ void ML_Jeux::tradeDev(int j){
 	
 }
 
+//Distribue les ressources alloué grace aux dès
 bool ML_Jeux::distribRes(){
 	int de = lancerDe()+lancerDe();
 	cout<<"Les dés ont fait "<<de<<"."<<endl;
@@ -433,10 +435,7 @@ bool ML_Jeux::distribRes(){
 	}
 }
 
-bool ML_Jeux::initEchange() {
-    return false;
-}
-
+//Permet un échange entre deux joueurs
 bool ML_Jeux::echange(ML_Joueur* j1) {
     
     unsigned int i;
@@ -509,7 +508,7 @@ bool ML_Jeux::echange(ML_Joueur* j1) {
 
 		if((joueur[j-1]->hasHe(m,1))) {
 			matPrem2.push_back(m);
-			cout<<"ajouter une autre ressource : 0.Oui 1.Non 2.annuller?"<<endl;
+			cout<<"Ajouter une autre ressource : 0.Oui 1.Non 2.Annuler ?"<<endl;
 			cin>>choix2;
             if(choix2 == 2) {
                 return false;
@@ -530,19 +529,10 @@ bool ML_Jeux::echange(ML_Joueur* j1) {
         j1->remRes(matPrem1.at(i));
         
     }
-
-
     	return true;
 }
 
-
-void ML_Jeux::partEchange(ML_Joueur* j1, ML_Joueur* j2, ML_MPremiere* m, int nb) {
-    int i;
-    for (i = 0; i<nb; i++) {
-        j2->addRes(j1->remRes(m));
-    }
-}
-
+//Demande l'ajout d'une colonie
 void ML_Jeux::addColonie(int j){
 	int x;
 	int y;
@@ -569,6 +559,7 @@ void ML_Jeux::addColonie(int j){
 	}
 }
 
+//Ajoute effectivement si possible une colonie
 bool ML_Jeux::placerColonie(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j, bool b) {
 	ML_MPremiere* arg = new ML_Argile();
 	ML_MPremiere* boi = new ML_Bois();
@@ -603,6 +594,7 @@ bool ML_Jeux::placerColonie(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j, 
     return false;
 }
 
+//Demande l'ajout d'une route
 void ML_Jeux::addRoute(int j){
 	int x;
 	int y;
@@ -623,6 +615,7 @@ void ML_Jeux::addRoute(int j){
 	}
 }
 
+//Ajoute effectivement une route si possible
 bool ML_Jeux::placerRoute(int x,int y,int xx ,int yy ,int j){
 	ML_MPremiere* arg = new ML_Argile();
 	ML_MPremiere* boi = new ML_Bois();
@@ -652,6 +645,7 @@ bool ML_Jeux::placerRoute(int x,int y,int xx ,int yy ,int j){
     return false;
 }
 
+//Demande l'ajout d'une ville
 void ML_Jeux::addVille(int j){
 	int x;
 	int y;
@@ -678,6 +672,7 @@ void ML_Jeux::addVille(int j){
 	}
 }
 
+//Ajoute effectivement uen ville si possible
 bool ML_Jeux::placerVille(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) {
 	ML_MPremiere* min = new ML_Minerai();
 	ML_MPremiere* ble = new ML_Ble();
@@ -708,6 +703,7 @@ bool ML_Jeux::placerVille(int x,int y,int xx ,int yy ,int xxx ,int yyy,int j) {
 
 }
 
+//Change la position du brigand
 void ML_Jeux::setBrigand(int x, int y) {
 	map.getTerrain(xBrigand, yBrigand)->setBrigand();
 	map.getTerrain(x,y)->setBrigand();
@@ -731,6 +727,7 @@ ML_Joueur** ML_Jeux::getJoueur(){
 	return joueur;
 }
 	
+//Demande l'échange avec un port
 void ML_Jeux::tradePort(ML_Joueur* j){
 	int x;
 	int y;
@@ -772,6 +769,7 @@ void ML_Jeux::tradePort(ML_Joueur* j){
 	}
 }
 
+//Permet l'échange avec un port générique
 void ML_Jeux::tradePortGen(ML_Joueur* j) {
 	int insell;
 	int inbuy;
@@ -827,6 +825,7 @@ void ML_Jeux::tradePortGen(ML_Joueur* j) {
 	delete m;	
 }
 
+//Permet l'echaneg avec un port specifique
 void ML_Jeux::tradePortOther(ML_Joueur* j, ML_Terrain* t) {
 	int inbuy;
 	int insell;
@@ -887,6 +886,7 @@ void ML_Jeux::tradePortOther(ML_Joueur* j, ML_Terrain* t) {
 	delete m;	
 }
 
+//Distribue les ressources intiales aux joueurs
 void ML_Jeux::distribResInit(){
 	int i,j;
 	for (i = 0; i<7 ; i++) {
@@ -956,6 +956,7 @@ void ML_Jeux::distribResInit(){
 		}
 }
 
+//Permet l'utilisation d'une carte
 void ML_Jeux::useCard(ML_Joueur * jj){
     
     int choix;
@@ -993,6 +994,7 @@ void ML_Jeux::useCard(ML_Joueur * jj){
     
 }
 
+//Demande la defausse si carte > 7 lors de l'activation du brigand
 void ML_Jeux::BrigandActive() {
     int i;
     int j;
@@ -1032,6 +1034,7 @@ int ML_Jeux::getNbJ() {
     return nbjoueur;
 }
 
+//Mesure la route la plus longue par recursion
 int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 	if (!seek(v, a)) {
 		v->push_back(a);
@@ -1077,6 +1080,7 @@ int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 	}
 }
 
+//Attribue le point route la plus longue
 void ML_Jeux::maxL() {
 	vector<ML_Arrete*>* v = new vector<ML_Arrete*>;
 	int i,j,k;
