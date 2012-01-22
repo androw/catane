@@ -23,9 +23,9 @@ void ML_Progres3::use(ML_Joueur* j, ML_Jeux* m) {
     
     for (int i = 0;i<m->getNbJ();i++) {
 
-	if (i + 1 == j->getNb()) {
-		i++;
-	}
+
+	if (i + 1 != (j->getNb())) {
+			
         
         if(choix == 1) {
 
@@ -58,7 +58,7 @@ void ML_Progres3::use(ML_Joueur* j, ML_Jeux* m) {
             
     }
     
-
+  }
 }
 
 

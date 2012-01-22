@@ -9,6 +9,10 @@ ML_Progres1::ML_Progres1() {
 
 void ML_Progres1::use(ML_Joueur* j, ML_Jeux* m) {
     int x,xx,y,yy;
+    j->addRes(new ML_Argile());
+    j->addRes(new ML_Bois());
+    j->addRes(new ML_Argile());
+    j->addRes(new ML_Bois());
     do{
         m->getMap().afficher();
         cout<<"Au joueur "<<j->getNb()<<" de placer sa route !"<<endl;

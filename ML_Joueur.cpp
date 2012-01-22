@@ -85,6 +85,10 @@ void ML_Joueur::addArmee() {
 	armee++;
 }
 
+void ML_Joueur::minArmee() {
+	armee--;
+}
+
 void ML_Joueur::addDev(ML_Dev* pm) {
 	dev.push_back(pm);
 }
