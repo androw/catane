@@ -1,5 +1,15 @@
 //MANSOURATI ET LORIN
 
-Colons de catane,
+Colons de catane, par Marc Mansourati et Nicolas Lorin
 
 Pour jouer il suffit d'indiquer les coordonnées entourant le lieux ou vous souhaitez positionner l'objet.
+
+
+Pour fabriquer:
+- make
+
+Pour nettoyer:
+- make clean
+
+Pour jouer: (fabriquer avant)
+- ./catane
