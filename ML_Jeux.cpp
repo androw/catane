@@ -96,6 +96,7 @@ void ML_Jeux::init() {
 	cout<<"Initialisation de la Partie"<<endl;
     
     
+    
 	for (i = 1; i<= nbjoueur; i++) {
             do{
 			map.afficher();
@@ -168,6 +169,7 @@ void ML_Jeux::init() {
 	do {
 	for (i = 1; (i<= nbjoueur && !victory); i++) {
 		maxL();
+        refreshArmee();
 		if (distribRes()){
                     map.afficher();
                     cout<<"Au joueur "<<i<<" de placer le Brigand !"<<endl;
@@ -175,6 +177,8 @@ void ML_Jeux::init() {
 					m->use(joueur[i-1],this);
 					delete m; 
                     BrigandActive();
+                    joueur[i-1]->minArmee();
+                    refreshArmee();
 		}
 		do {
 			do{
@@ -191,7 +195,7 @@ void ML_Jeux::init() {
 				cout<<"5. Faire un echange avec un port ?"<<endl; //OK
 				cout<<"6. Faire un echange avec la banque ?"<<endl; //OK
 				cout<<"7. Achat d'une carte developpement ?"<<endl; //OK
-				cout<<"8. Utiliser une carte developpement ?"<<endl;
+				cout<<"8. Utiliser une carte developpement ?"<<endl;//OK
 				cout<<"9. Finir tour"<<endl; //OK
 				cin>>choix;
 			}while(choix < 0 || choix > 9);
@@ -285,10 +289,6 @@ void ML_Jeux::trade(int j){
 	}
 	delete m;	
 }
-
-
-
-
 
 void ML_Jeux::tradeDev(int j){
 
@@ -979,11 +979,12 @@ void ML_Jeux::useCard(ML_Joueur * jj){
             
             if(choix != 5 && (jj->hasHeDev(m, 1))) {
                 m->use(jj,this);
-                jj->remDev(m);
-                delete m;
+
             }
             
         } while ( !(jj->hasHeDev(m, 1)) && choix != 5);
+        jj->remDev(m);
+        delete m;
     }else { cout<<"Vous n'avez pas cette Carte"<<endl;}
     
 }

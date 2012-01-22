@@ -26,6 +26,7 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
     m->refreshArmee();
 	ML_Joueur * tab1[4];
 	int choix;
+    
 	for(int i=0; i<4;i++) {
 		tab1[i] = new ML_Joueur(0);
 	}

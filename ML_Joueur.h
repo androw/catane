@@ -29,6 +29,7 @@ class ML_Joueur {
        	bool hasHe(ML_MPremiere*, int);
        	void addScore();
 		void addArmee();
+        void minArmee();
 		int getScore();
 		vector<ML_Dev*> getDev();
 		vector<ML_MPremiere*> getMPrem();
