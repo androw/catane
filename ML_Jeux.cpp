@@ -1092,8 +1092,11 @@ void ML_Jeux::maxL() {
 			}
 		}
 	}
-	if (route != 0) joueur[route-1]->remScore();
-	joueur[jo-1]->addScore();
-	route = jo;
+	if (max != routemax) {
+		if (route != 0) joueur[route-1]->remScore();
+		joueur[jo-1]->addScore();
+		route = jo;
+	}
+	delete v;
 }
 
