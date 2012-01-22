@@ -8,7 +8,7 @@ ML_Progres1::ML_Progres1() {
 }
 
 void ML_Progres1::use(ML_Joueur* j, ML_Jeux* m) {
-    int x,xx,y,yy;
+    int x,xx,y,yy;             //on ajoute les ressources qui vont etres tout de suites utilisŽes par le Joueur pour les routes
     j->addRes(new ML_Argile());
     j->addRes(new ML_Bois());
     j->addRes(new ML_Argile());

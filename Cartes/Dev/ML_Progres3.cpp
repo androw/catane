@@ -10,6 +10,7 @@ ML_Progres3::ML_Progres3() {
 void ML_Progres3::use(ML_Joueur* j, ML_Jeux* m) {
     
     int choix;
+    //on parcours tout les jeux des joueurs ˆ part celui qui utilise la carte et on donne les ressources des joueurs qui correspondent au choix du joueur qui joue la carte.
     
     do{
         cout<<"Au joueur "<<j->getNb()<<" de demander la ressource qu'il souhaite"<<endl;

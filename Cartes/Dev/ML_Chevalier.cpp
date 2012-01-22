@@ -21,17 +21,17 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
     
 	
     
-	j->addArmee();
-	m->setBrigand(x,y);
-    m->refreshArmee();
-	ML_Joueur * tab1[4];
+	j->addArmee(); // ajoute un point d'armée au joueur
+	m->setBrigand(x,y);//place le brigand
+    m->refreshArmee();// regarde qui a plus le point d'armée
+	ML_Joueur * tab1[4]; // on fait un tableau de taille 4 pour voir les joueur qui sont sur le terrain ou on a placé le brigand
 	int choix;
     
 	for(int i=0; i<4;i++) {
 		tab1[i] = new ML_Joueur(0);
 	}
 	
-    
+    //on regarde chaques noeuds
     
 	tab[0] = m->getMap().getTerrain(x, y)->getNoeud(0)->getJoueur();
 	tab[1] = m->getMap().getTerrain(x, y)->getNoeud(1)->getJoueur();
@@ -66,6 +66,7 @@ void ML_Chevalier::use(ML_Joueur* j, ML_Jeux* m) {
         }	
     }	
     
+    // on choisit à qui on veut prendre les cartes tirée au hasard
     
 	if(tab1[0]->getNb() != 0 || tab1[1]->getNb() != 0 || tab1[2]->getNb() != 0 || tab1[3]->getNb() != 0 ) {
 		do {

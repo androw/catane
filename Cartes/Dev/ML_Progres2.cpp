@@ -10,6 +10,7 @@ ML_Progres2::ML_Progres2() {
 void ML_Progres2::use(ML_Joueur* j, ML_Jeux* m) {
     
     int choix;
+    // Carte permettant d'avoir 2 fois la ressource voulue.
     
     do{
         cout<<"Au joueur "<<j->getNb()<<" de décider quelle carte il souhaite obtenir 2 fois !"<<endl;
