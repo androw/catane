@@ -227,11 +227,16 @@ void ML_Jeux::refreshArmee() {
                         j = i;
                 }
         }
-	if (max != armeemax) {
+	if (max == 0){
+		if (armee != 0) joueur[armee-1]->remScore();
+		armee = 0;
+		armeemax = 0;
+	} else if (max != armeemax) {
 		if (armee != 0) joueur[armee-1]->remScore();
 		joueur[j]->addScore();
 		armee = j+1;
 		armeemax = max;
+		cout<<"PLOOOOOp"<<max<<endl;
 	}
 }	
 
@@ -1084,7 +1089,7 @@ void ML_Jeux::maxL() {
 				for (k = 0; k<6; k++) {
 					if (map.getTerrain(i, j)->getArrete(k) != NULL) {
 						if (map.getTerrain(i, j)->getArrete(k)->getJoueur()->getNb() != 0) {
-							int inter = maxLrec(1, map.getTerrain(i, j)->getArrete(k), v);
+							int inter = maxLrec(0, map.getTerrain(i, j)->getArrete(k), v);
 							if (inter > max) {
 								max = inter;
 								jo = map.getTerrain(i, j)->getArrete(k)->getJoueur()->getNb();
@@ -1100,7 +1105,6 @@ void ML_Jeux::maxL() {
 		joueur[jo-1]->addScore();
 		route = jo;
 		routemax = max;
-		cout<<max<<endl;
 	}
 	delete v;
 }

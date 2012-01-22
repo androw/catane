@@ -17,6 +17,7 @@ ML_Joueur::ML_Joueur(int pnb) {
     addRes(new ML_Laine());
     addRes(new ML_Ble());
     addRes(new ML_Ble());
+	armee = 0;
 }
 
 int ML_Joueur::getNb() {
