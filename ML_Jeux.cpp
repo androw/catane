@@ -9,7 +9,7 @@ ML_Jeux::ML_Jeux() {
 	armee = 0;
 	armeemax = 0;
 	route =0;
-	routemax = 0;
+	routemax = 1;
 	for (int i=0; i<5; i++) {
 		res[i] = 0;
 		dev[i]=0;
@@ -51,7 +51,7 @@ ML_Jeux::ML_Jeux(int p) {
 	armee = 0;
 	armeemax = 0;
 	route =0;
-	routemax = 0;
+	routemax = 1;
         for (int i=0; i<5; i++) {
                 res[i] = 0;
                 dev[i]=0;
@@ -214,7 +214,9 @@ ML_Map ML_Jeux::getMap() {
 }
 
 void ML_Jeux::refreshArmee() {
-	int i,j;
+	int i;
+	int j;
+	int max = 0;
 	for (i = 0; i < nbjoueur; i++) {
                 if (joueur[i]->getArmee() > max) {
                         max = joueur[i]->getArmee();
@@ -223,9 +225,9 @@ void ML_Jeux::refreshArmee() {
         }
 	if (max != armeemax) {
 		if (armee != 0) joueur[armee-1]->remScore();
-		int max = 0;
 		joueur[j]->addScore();
 		armee = j+1;
+		armeemax = max;
 	}
 }	
 
@@ -1073,7 +1075,7 @@ int ML_Jeux::maxLrec(int acc, ML_Arrete* a, vector<ML_Arrete*>* v) {
 void ML_Jeux::maxL() {
 	vector<ML_Arrete*>* v = new vector<ML_Arrete*>;
 	int i,j,k;
-	int max = 0;
+	int max = 1;
 	int jo = 0;
 	for (i = 0; i<7 ; i++) {
 		for (j = 0; j<7 ; j++) {
@@ -1096,6 +1098,8 @@ void ML_Jeux::maxL() {
 		if (route != 0) joueur[route-1]->remScore();
 		joueur[jo-1]->addScore();
 		route = jo;
+		routemax = max;
+		cout<<max<<endl;
 	}
 	delete v;
 }
