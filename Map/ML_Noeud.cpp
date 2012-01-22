@@ -50,6 +50,7 @@ void ML_Noeud::setJoueur(ML_Joueur* pj) {
 	j = pj;
 }
 
+//Verifie la présence de colonie à une route de ce noeud
 bool ML_Noeud::checkDist() {
 	bool acc = true;
 	if (arrete[0] != NULL) {
@@ -86,6 +87,7 @@ bool ML_Noeud::isVille() {
 	return ville;
 }
 
+//Verifie que le joueur ait une route qui donne sur ce noeud
 bool ML_Noeud::hasRoute(int j) {
     if (arrete[0] != NULL) {
         if (arrete[0]->getJoueur()->getNb() == j) return true;

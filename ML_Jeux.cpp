@@ -236,7 +236,6 @@ void ML_Jeux::refreshArmee() {
 		joueur[j]->addScore();
 		armee = j+1;
 		armeemax = max;
-		cout<<"PLOOOOOp"<<max<<endl;
 	}
 }	
 
